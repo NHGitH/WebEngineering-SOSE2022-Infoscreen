@@ -13,7 +13,12 @@ class CreateGebäudeTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('Gebäude', function (Blueprint $table) {
+            $table->id();
+            $table->string('bezeichnung');
+            
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class CreateGebäudeTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('Gebäude');
     }
 }

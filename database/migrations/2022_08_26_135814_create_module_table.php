@@ -13,9 +13,13 @@ class CreateModuleTable extends Migration
      */
     public function up()
     {
-        Schema::create('module', function (Blueprint $table) {
+        Schema::create('Module', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string("bezeichnung");
+            $table->foreignId("raum");
+            $table->foreignId("professor");
+            $table->foreignId("studiengang");
+            $table->dateTime("uhrzeit");
         });
     }
 
@@ -26,6 +30,6 @@ class CreateModuleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('module');
+        Schema::dropIfExists('Module');
     }
 }

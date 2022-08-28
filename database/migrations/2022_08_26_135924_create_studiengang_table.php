@@ -13,9 +13,10 @@ class CreateStudiengangTable extends Migration
      */
     public function up()
     {
-        Schema::create('studiengang', function (Blueprint $table) {
+        Schema::create('Studiengang', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string("bezeichnung");
+            $table->foreignId("Gebäude");
         });
     }
 
@@ -26,6 +27,6 @@ class CreateStudiengangTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('studiengang');
+        Schema::dropIfExists('Studiengang');
     }
 }
