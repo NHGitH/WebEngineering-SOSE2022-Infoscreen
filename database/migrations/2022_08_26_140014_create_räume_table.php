@@ -13,10 +13,10 @@ class CreateRäumeTable extends Migration
      */
     public function up()
     {
-        Schema::create('studiengang', function (Blueprint $table) {
+        Schema::create('Raum', function (Blueprint $table) {
             $table->id();
             $table->string('bezeichnung');
-            $table->dateTime('Belegung');
+            $table->foreignId('gebäude');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateRäumeTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('Raum');
     }
 }
