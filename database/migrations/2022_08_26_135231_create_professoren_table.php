@@ -16,7 +16,7 @@ class CreateProfessorenTable extends Migration
         Schema::create('Professoren', function (Blueprint $table) {
             $table->id();
             $table->String("name");
-            $table->String("picture_Path")
+            $table->String("picture_Path");
         });
     }
 
