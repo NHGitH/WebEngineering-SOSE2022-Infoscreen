@@ -67,15 +67,16 @@ Route::get('rooms/{room:slug}', function(Room $room){
     ]);
 });
 
-Route::get('admins/{admin:username}', function(User $admin){
-    return view('posts', [
+Route::get('administration/{admin:username}', function(User $admin){
+    return view('admin', [
         'posts'=> $admin->posts,
         'categories' => Category::all(),
     ]);
 });
 
-Route::get('veranstaltung/{veranstaltung:slug}', function(Room $veranstaltung){
+Route::get('veranstaltung/{veranstaltung:slug}', function(Veranstaltung $veranstaltungen){
     return view('veranstaltung', [
-        'veranstaltung' => $room->veranstaltung(),
+        'veranstaltung' => $veranstaltungen->veranstaltung(),
+        'categories' => Category::all(),
     ]);
 });
