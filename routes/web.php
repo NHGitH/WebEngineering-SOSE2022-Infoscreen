@@ -59,8 +59,23 @@ Route::get('test', function(User $author){
     ]);
 });
 
+
+// Räume, Admin und Veranstaltungsroutes ~ Jay
 Route::get('rooms/{room:slug}', function(Room $room){
     return view('room', [
+        'veranstaltung' => $room->veranstaltung(),
+    ]);
+});
+
+Route::get('admins/{admin:username}', function(User $admin){
+    return view('posts', [
+        'posts'=> $admin->posts,
+        'categories' => Category::all(),
+    ]);
+});
+
+Route::get('veranstaltung/{veranstaltung:slug}', function(Room $veranstaltung){
+    return view('veranstaltung', [
         'veranstaltung' => $room->veranstaltung(),
     ]);
 });
