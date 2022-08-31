@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Room;
+use App\Models\Veranstaltung;
 use Illuminate\Support\Facades\File;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
@@ -54,5 +56,11 @@ Route::get('authors/{author:username}', function(User $author){
 Route::get('test', function(User $author){
     return view('test-html', [
 
+    ]);
+});
+
+Route::get('rooms/{room:slug}', function(Room $room){
+    return view('room', [
+        'veranstaltung' => $room->veranstaltung(),
     ]);
 });
