@@ -70,27 +70,14 @@ Route::get('rooms/{room:slug}', function(Room $room){
 
 Route::get('administration/{admin:username}', function(User $admin){
     return view('admin', [
-
+        
     ]);
 });        
-Route::get('admins/{admin:username}', function(User $admin){
-    return view('posts', [
-
-        'posts'=> $admin->posts,
-        'categories' => Category::all(),
-    ]);
-});
 
 
 Route::get('veranstaltung/{veranstaltung:slug}', function(Veranstaltung $veranstaltungen){
     return view('veranstaltung', [
         'veranstaltung' => $veranstaltungen->veranstaltung(),
         'categories' => Category::all(),
-    ]);
-});
-Route::get('veranstaltung/{veranstaltung:slug}', function(Room $veranstaltung){
-    return view('veranstaltung', [
-        'veranstaltung' => $veranstaltung->veranstaltung(),
-
     ]);
 });
