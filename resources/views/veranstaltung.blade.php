@@ -1,24 +1,15 @@
 <x-layout>
+    <section class="border-2 border-grey
+    mt-10 mb-10">
 
-    <h1> Agenda </h1> 
-    <!-- Foreach Database-Eintrag zu den Veranstaltungen  -->
-
-   
-
-        <article>
-
-            <h1> <!-- Veranstaltungstitle 
-
-            {{ $veranstaltung->title }}
-
-            --> </h1>
-
-            <div> 
-            <!-- {{ $veranstaltung->content_veranstaltung }} -->
-
+        <x-test-html />
+        <p>{{$modules->bezeichnung}}</p>
+        <div class="lg:grid grid-cols-3">
+            <div>
+                <x-test-veranstaltung :module="$modules"/>
             </div>
+        </div>
 
-        </article>
+    </section>
 
 </x-layout>
-
