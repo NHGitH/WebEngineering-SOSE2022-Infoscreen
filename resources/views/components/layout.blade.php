@@ -56,3 +56,9 @@
         </footer>
     </section>
 </body>
+
+<style>
+    body{
+        background-color: white;
+    }
+</style>

@@ -4,10 +4,12 @@
 
         @if ($modules->count())
 
-        <div class="">
-            @foreach ($modules as $module)
-                <x-module_card :module="$module"/>
-            @endforeach
+        <div class="card-container">
+            <div class="x-module_card">
+                @foreach ($modules as $module)
+                <x-module_card :module="$module" class="row-start-1" />
+                @endforeach
+            </div>
         </div>
 
         @else
@@ -16,3 +18,7 @@
     </main>
 
 </x-layout>
+
+<style>
+
+</style>
