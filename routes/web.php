@@ -5,7 +5,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Room;
-use App\Models\Veranstaltung;
+use App\Models\Module;
 use Illuminate\Support\Facades\File;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
@@ -53,17 +53,23 @@ Route::get('authors/{author:username}', function(User $author){
     ]);
 });
 
-Route::get('test', function(User $author){
-    return view('test-html', [
-
+Route::get('test', function(Room $room){
+    return view('room', [
+        'room' => $room,
     ]);
 });
 
 
-// Räume, Admin und Veranstaltungsroutes ~ Jay
 Route::get('rooms/{room:slug}', function(Room $room){
     return view('room', [
-        'veranstaltung' => $room->veranstaltung(),
+        'room' => $room,
+    ]);
+});
+
+Route::get('rooms', function(){
+    $rooms = Room::all();
+    return view('rooms', [
+        'rooms' => Post::latest()->get(),
     ]);
 });
 
@@ -75,9 +81,9 @@ Route::get('administration/{admin:username}', function(User $admin){
 });        
 
 
-Route::get('veranstaltung/{veranstaltung:slug}', function(Veranstaltung $veranstaltungen){
-    return view('veranstaltung', [
-        'veranstaltung' => $veranstaltungen->veranstaltung(),
+Route::get('module/{module:slug}', function(Module $module){
+    return view('modul', [
+        'modul' => $module->modul(),
         'categories' => Category::all(),
     ]);
 });

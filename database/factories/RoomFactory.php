@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Building;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -15,7 +16,9 @@ class RoomFactory extends Factory
     public function definition()
     {
         return [
-            'bezeichnung' => $this->faker->name(),
+            'name' => $this->faker->unique()->buildingNumber(),
+            'slug' => $this->faker->slug,
+            'building_id' => Building::factory(),
         ];
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGebäudeTable extends Migration
+class CreateModulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateGebäudeTable extends Migration
      */
     public function up()
     {
-        Schema::create('Gebäude', function (Blueprint $table) {
+        Schema::create('modules', function (Blueprint $table) {
             $table->id();
-            $table->string('bezeichnung');
-            
+            $table->string('name');
+            $table->foreignId('room_id');
+            $table->foreignId('professor_id');
+            $table->foreignId('course_id');
+            $table->dateTime('time');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateGebäudeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Gebäude');
+        Schema::dropIfExists('modules');
     }
 }

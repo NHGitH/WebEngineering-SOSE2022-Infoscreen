@@ -2,9 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Building;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-class CategoryFactory extends Factory
+class ProfessorFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +16,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique()->word,
-            'slug' => $this->faker->unique()->slug,
+            'name' => $this->faker->name(),
+            'picture_path' => Str::random(),
         ];
     }
 }

@@ -5,21 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model
+class Building extends Model
 {
     use HasFactory;
 
     //protected $fillable = ['title', 'excerpt', 'body'];
     protected $guarded = [];
-    protected $with = ['module', 'building'];
+    protected $with = ['room'];
 
-    public function module()
+    public function room()
     {
-        return $this->hasMany(Module::class);
-    }
-
-    public function building()
-    {
-        return $this->belongsTo(Building::class);
+        return $this->hasMany(Room::class);
     }
 }

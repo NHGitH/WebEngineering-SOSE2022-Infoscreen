@@ -1,17 +1,4 @@
 <x-layout>
-    <!-- <article>
-        <h1>{!! $post->title !!}</h1>
-        <p>
-            Written by <a href="/authors/{{$post->author->username}}">{{$post->author->name}}</a> in <a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a>
-        </p>
-        <div>
-            {!! $post->date !!}
-            {!! $post->body !!}
-        </div>
-    </article>
-    <br>
-    <a href="/"> Go back </a> -->
-
     <section class="px-6 py-8">
         <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
             <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
