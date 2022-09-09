@@ -80,3 +80,9 @@ Route::get('modules/{module:slug}', function(Module $module){
         'module' => $module,
     ]);
 });
+
+Route::get('modules/', function(){
+    return view('infoscreen', [
+        'modules' => Module::all(),
+    ]);
+});
