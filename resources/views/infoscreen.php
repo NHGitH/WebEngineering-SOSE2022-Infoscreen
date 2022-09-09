@@ -3,7 +3,6 @@
     mt-10 mb-10">
 
         <x-test-html />
-        <p>{{$modules->bezeichnung}}</p>
         <div class="lg:grid grid-cols-3">
             <div>
                 <x-test-veranstaltung :module="$modules"/>

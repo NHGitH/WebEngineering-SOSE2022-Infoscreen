@@ -10,15 +10,20 @@ class Module extends Model
     use HasFactory;
 
     protected $guarded = [];
-    //protected $with = ['room', 'professor'];
+    protected $with = ['room', 'professor'];
 
-    // public function room()
-    // {
-    //     return $this->belongsTo(Room::class);
-    // }
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
 
-    // public function professor()
-    // {
-    //     return $this->hasOne(Professor::class);
-    // }
+    public function professor()
+    {
+        return $this->hasOne(Professor::class);
+    }
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 }

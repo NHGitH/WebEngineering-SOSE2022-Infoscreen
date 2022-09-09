@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Room;
+use App\Models\Professor;
+use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ModuleFactory extends Factory
@@ -14,11 +17,11 @@ class ModuleFactory extends Factory
     public function definition()
     {
         return [
-            'bezeichnung' => $this->faker->userName(),
-            'room' => $this->faker->word(),
-            'professor' => $this->faker->lastName(),
-            'studiengang' => $this->faker->word(),
-            'uhrzeit' => $this->faker->dateTime(),
+            'name' => $this->faker->unique()->word(),
+            'room_id' => Room::factory(),
+            'professor_id' => Professor::factory(),
+            'course_id' => Course::factory(),
+            'time' => $this->faker->dateTime(),
         ];
     }
 }

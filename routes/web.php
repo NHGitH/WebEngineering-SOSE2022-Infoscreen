@@ -53,17 +53,23 @@ Route::get('authors/{author:username}', function(User $author){
     ]);
 });
 
-Route::get('test', function(Module $module){
-    return view('veranstaltung', [
-        'modules' => Module::latest()->get(),
+Route::get('test', function(Room $room){
+    return view('room', [
+        'room' => $room,
     ]);
 });
 
 
-// Räume, Admin und Veranstaltungsroutes ~ Jay
 Route::get('rooms/{room:slug}', function(Room $room){
     return view('room', [
-        'veranstaltung' => $room->veranstaltung(),
+        'room' => $room,
+    ]);
+});
+
+Route::get('rooms', function(){
+    $rooms = Room::all();
+    return view('rooms', [
+        'rooms' => Post::latest()->get(),
     ]);
 });
 
@@ -75,7 +81,7 @@ Route::get('administration/{admin:username}', function(User $admin){
 });        
 
 
-Route::get('veranstaltung/{veranstaltung:slug}', function(Module $module){
+Route::get('module/{module:slug}', function(Module $module){
     return view('modul', [
         'modul' => $module->modul(),
         'categories' => Category::all(),

@@ -11,15 +11,15 @@ class Room extends Model
 
     //protected $fillable = ['title', 'excerpt', 'body'];
     protected $guarded = [];
-    protected $with = ['veranstaltung', 'gebaude'];
+    protected $with = ['module', 'building'];
 
-    public function veranstaltung()
+    public function module()
     {
-        return $this->hasMany(Veranstaltung::class);
+        return $this->hasMany(Module::class);
     }
 
-    public function gebaude()
+    public function building()
     {
-        return $this->belongsTo(Gebaude::class);
+        return $this->belongsTo(Building::class);
     }
 }

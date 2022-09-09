@@ -11,12 +11,7 @@
 
     <div class="container--3">
       <div class="container--4">
-        <h1 class="el--5">Infos zur Veranstaltung</h1>
-        <h1 class="el--6">Bild</h1>
-        <h1 class="el--7">Infos zur Veranstaltung</h1>
-        <h1 class="el--8">Bild</h1>
-        <h1 class="el--9">Infos zur Veranstaltung</h1>
-        <h1 class="el--10">Bild</h1>
+        <h1>{{$room->name}}</h1>
       </div>
       <div class="container--5">
         <h1 class="el--6">Event 1</h1>
