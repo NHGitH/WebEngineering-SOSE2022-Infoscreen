@@ -29,12 +29,8 @@ Route::get('/', function () {
 });
 
 Route::get("posts/{post:slug}", function (Post $post){
-
-    // Find a post by its slug and pass it to a view called "post"
-
     return view('post', [
         'post'=> $post,
-        
     ]);
 });
 
@@ -60,16 +56,14 @@ Route::get('test', function(Room $room){
 });
 
 
-Route::get('rooms/{room:slug}', function(Room $room){
+Route::get('rooms/', function($slug){
     return view('room', [
-        'room' => $room,
     ]);
 });
 
 Route::get('rooms', function(){
-    $rooms = Room::all();
     return view('rooms', [
-        'rooms' => Post::latest()->get(),
+
     ]);
 });
 
@@ -81,9 +75,8 @@ Route::get('administration/{admin:username}', function(User $admin){
 });        
 
 
-Route::get('module/{module:slug}', function(Module $module){
-    return view('modul', [
-        'modul' => $module->modul(),
-        'categories' => Category::all(),
+Route::get('modules/{module:slug}', function(Module $module){
+    return view('module', [
+        'module' => $module,
     ]);
 });

@@ -11,11 +11,4 @@ class Course extends Model
 
     //protected $fillable = ['title', 'excerpt', 'body'];
     protected $guarded = [];
-    protected $with = ['building'];
-
-    public function building()
-    {
-        return $this->hasOne(Building::class);
-    }
-
 }
