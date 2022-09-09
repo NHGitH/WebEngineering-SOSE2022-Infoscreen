@@ -18,9 +18,10 @@ class ModuleFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->word(),
-            'room_id' => Room::factory(),
-            'professor_id' => Professor::factory(),
-            'course_id' => Course::factory(),
+            'slug' => $this->faker->unique()->slug(),
+            'rooms_id' => $this->faker->unique()->randomNumber(),
+            'professors_name' => $this->faker->unique()->lastName(),
+            'courses_name' => $this->faker->unique()->word(),
             'time' => $this->faker->dateTime(),
         ];
     }

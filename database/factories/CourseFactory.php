@@ -17,7 +17,7 @@ class CourseFactory extends Factory
     {
         return [
             'name' => $this->faker->domainWord(),
-            'building_id' => Building::factory(),
+            'buildings_id' => Building::factory(),
         ];
     }
 }

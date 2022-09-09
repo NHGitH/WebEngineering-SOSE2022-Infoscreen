@@ -18,7 +18,7 @@ class RoomFactory extends Factory
         return [
             'name' => $this->faker->unique()->buildingNumber(),
             'slug' => $this->faker->slug,
-            'building_id' => Building::factory(),
+            'buildings_id' => Building::factory(),
         ];
     }
 }

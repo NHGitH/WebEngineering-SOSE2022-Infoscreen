@@ -11,15 +11,4 @@ class Professor extends Model
 
     //protected $fillable = ['title', 'excerpt', 'body'];
     protected $guarded = [];
-    protected $with = ['module', 'course'];
-
-    public function module()
-    {
-        return $this->hasMany(Module::class);
-    }
-
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
-    }
 }
