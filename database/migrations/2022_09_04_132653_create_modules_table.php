@@ -17,9 +17,9 @@ class CreateModulesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->string('rooms_id');
-            $table->string('professors_name');
-            $table->string('courses_name');
+            $table->string('room_id');
+            $table->string('professors_id');
+            $table->string('courses_id');
             $table->dateTime('time');
             $table->timestamps();
         });

@@ -1,16 +1,23 @@
 <x-layout>
-    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+    <main>
+        <div class="wrap">
+            <div>
+                @if ($rooms->count())
 
-        @if ($room->count())
+                    @foreach ($rooms as $room)
+                    <x-room-page :room="$room" />
+                    @endforeach
 
-        <div class="lg:grid lg:grid-cols-6">
-            @foreach ($room->skip(1) as $room)
-                <h1>{{$room->name}}</h1>
-            @endforeach
+                @else
+                <p class="text-center">No posts yet. Please check again later.</p>
+                @endif
+            </div>
         </div>
-
-        @else
-        <p class="text-center">No posts yet. Please check again later.</p>
-        @endif
     </main>
 </x-layout>
+
+<style>
+    .wrap {
+        display: block;
+    }
+</style>

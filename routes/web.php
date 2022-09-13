@@ -56,14 +56,15 @@ Route::get('test', function(Room $room){
 });
 
 
-Route::get('rooms/', function($slug){
+Route::get('rooms/{room:slug}', function(Room $room){
     return view('room', [
+        'room'=> $room,
     ]);
 });
 
 Route::get('rooms', function(){
     return view('rooms', [
-
+        'rooms' => Room::all(),
     ]);
 });
 

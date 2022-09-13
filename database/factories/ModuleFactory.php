@@ -19,10 +19,10 @@ class ModuleFactory extends Factory
         return [
             'name' => $this->faker->unique()->word(),
             'slug' => $this->faker->unique()->slug(),
-            'rooms_id' => $this->faker->unique()->randomNumber(),
-            'professors_name' => $this->faker->unique()->lastName(),
-            'courses_name' => $this->faker->unique()->word(),
-            'time' => $this->faker->dateTime(),
+            'room_id' => $this->faker->numberBetween(1,10),
+            'professors_id' => Professor::factory(),
+            'courses_id' => Course::factory(),
+            'time' => $this->faker->dateTimeBetween('now','+2 weeks'),
         ];
     }
 }

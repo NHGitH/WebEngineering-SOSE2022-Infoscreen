@@ -16,9 +16,9 @@ class RoomFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique()->buildingNumber(),
+            'name' => $this->faker->unique()->numberBetween(1,330),
             'slug' => $this->faker->slug,
-            'buildings_id' => Building::factory(),
+            'buildings_name' => $this->faker->randomLetter(),
         ];
     }
 }

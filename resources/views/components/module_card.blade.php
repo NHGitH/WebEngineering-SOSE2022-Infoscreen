@@ -3,11 +3,11 @@
     mt-10 mb-10 ">
     <div class="container">
         <div class="text-area">
-            <h2 class="">{{$module->name}}</h2>
-            <p class="">Raum: {{$module->rooms_id}}</p>
-            <p class="">Professor: {{$module->professors_name}}</p>
-            <p class="">Studiengang: {{$module->courses_name}}</p>
-            <p class="">Veranstaltungszeit: {{$module->time}}</p>
+            <p class="text-2xl">{{$module->name}}</h2>
+            <p class="text-sm">Raum: {{$module->room->name}}</p>
+            <p class="text-sm">Professor: {{$module->professor->name}}</p>
+            <p class="text-sm">Studiengang: {{$module->course->name}}</p>
+            <p class="text-sm">Veranstaltungszeit: {{$module->time}}</p>
         </div>
         <img class="picture" src="/images/pexels-cottonbro-6334771.jpg" alt="Hier sollte ein Profilbild sein.">
     </div>
@@ -27,11 +27,14 @@
     }
 
     .picture {
+        justify-self: end;
+        align-self: center;
         grid-column-start: 2;
-        width: 100%;
-        object-fit: fill;
-        height: auto;
-        margin: auto;
+        object-fit: fit;
+        height: 90%;
+        width: 50%;
+        border-radius: 10px;
+        margin-right: 5%;
     }
 
     p {

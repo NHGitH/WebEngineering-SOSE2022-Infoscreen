@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Module;
 use App\Models\Post;
+use App\Models\Room;
 use App\Models\Veranstaltung;
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Post::factory(10)->create();
-        Module::factory(10)->create();
+        Module::factory(30)->create();
+        Room::factory(10)->create();
     }
 }

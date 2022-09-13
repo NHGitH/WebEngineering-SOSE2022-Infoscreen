@@ -11,4 +11,8 @@ class Room extends Model
 
     protected $guarded = [];
 
+    public function modules()
+    {
+        return $this->hasMany(Module::class);
+    }
 }
