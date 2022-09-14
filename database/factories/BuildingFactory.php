@@ -15,7 +15,7 @@ class BuildingFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->randomLetter(),
+            'name' => strtoupper($this->faker->randomLetter()),
         ];
     }
 }

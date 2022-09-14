@@ -17,7 +17,7 @@ class CourseFactory extends Factory
     {
         return [
             'name' => $this->faker->colorName(),
-            'buildings_id' => Building::factory(),
+            'buildings_id' => $this->faker->numberBetween(1,5),
         ];
     }
 }

@@ -17,16 +17,19 @@
     .container {
         background-color: rgb(243 244 246);
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 40% 60%;
         border: 1px solid #F0F0F0;
         border-radius: 20px;
+        width: 100%;
     }
 
     .text-area{
         padding: 20px;
+        width: 100%;
     }
 
     .picture {
+        width: 100%;
         justify-self: end;
         align-self: center;
         grid-column-start: 2;

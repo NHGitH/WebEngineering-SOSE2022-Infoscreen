@@ -2,7 +2,7 @@
 <section>
   <div class="head-container">
     <img class="hochschuleLogo" src="/images/Logo_der_Hochschule_Flensburg.png" width="150px">
-    <h1 class="welcome">Willkommen im Raum {{$room->name}} des {{$room->buildings_name}}-Gebäudes</h1>
+    <h1 class="welcome">Willkommen im Raum {{$room->name}} des {{$room->building->name}}-Gebäudes</h1>
     <div class="clock">
       <h1 class="time">{{
         date('H:i:s')}}</h1>
@@ -18,7 +18,7 @@
       ->orderby('time','desc')
       ->take(3)
       ->get() as $module)
-      <x-module_card :module="$module" class=""/>
+      <x-module_card :module="$module"/>
       @endforeach
       @else
       <p class="text-center">No modules yet. Please check again later.</p>
@@ -72,4 +72,5 @@
     border-radius: 10px;
     padding: 10px;
   }
+
 </style>
