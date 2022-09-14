@@ -49,9 +49,9 @@ Route::get('authors/{author:username}', function(User $author){
     ]);
 });
 
-Route::get('test', function(Room $room){
-    return view('room', [
-        'room' => $room,
+Route::get('test', function(User $user){
+    return view('admin', [
+        'user'=>$user,
     ]);
 });
 
@@ -69,9 +69,9 @@ Route::get('rooms', function(){
 });
 
 
-Route::get('administration/{admin:username}', function(User $admin){
+Route::get('administration/{user:username}', function(User $user){
     return view('admin', [
-        
+        'user'=>$user,
     ]);
 });        
 
