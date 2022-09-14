@@ -10,5 +10,15 @@ class Room extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $with = ['building'];
 
+    public function modules()
+    {
+        return $this->hasMany(Module::class);
+    }
+
+    public function building()
+    {
+        return $this->belongsTo(Building::class,'buildings_id');
+    }
 }

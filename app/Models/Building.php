@@ -11,4 +11,9 @@ class Building extends Model
     
     protected $guarded = [];
 
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
+
 }

@@ -11,4 +11,9 @@ class Course extends Model
 
     //protected $fillable = ['title', 'excerpt', 'body'];
     protected $guarded = [];
+
+    public function module()
+    {
+        return $this->hasMany(Module::class);
+    }
 }

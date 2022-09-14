@@ -16,8 +16,8 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->domainWord(),
-            'buildings_id' => Building::factory(),
+            'name' => $this->faker->colorName(),
+            'buildings_id' => $this->faker->numberBetween(1,5),
         ];
     }
 }

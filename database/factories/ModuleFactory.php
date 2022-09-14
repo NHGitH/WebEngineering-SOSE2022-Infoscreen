@@ -17,12 +17,12 @@ class ModuleFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique()->word(),
+            'name' => $this->faker->word(),
             'slug' => $this->faker->unique()->slug(),
-            'rooms_id' => $this->faker->unique()->randomNumber(),
-            'professors_name' => $this->faker->unique()->lastName(),
-            'courses_name' => $this->faker->unique()->word(),
-            'time' => $this->faker->dateTime(),
+            'room_id' => $this->faker->numberBetween(1,10),
+            'professors_id' => $this->faker->numberBetween(1,20),
+            'courses_id' => $this->faker->numberBetween(1,7),
+            'time' => $this->faker->dateTimeBetween('now','+2 weeks'),
         ];
     }
 }
