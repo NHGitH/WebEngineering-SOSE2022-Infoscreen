@@ -4,7 +4,9 @@
 <hr>
 
 <h1>Einen neuen Datenbankeintrag anlegen:</h1>
-<x-database-entry/>
+<!-- <x-database-entry/> -->
+<h1>Raumanzeige auswählen:</h1>
+<x-choose-room/>
 
 <style>
     input{

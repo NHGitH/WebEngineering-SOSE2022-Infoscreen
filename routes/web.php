@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Room;
 use App\Models\Module;
+use App\Models\Building;
 use Illuminate\Support\Facades\File;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
@@ -56,7 +57,7 @@ Route::get('test', function(User $user){
 });
 
 
-Route::get('rooms/{room:slug}', function(Room $room){
+Route::get('rooms/{room:name}', function(Room $room){
     return view('room', [
         'room'=> $room,
     ]);
@@ -65,6 +66,25 @@ Route::get('rooms/{room:slug}', function(Room $room){
 Route::get('rooms', function(){
     return view('rooms', [
         'rooms' => Room::all(),
+    ]);
+});
+
+Route::get('buildings/{building:name}', function(Building $building){
+    return view('building', [
+        'building' => $building,
+    ]);
+});
+
+Route::get('buildings/{building:name}/{room:name}', function(Building $building, Room $room){
+    return view('room', [
+        'building' => $building,
+        'room' => $room,
+    ]);
+});
+
+Route::get('buildings', function(){
+    return view('buildings', [
+        'buildings' => Building::all(),
     ]);
 });
 

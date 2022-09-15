@@ -4,17 +4,15 @@
     <img class="hochschuleLogo" src="/images/Logo_der_Hochschule_Flensburg.png" width="150px">
     <h1 class="welcome">Willkommen im Raum {{$room->name}} des {{$room->building->name}}-Gebäudes</h1>
     <div class="clock">
-      <h1 class="time">{{
-        date('H:i:s')}}</h1>
+      <h1 class="time">
+        {{$now = date('H:i:s')}}</h1>
     </div>
   </div>
 
   <div class="main-container">
-
     <div class="module-card">
       @if ($room->modules()->count())
       @foreach ($room->modules()
-      ->where('room_id', $room->id)
       ->orderby('time','desc')
       ->take(3)
       ->get() as $module)
@@ -26,7 +24,6 @@
     </div>
   </div>
 </section>
-
 
 <style>
   .head-container {
