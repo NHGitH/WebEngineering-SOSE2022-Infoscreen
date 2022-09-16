@@ -23,7 +23,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
     $posts = Post::all();
-    return view('posts', [
+    return view('test', [
         'posts' => Post::latest()->get(),
         'categories' => Category::all(),
     ]);
@@ -50,7 +50,7 @@ Route::get('authors/{author:username}', function(User $author){
     ]);
 });
 
-Route::get('test', function(){
+Route::get('test', function(User $user){
     return view('test', [
     ]);
 });

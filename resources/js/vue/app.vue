@@ -1,9 +1,11 @@
 <template>
     <div>
-        hiadsai
+        Hello
     </div>
 </template>
-
+<style scoped>
+ 
+</style>
 <script>
 export default {
 
