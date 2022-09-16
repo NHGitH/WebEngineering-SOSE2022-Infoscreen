@@ -1,4 +1,4 @@
-@props(['user'])
+@props(['user','buildings'])
 <h1> Administration von {{$user->name}}</h1>
 
 <hr>
@@ -6,7 +6,7 @@
 <h1>Einen neuen Datenbankeintrag anlegen:</h1>
 <!-- <x-database-entry/> -->
 <h1>Raumanzeige auswählen:</h1>
-<x-choose-room/>
+<x-choose-room :buildings=$buildings/>
 
 <style>
     input{
@@ -20,8 +20,6 @@
     }
 
     form{
-        border:2px solid #D9D9D9;
-        border-radius: 10px;
         display:grid;
         grid-template-columns: 100%;
         padding: 5px;
