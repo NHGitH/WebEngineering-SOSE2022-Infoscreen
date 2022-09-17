@@ -16,4 +16,9 @@ class Building extends Model
         return $this->hasMany(Room::class);
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
 }

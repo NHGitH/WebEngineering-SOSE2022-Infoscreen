@@ -21,4 +21,9 @@ class Room extends Model
     {
         return $this->belongsTo(Building::class,'building_id');
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

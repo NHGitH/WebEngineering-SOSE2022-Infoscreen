@@ -5,7 +5,8 @@
     <h1 class="welcome">Willkommen im Raum {{$room->name}} des {{$room->building->name}}-Gebäudes</h1>
     <div class="clock">
       <h1 class="time">
-        {{$now = date('H:i:s')}}</h1>
+        {{$now = date('H:i:s')}}
+      </h1>
     </div>
   </div>
 
@@ -16,16 +17,28 @@
       ->orderby('time','desc')
       ->take(3)
       ->get() as $module)
-      <x-module_card :module="$module"/>
+      <x-module_card :module="$module" />
       @endforeach
       @else
       <p class="text-center">No modules yet. Please check again later.</p>
       @endif
     </div>
+    <div class="posts-container">
+    @if ($room->posts()->count())
+    @foreach ($room->posts()
+    ->take(3)
+    ->get() as $post)
+    <x-post-card :post="$post" />
+    @endforeach
+    @else
+    <p class="text-center">No modules yet. Please check again later.</p>
+    @endif
+  </div>
   </div>
 </section>
 
 <style>
+
   .head-container {
     width: 100%;
     display: grid;
@@ -34,6 +47,14 @@
     justify-items: center;
     border-bottom: 2px solid #D9D9D9;
     padding-bottom: 20px;
+  }
+
+  .posts-container{
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    display:block;
+    grid-column-start: 2;
   }
 
   .main-container {
@@ -71,5 +92,4 @@
     border-radius: 10px;
     padding: 10px;
   }
-
 </style>

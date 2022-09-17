@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BuildingController;
+use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\RoomController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,17 +24,12 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/posts', function () {
-    $posts = Post::all();
-    return view('posts', [
-        'posts' => Post::latest()->get(),
-    ]);
-});
-
 Route::get('/', function(){
     return view('login');
 });
+
+Route::get('/posts',[PostController::class, 'index']);
+Route::get('/posts/{post:slug}',[PostController::class, 'show']);
 Route::get('administration/{user:id}',[UserController::class,'show']);  
 Route::get('/buildings',[BuildingController::class, 'index']);
 Route::get('/buildings/{building:name}',[BuildingController::class, 'show']);

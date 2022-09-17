@@ -18,10 +18,12 @@ class PostFactory extends Factory
     {
         return [
             'user_id'=> User::factory(),
-            'course_id' => $this->faker->numberBetween(1,7),
             'title' => $this->faker->sentence,
+            'room_id' => $this->faker->numberBetween(1,10),
+            'building_id' => $this->faker->numberBetween(1,5),
             'body' => $this->faker->paragraph,
-            'picture_path' => Str::random(),
+            'picture_path' => '/images/illustration-1.png',
+            'published_at' => $this->faker->date(),
         ];
     }
 }
