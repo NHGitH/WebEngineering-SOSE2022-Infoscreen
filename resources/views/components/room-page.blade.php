@@ -47,7 +47,9 @@
   }
 
   .module-card {
+    width: 100%;
     grid-column-start: 1;
+
   }
 
   .hochschuleLogo {

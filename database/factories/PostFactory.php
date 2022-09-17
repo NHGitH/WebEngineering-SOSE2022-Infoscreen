@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class PostFactory extends Factory
 {
@@ -17,11 +18,11 @@ class PostFactory extends Factory
     {
         return [
             'user_id'=> User::factory(),
-            'category_id' => Category::factory(),
+            'course_id' => $this->faker->numberBetween(1,7),
             'title' => $this->faker->sentence,
-            'slug' => $this->faker->slug,
-            'excerpt' => $this->faker->sentence,
             'body' => $this->faker->paragraph,
+            'picture_path' => Str::random(),
         ];
     }
 }
+

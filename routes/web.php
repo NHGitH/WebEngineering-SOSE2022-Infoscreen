@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\BuildingController;
+use App\Http\Controllers\Api\RoomController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\Category;
@@ -21,94 +24,17 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 |
 */
 
-Route::get('/', function () {
+Route::get('/posts', function () {
     $posts = Post::all();
-    return view('test', [
+    return view('posts', [
         'posts' => Post::latest()->get(),
-        'categories' => Category::all(),
     ]);
 });
 
-Route::get("posts/{post:slug}", function (Post $post){
-    return view('post', [
-        'post'=> $post,
-    ]);
+Route::get('/', function(){
+    return view('login');
 });
-
-Route::get('categories/{category:slug}', function(Category $category){
-    return view('posts', [
-        'posts'=> $category->posts,
-        'currentCategory' => $category,
-        'categories' => Category::all(),
-    ]);
-});
-
-Route::get('authors/{author:username}', function(User $author){
-    return view('posts', [
-        'posts'=> $author->posts,
-        'categories' => Category::all(),
-    ]);
-});
-
-Route::get('test', function(User $user){
-    return view('test', [
-    ]);
-});
-
-
-Route::get('rooms/{room:name}', function(Room $room){
-    return view('room', [
-        'room'=> $room,
-    ]);
-});
-
-Route::get('rooms', function(){
-    return view('rooms', [
-        'rooms' => Room::all(),
-    ]);
-});
-
-Route::get('buildings/{building:name}', function(Building $building){
-    return view('building', [
-        'building' => $building,
-    ]);
-});
-
-Route::get('buildings/{building:name}/{room:name}', function(Building $building, Room $room){
-    return view('room', [
-        'building' => $building,
-        'room' => $room,
-    ]);
-});
-
-Route::get('buildings', function(){
-    return view('buildings', [
-        'buildings' => Building::all(),
-    ]);
-});
-
-
-Route::get('administration/{user:username}', function(User $user){
-    return view('admin', [
-        'user'=>$user,
-        'buildings'=>Building::all(),
-    ]);
-});  
-
-Route::get('administration', function(){
-    return view('admin', [
-    ]);
-}); 
-
-
-Route::get('modules/{module:slug}', function(Module $module){
-    return view('module', [
-        'module' => $module,
-    ]);
-});
-
-Route::get('modules/', function(){
-    return view('infoscreen', [
-        'modules' => Module::all(),
-    ]);
-});
+Route::get('administration/{user:id}',[UserController::class,'show']);  
+Route::get('/buildings',[BuildingController::class, 'index']);
+Route::get('/buildings/{building:name}',[BuildingController::class, 'show']);
+Route::get('/buildings/{building:name}/{room:name}',[BuildingController::class, 'showRoom']);

@@ -1,10 +1,11 @@
 <template>
     <div>
-        This test.
+        <p>Here should be smth.</p>
     </div>
 </template>
 
 <script>
+
 </script>
 
 <style>

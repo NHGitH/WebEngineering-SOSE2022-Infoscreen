@@ -3,10 +3,10 @@
     <form action="" class="choose-room-form">
         <div class="choose-room-building-container">
             @foreach($buildings as $building)
-            <p class="choose-building-a"><a href='' onclick="this.href='/buildings/{{$building->name}}'">{{$building->name}}</a></p>
+            <p class="choose-building-a"><a href='/buildings/{{$building->name}}'>{{$building->name}}</a></p>
             <div class="choose-room-room-container">
                 @foreach($building->rooms as $room)
-                <p class="choose-room-a"><a href='' onclick="this.href='/buildings/{{$room->building->name}}/{{$room->name}}'">{{$room->name}}</a></p>
+                <p class="choose-room-a"><a href='/buildings/{{$room->building->name}}/{{$room->name}}'>{{$room->name}}</a></p>
                 @endforeach
             </div>
             @endforeach

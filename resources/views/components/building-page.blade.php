@@ -2,7 +2,7 @@
 <section>
     <div class="head-container">
         <img class="hochschuleLogo" src="/images/Logo_der_Hochschule_Flensburg.png" width="150px">
-        <h1 class="welcome">Willkommen im {{$building->name}}-Gebäudes</h1>
+        <h1 class="welcome">Willkommen im {{$building->name}}-Gebäude</h1>
         <div class="clock">
             <h1 class="time">{{
         date('H:i:s')}}</h1>
@@ -12,20 +12,19 @@
     <div class="main-container">
         <div class="module-card">
             @if ($building->rooms->count())
-            <div class="module-card">
-                @foreach ($building->rooms as $room)
-                    @foreach($room->modules()
-                    ->orderby('time','desc')
-                    ->take(1)
-                    ->get() as $module)
-                        <x-module_card :module=$module/>
-                    @endforeach
-                @endforeach
-            </div>
+            @foreach ($building->rooms as $room)
+            @foreach($room->modules()
+            ->orderby('time','desc')
+            ->take(1)
+            ->get() as $module)
+            <x-module_card :module=$module />
+            @endforeach
+            @endforeach
             @endif
         </div>
-    </div>
-
+        <div class="event-container">
+            
+        </div>
     </div>
 </section>
 
@@ -48,11 +47,12 @@
         align-items: center;
         justify-items: center;
         border-bottom: 2px solid #D9D9D9;
-        padding-bottom: 20px;
     }
 
     .module-card {
+        background-color: grey;
         grid-column-start: 1;
+        width: 100%;
     }
 
     .hochschuleLogo {

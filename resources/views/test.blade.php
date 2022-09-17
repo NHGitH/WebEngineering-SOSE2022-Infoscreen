@@ -1,4 +1,3 @@
 <x-layout>
-    <p>TestPAge here</p>
-    <posts-index></posts-index>
+    <front-page></front-page>
 </x-layout>

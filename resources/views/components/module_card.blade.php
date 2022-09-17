@@ -8,6 +8,7 @@
             <p class="text-sm">Professor: {{$module->professor->name}}</p>
             <p class="text-sm">Studiengang: {{$module->course->name}}</p>
             <p class="text-sm">Veranstaltungszeit: {{$module->time}}</p>
+            <p class="text-sm">{{$module->date}}</p>
         </div>
         <img class="picture" src="/images/pexels-cottonbro-6334771.jpg" alt="Hier sollte ein Profilbild sein.">
     </div>
@@ -19,7 +20,6 @@
         display: grid;
         grid-template-columns: 40% 60%;
         border: 1px solid #F0F0F0;
-        border-radius: 20px;
         width: 100%;
     }
 

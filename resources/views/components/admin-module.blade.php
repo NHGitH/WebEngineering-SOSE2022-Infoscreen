@@ -5,7 +5,15 @@
 
 <h1>Einen neuen Datenbankeintrag anlegen:</h1>
 <!-- <x-database-entry/> -->
-<h1>Raumanzeige auswählen:</h1>
+<h1>Raumanzeige</h1>
+<p>Gebäude auswählen:</p>
+
+<select>
+    @foreach ($buildings as $building)
+    <option value="{{$building->name}}">{{$building->name}}</option>
+    @endforeach
+</select>
+
 <x-choose-room :buildings=$buildings/>
 
 <style>

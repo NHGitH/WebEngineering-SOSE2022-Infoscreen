@@ -11,15 +11,14 @@ class Post extends Model
 
     //protected $fillable = ['title', 'excerpt', 'body'];
     protected $guarded = [];
-    protected $with = ['category', 'author'];
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+    protected $with = ['author'];
 
     public function author()
     {
         return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function course(){
+        return $this->belongsTo(Course::class,'course_id');
     }
 }
