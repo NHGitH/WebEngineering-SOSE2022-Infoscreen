@@ -7,17 +7,19 @@
                     <h1>Admin Login</h1>
                 </div>
 
-                <div>
-                    <input type="text" class="user-text-input" placeholder="Benutzer" />
-                </div>
+                <form method="GET" action="#">
+                    <div>
+                        <input type="text" class="user-text-input" placeholder="Benutzer" />
+                    </div>
 
-                <div>
-                    <input type="password" class="user-password-input" placeholder="Passwort" />
-                </div>
+                    <div>
+                        <input type="password" class="user-password-input" placeholder="Passwort" />
+                    </div>
 
-                <div>
-                    <button href="/administration/1" class="button-login"><a href="/administration/1">Bestätigen</a></button>
-                </div>
+                    <div>
+                        <button href="/administration/1" class="button-login"><a href="/administration/1">Bestätigen</a></button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -34,10 +36,9 @@
     .picture-container {
         position: absolute;
         padding: 0;
-        background: no-repeat;
         height: 100%;
         width: 100%;
-        background-repeat: repeat-x;
+        background-repeat: repeat space;
         background-size: auto 100vh;
         background-image: url("/images/layered-waves-haikei.svg");
     }
