@@ -10,9 +10,9 @@ use App\Models\Room;
 class BuildingController extends Controller
 {
     public function index()
-    {
+    {     
         return view('buildings', [
-            'buildings' => Building::all()
+            'buildings' => Building::all(),
         ]);
     }
 
