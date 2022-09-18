@@ -21,6 +21,7 @@ class UserController extends Controller
             'user' => $user,
             'rooms' => Room::latest()->filter(request(['search', 'building']))->get(),
             'buildings' => Building::all(),
+            'currentBuilding' => Building::firstWhere('name', request('building'))
         ]);
     }
 }

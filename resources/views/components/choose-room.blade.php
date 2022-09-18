@@ -15,7 +15,7 @@
         padding: 10px;
         font-size: 20px;
         border: 2px solid #DEDEDE;
-        border-radius: 20px;
+        border-radius: 10px;
     }
 
     .choose-room-room-container {
