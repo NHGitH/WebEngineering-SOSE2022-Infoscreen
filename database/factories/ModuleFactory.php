@@ -20,9 +20,10 @@ class ModuleFactory extends Factory
             'name' => $this->faker->word(),
             'slug' => $this->faker->unique()->slug(),
             'room_id' => $this->faker->numberBetween(1,10),
-            'professors_id' => $this->faker->numberBetween(1,20),
             'courses_id' => $this->faker->numberBetween(1,7),
-            'time' => $this->faker->dateTimeBetween('now','+2 weeks'),
+            'professors_id' => $this->faker->numberBetween(1,20),
+            'time' => $this->faker->time('H:i:s'),
+            'date' => $this->faker->date('Y-m-d', '+2 d'),
         ];
     }
 }

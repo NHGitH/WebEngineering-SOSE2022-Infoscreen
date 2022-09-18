@@ -1,23 +1,35 @@
 <x-layout>
+    <section class="px-6 py-8">
+        <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
 
-<h1> Administration von <!-- {{$admin->username}} --> </h1> 
+            <hr>
 
-<hr> 
-<div>
-    <h3> Neuen Post verfassen </h3>
+            <h1>Administration von: {{$user->name}}</h1>
+            <h1>Einen neuen Datenbankeintrag anlegen:</h1>
+            <!-- <x-database-entry/> -->
+            <h1>Raumanzeige</h1>
+            
+            <p>Raum auswählen:</p>
 
-    <!-- Input Sections und Save (Anlegen) - Button -->
+            <form method="GET" action"#">
+                <select name="building">
+                    @foreach($buildings as $building)
+                        <option value="{{$building->name}}">{{$building->name}}</option>
+                    @endforeach
+                </select>
+                <input type="text" name="search" placeholder="Choose Room">
+                <a href="/administration/{{$user->id}}">Reset</a>
+            </form>
 
-    
-</div> 
-
-<div>
-    <h3> Deine Posts </h3>
-
-    <!-- Foreach Section für alle Posts selektiv durch den Admin-Namen -->
-
-    <!-- Funktionen zur Bearbeitung der Posts  -->
-</div>
-
-
+            <x-choose-room :rooms=$rooms :buildings=$buildings/>
+        </main>
+    </section>
 </x-layout>
+
+<style>
+    form>a{
+        border: 1px solid #DEDEDE;
+        padding: 4px;
+        border-radius: 10px;
+    }
+</style>

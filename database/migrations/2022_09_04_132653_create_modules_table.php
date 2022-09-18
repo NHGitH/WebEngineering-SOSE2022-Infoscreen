@@ -17,10 +17,11 @@ class CreateModulesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->string('room_id');
-            $table->string('professors_id');
-            $table->string('courses_id');
-            $table->dateTime('time');
+            $table->foreignId('room_id');
+            $table->foreignId('professors_id');
+            $table->foreignId('courses_id');
+            $table->date('date');
+            $table->time('time');
             $table->timestamps();
         });
     }

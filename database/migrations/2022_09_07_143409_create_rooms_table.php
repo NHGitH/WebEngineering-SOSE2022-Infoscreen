@@ -17,7 +17,7 @@ class CreateRoomsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('buildings_id');
+            $table->foreignId('building_id');
             $table->timestamps();
         });
     }
