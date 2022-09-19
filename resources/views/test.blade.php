@@ -1,3 +1,5 @@
 <x-layout>
-    <front-page></front-page>
+    <div>
+        
+    </div>
 </x-layout>

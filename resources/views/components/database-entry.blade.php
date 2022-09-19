@@ -54,6 +54,11 @@
 </div>
 
 <style>
+
+    button{
+        width: 50%;
+    }
+
     input{
         border: 2px solid #D9D9D9;
         border-radius: 5px;
