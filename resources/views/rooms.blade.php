@@ -1,19 +1,17 @@
 <x-layout>
-    <main>
-        <div class="wrap">
-            <div>
-                @if ($rooms->count())
+    <div class="wrap">
+        <div>
+            @if ($rooms->count())
 
-                    @foreach ($rooms as $room)
-                    <x-room-page :room="$room" />
-                    @endforeach
+            @foreach ($rooms as $room)
+            <x-room-page :room="$room" />
+            @endforeach
 
-                @else
-                <p class="text-center">No posts yet. Please check again later.</p>
-                @endif
-            </div>
+            @else
+            <p class="text-center">No posts yet. Please check again later.</p>
+            @endif
         </div>
-    </main>
+    </div>
 </x-layout>
 
 <style>

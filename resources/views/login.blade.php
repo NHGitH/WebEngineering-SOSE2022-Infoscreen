@@ -23,103 +23,91 @@
             </div>
         </div>
     </div>
-
-    <front-page></front-page>
 </x-layout>
 
 <style>
-    .login-main-container {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-    }
+input[type=text] {
+  padding: 5px;
+  margin: 5px 0;
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+  border-radius: 5px;
+  
+}
 
-    .picture-container {
-        position: absolute;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        background-repeat: no-repeat;
-        background-size: auto 100vh;
-        background-image: url("/images/layered-waves-haikei.svg");
-    }
 
-    input[type=text] {
-        padding: 5px;
-        margin: 5px 0;
-        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-        border-radius: 5px;
+input[type=password] {
+  padding: 5px;
+  margin: 5px 0;
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+  border-radius: 5px;
+}
 
-    }
+input {
+  width: 70%;
+  font-family: inherit;
+  font-size: inherit;
+}
 
-    input[type=password] {
-        padding: 5px;
-        margin: 5px 0;
-        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-        border-radius: 5px;
-    }
+.login-container-neu {
+  width: 15%;
+  min-width: 200px;
+  height: 50%;
+  min-height: 300px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.165);
+  background-color: rgba(204, 204, 204, 0.2);
+  margin: 15% auto;
+  border-radius: 10px;
+  text-align: center;
+}
 
-    input {
-        width: 70%;
-        font-family: inherit;
-        font-size: inherit;
-    }
+.user-text-input,
+.user-password-input {
+  border: 0;
+  border-bottom: 1px solid #eee;
+}
 
-    .login-container-neu {
-        width: 15%;
-        min-width: 400px;
-        height: 20%;
-        min-height: 300px;
-        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.165);
-        background-color: rgba(204, 204, 204, 0.2);
-        margin: 20% auto;
-        border-radius: 10px;
-        text-align: center;
-    }
+/*---------*/
+/*---------*/
+/* BUTTON */
+/*---------*/
+/*---------*/
 
-    .user-text-input,
-    .user-password-input {
-        border: 0;
-        border-bottom: 1px solid #eee;
-    }
+.button-login {
+  /* Behavior deaktivieren */
+  appearance: none;
+  -webkit-appearance: none;
 
-    /*---------*/
-    /*---------*/
-    /* BUTTON */
-    /*---------*/
-    /*---------*/
+  /* Styles */
+  padding: 7px;
+  margin: 20px 0;
+  border: none;
+  background-color: #3f51b576;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  width: 50%;
+}
 
-    .button-login {
-        /* Behavior deaktivieren */
-        appearance: none;
-        -webkit-appearance: none;
+::placeholder {
+  text-align: center;
+}
 
-        /* Styles */
-        padding: 7px;
-        margin: 20px 0;
-        border: none;
-        background-color: #3f51b576;
-        color: #fff;
-        font-weight: 600;
-        border-radius: 5px;
-        width: 50%;
-    }
+/*---------*/
+/*---------*/
+/* H1 */
+/*---------*/
+/*---------*/
 
-    ::placeholder {
-        text-align: center;
-    }
+.login-container-neu h1 {
+  text-align: center;
+  font-weight: 200;
+  padding: 10% 0 15% 0;
+  color: white;
+}
 
-    /*---------*/
-    /*---------*/
-    /* H1 */
-    /*---------*/
-    /*---------*/
-
-    .login-container-caption {
-        color: white;
-        text-align: center;
-        font-weight: 200;
-        padding: 5% 0 15% 0;
-    }
+body {
+  background: no-repeat;
+  background-size: auto 100vh;
+  background-image: url("/images/layered-waves-haikei.svg");
+}
 </style>

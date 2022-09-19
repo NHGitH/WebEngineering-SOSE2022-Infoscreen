@@ -25,7 +25,8 @@ window.Vue = require('vue').default;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
- import Front from './components/Front'
+ import App from './vue/app'
+ import { createApp } from 'vue';
 
  /**
   * Next, we will create a fresh Vue application instance and attach it to
@@ -33,6 +34,8 @@ window.Vue = require('vue').default;
   * or customize the JavaScript scaffolding to fit your unique needs.
   */
  
- const app = createApp({})
- app.component('front-page', Front)
- app.mount('#app')
+ createApp({
+    components: {
+        App,
+    }
+ }).mount('#app')

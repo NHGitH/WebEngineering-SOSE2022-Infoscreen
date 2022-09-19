@@ -1,11 +1,11 @@
 <x-layout>
-    <section class="">
-        <main class="">
+    <section class="room-main">
             <x-room-page :room=$room/>
-        </main>
     </section>
 </x-layout>
 
 <style>
-
+    .room-main{
+        margin-top: 10px;
+    }
 </style>
