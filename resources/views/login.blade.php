@@ -7,7 +7,7 @@
                     <h1>Admin Login</h1>
                 </div>
 
-                <form method="GET" action="#">
+                <form method="GET" action="">
                     <div>
                         <input type="text" class="user-text-input" placeholder="Benutzer" />
                     </div>
@@ -23,6 +23,8 @@
             </div>
         </div>
     </div>
+
+    <front-page></front-page>
 </x-layout>
 
 <style>
@@ -38,7 +40,7 @@
         padding: 0;
         height: 100%;
         width: 100%;
-        background-repeat: repeat space;
+        background-repeat: no-repeat;
         background-size: auto 100vh;
         background-image: url("/images/layered-waves-haikei.svg");
     }
