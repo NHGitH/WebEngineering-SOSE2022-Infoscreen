@@ -108,6 +108,7 @@ input {
 body {
   background: no-repeat;
   background-size: auto 100vh;
-  background-image: url("/images/layered-waves-haikei.svg");
+  background-repeat: repeat-x;
+  background-image: url("/images/circle-scatter-haikei.svg");
 }
 </style>
