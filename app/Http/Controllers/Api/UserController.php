@@ -39,7 +39,7 @@ class UserController extends Controller
 
         $user = User::create($attributes);
 
-        // session()->flash('success','Your accoutn has been created.');
+        // session()->flash('success','Your account has been created.');
 
         auth()->login($user);
 
