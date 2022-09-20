@@ -30,4 +30,24 @@ class BuildingController extends Controller
             'room' => $room,
         ]);
     }
+
+    public function create()
+    {
+        return view('./Building/create');
+
+
+    }
+
+    public function store(){
+
+        $attributes = request()->validate([
+            'name' => 'required|max:255'
+            
+        ]);
+
+        Building::create($attributes);
+
+        
+        return redirect('/');
+    }
 }

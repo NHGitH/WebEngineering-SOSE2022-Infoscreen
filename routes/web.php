@@ -37,3 +37,9 @@ Route::get('/buildings/{building:name}/{room:name}',[BuildingController::class, 
 
 Route::get('register', [UserController::class, 'create'])->middleware('guest');
 Route::post('register', [UserController::class, 'store'])->middleware('guest');
+
+Route::get('building', [BuildingController::class, 'create']);
+Route::post('building', [BuildingController::class, 'store']);
+
+Route::get('room', [RoomController::Class, 'create']);
+Route::post('room', [RoomController::class, 'store']);

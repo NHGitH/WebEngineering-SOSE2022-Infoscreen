@@ -21,4 +21,9 @@ class Building extends Model
         return $this->hasMany(Post::class);
     }
 
+
+    protected $fillable = [
+        'name',
+        
+    ];
 }

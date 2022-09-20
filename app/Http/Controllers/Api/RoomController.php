@@ -21,4 +21,23 @@ class RoomController extends Controller
             'rooms' => $room,
         ]);
     }
+
+    public function create()
+    {
+        return view('./Room/create');
+    }
+
+    public function store(){
+
+        $attributes = request()->validate([
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'buidling_id' => 'required|max:1',
+        ]);
+
+        Room::create($attributes);
+
+
+        return redirect('/');
+    }
 }
