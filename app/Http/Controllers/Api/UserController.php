@@ -37,9 +37,11 @@ class UserController extends Controller
             'password' => 'required|min:7|max:255',
         ]);
 
-        User::create($attributes);
+        $user = User::create($attributes);
 
         // session()->flash('success','Your accoutn has been created.');
+
+        auth()->login($user);
 
         return redirect('/');
     }
