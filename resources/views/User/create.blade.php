@@ -1,5 +1,7 @@
 <x-layout>
-    <section class="register-form">
+   
+<!--@auth--> 
+<section class="register-form">
         <form method="POST" action="/register">
             @csrf
             <div class="form-item">
@@ -38,6 +40,12 @@
             @endif
         </form>
     </section>
+<!--
+    @else
+    <a href="/"> Home </a> 
+    
+    @endauth
+-->   
 </x-layout>
 
 <style>

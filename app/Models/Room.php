@@ -38,4 +38,10 @@ class Room extends Model
                 ->whereHas('building', fn ($query) => $query->where('name', $building));
         });
     }
+
+    protected $fillable = [
+        'name',
+        'slug',
+        'building_id',
+    ];
 }
