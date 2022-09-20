@@ -99,6 +99,9 @@ input {
 /*---------*/
 
 .login-container-neu h1 {
+}
+
+.login-container-caption{
   text-align: center;
   font-weight: 200;
   padding: 10% 0 15% 0;

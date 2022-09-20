@@ -34,10 +34,10 @@ Route::get('/login', function(){
 
 Route::get('/posts',[PostController::class, 'index']);
 Route::get('/posts/{post:slug}',[PostController::class, 'show']);
-Route::get('administration/{user:id}',[UserController::class,'show']);  
-Route::get('/buildings',[BuildingController::class, 'index']);
-Route::get('/buildings/{building:name}',[BuildingController::class, 'show']);
-Route::get('/buildings/{building:name}/{room:name}',[BuildingController::class, 'showRoom']);
+Route::get('administration/{user:id}',[UserController::class,'show']); //view: admin 
+Route::get('/buildings',[BuildingController::class, 'index']); //view: buildings 
+Route::get('/buildings/{building:name}',[BuildingController::class, 'show']); //view: building
+Route::get('/buildings/{building:name}/{room:name}',[BuildingController::class, 'showRoom']);//view: room
 
 Route::get('register', [UserController::class, 'create'])->middleware('guest');
 Route::post('register', [UserController::class, 'store'])->middleware('guest');
