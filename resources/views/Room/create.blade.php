@@ -1,6 +1,6 @@
 <x-layout>
     <section>
-        <form method='POST' action='/room'>
+        <form method='POST' action='/room/register'>
 
             @csrf
 
@@ -16,9 +16,13 @@
 
             <input type="text" name="slug" id="name" slug="{{old('slug')}}" required>
 
-            <label for='building_id'> Name </label>
+            <label for='building_id'> Gebäude: </label>
 
-            <input type="text" name="building_id" id="building_id" value="{{old('building_id')}}" required>
+            <select name="building_id" id="building_id">
+            @foreach($buildings as $building)
+                <option name ="building_id" id="building_id" value="{{$building->id}}">{{$building->name}}</option>
+            @endforeach
+            </select>
 
             <hr> 
             <button type="submit"> Raum anlegen </button> 

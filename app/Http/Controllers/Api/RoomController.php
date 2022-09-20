@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Building;
 use App\Models\Room;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,9 @@ class RoomController extends Controller
 
     public function create()
     {
-        return view('./Room/create');
+        return view('./Room/create',[
+            'buildings' => Building::all(),
+        ]);
     }
 
     public function store(){
@@ -32,12 +35,12 @@ class RoomController extends Controller
         $attributes = request()->validate([
             'name' => 'required|max:255',
             'slug' => 'required|max:255',
-            'buidling_id' => 'required|max:1',
+            'building_id' => 'required',
         ]);
 
         Room::create($attributes);
 
 
-        return redirect('/');
+        return redirect('/room/register');
     }
 }
