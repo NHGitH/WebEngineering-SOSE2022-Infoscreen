@@ -34,3 +34,6 @@ Route::get('administration/{user:id}',[UserController::class,'show']);
 Route::get('/buildings',[BuildingController::class, 'index']);
 Route::get('/buildings/{building:name}',[BuildingController::class, 'show']);
 Route::get('/buildings/{building:name}/{room:name}',[BuildingController::class, 'showRoom']);
+
+Route::get('register', [UserController::class, 'create']);
+Route::post('register', [UserController::class, 'store']);

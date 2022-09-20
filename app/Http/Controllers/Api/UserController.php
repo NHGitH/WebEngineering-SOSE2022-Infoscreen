@@ -24,4 +24,21 @@ class UserController extends Controller
             'currentBuilding' => Building::firstWhere('name', request('building'))
         ]);
     }
+
+    public function create(){
+        return view('./User/create');
+    }
+
+    public function store(){
+
+        $attributes = request()->validate([
+            'name' => 'required|max:255',
+            'username' => 'required|max:255|min:3',
+            'password' => 'required|min:7|max:255',
+        ]);
+
+        User::create($attributes);
+
+        return redirect('/');
+    }
 }
