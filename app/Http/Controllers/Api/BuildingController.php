@@ -11,21 +11,21 @@ class BuildingController extends Controller
 {
     public function index()
     {     
-        return view('buildings', [
+        return view('./Building/buildings', [
             'buildings' => Building::all(),
         ]);
     }
 
     public function show(Building $building)
     {
-        return view('building', [
+        return view('./Building/building', [
             'building' => $building,
         ]);
     }
 
     public function showRoom(Building $building, Room $room)
     {
-        return view('room', [
+        return view('./Room/room', [
             'building' => $building,
             'room' => $room,
         ]);

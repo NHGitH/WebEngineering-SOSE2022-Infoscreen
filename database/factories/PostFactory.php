@@ -17,7 +17,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=> User::factory(),
+            'user_id'=> $this->faker->numberBetween(1,40),
             'title' => $this->faker->sentence,
             'room_id' => $this->faker->numberBetween(1,10),
             'building_id' => $this->faker->numberBetween(1,5),

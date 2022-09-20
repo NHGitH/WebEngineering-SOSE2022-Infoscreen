@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Module;
 use App\Models\Post;
 use App\Models\Room;
+use App\Models\User;
 use App\Models\Building;
 use App\Models\Course;
 use App\Models\Professor;
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
         Building::factory(5)->create();
         Course::factory(7)->create();
         Professor::factory(20)->create();
+        User::factory(40)->create();
     }
 }
