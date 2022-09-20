@@ -28,6 +28,10 @@ Route::get('/', function(){
     return view('login');
 });
 
+Route::get('/login', function(){
+    return view('login');
+});
+
 Route::get('/posts',[PostController::class, 'index']);
 Route::get('/posts/{post:slug}',[PostController::class, 'show']);
 Route::get('administration/{user:id}',[UserController::class,'show']);  
@@ -38,8 +42,8 @@ Route::get('/buildings/{building:name}/{room:name}',[BuildingController::class, 
 Route::get('register', [UserController::class, 'create'])->middleware('guest');
 Route::post('register', [UserController::class, 'store'])->middleware('guest');
 
-Route::get('building', [BuildingController::class, 'create']);
-Route::post('building', [BuildingController::class, 'store']);
+Route::get('building/register', [BuildingController::class, 'create']);
+Route::post('building/register', [BuildingController::class, 'store']);
 
-Route::get('room', [RoomController::Class, 'create']);
-Route::post('room', [RoomController::class, 'store']);
+Route::get('room/register', [RoomController::class, 'create']);
+Route::post('room/register', [RoomController::class, 'store']);

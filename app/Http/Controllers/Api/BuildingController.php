@@ -48,6 +48,6 @@ class BuildingController extends Controller
         Building::create($attributes);
 
         
-        return redirect('/');
+        return redirect('/building/register');
     }
 }
