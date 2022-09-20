@@ -33,11 +33,13 @@ class UserController extends Controller
 
         $attributes = request()->validate([
             'name' => 'required|max:255',
-            'username' => 'required|max:255|min:3',
+            'username' => 'required|max:255|min:3|unique:users,username',
             'password' => 'required|min:7|max:255',
         ]);
 
         User::create($attributes);
+
+        // session()->flash('success','Your accoutn has been created.');
 
         return redirect('/');
     }
