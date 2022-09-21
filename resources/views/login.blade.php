@@ -4,7 +4,7 @@
       <div class="login-container-neu">
         <div class="login-container-caption">
           <h1>Hochschule Flensburg</h1>
-          <h1>Herzlich Willkommen</h1>
+          <h1>Infoscreen-Login</h1>
         </div>
         <div>
           <form method="POST" action="/login">
@@ -27,10 +27,7 @@
 
           <a href="#"> Screen starten </a>
         </div>
-
       </div>
-
-
     </div>
   </div>
   </div>
