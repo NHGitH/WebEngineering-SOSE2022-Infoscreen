@@ -1,6 +1,6 @@
 <x-layout>
    
-<!--@auth--> 
+
 <section class="register-form">
         <form method="POST" action="/register">
             @csrf
@@ -15,6 +15,18 @@
             <div class="form-item">
                 <label for="username">Username:</label>
                 <input type="text" name="username" id="username" id="username" value="{{old('username')}}" required>
+                @error('username')
+                <p>{{$message}}</p>
+                @enderror
+            </div>
+
+            <div class="form-item">
+                <label for="role">Rolle:</label>
+                <select id="role" name="role "> 
+                    <option value="1" selected> Gast </option>
+                    <option value="2" > Professor </option>
+                    <option value="3" > Admin </option>
+                </select>
                 @error('username')
                 <p>{{$message}}</p>
                 @enderror
@@ -40,12 +52,8 @@
             @endif
         </form>
     </section>
-<!--
-    @else
-    <a href="/"> Home </a> 
-    
-    @endauth
--->   
+
+
 </x-layout>
 
 <style>

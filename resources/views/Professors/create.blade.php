@@ -1,6 +1,6 @@
 <x-layout>
     <section>
-        <form method='POST' action='/room'>
+        <form method='POST' action='/profs'>
 
             @csrf
 
@@ -12,16 +12,12 @@
 
             <input type="text" name="name" id="name" value="{{old('name')}}" required>
 
-            <label for='slug'> Slug </label>
+            <label for='picture'> Bild </label>
 
-            <input type="text" name="slug" id="name" slug="{{old('slug')}}" required>
-
-            <label for='building_id'> Name </label>
-
-            <input type="text" name="building_id" id="building_id" value="{{old('building_id')}}" required>
+            <input type="file" name="file" id="file" >
 
             <hr> 
-            <button type="submit"> Raum anlegen </button> 
+            <button type="submit"> Professor anlegen </button> 
             
         </div>
 

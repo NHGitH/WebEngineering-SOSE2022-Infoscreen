@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\BuildingController;
+use App\Http\Controllers\Api\SessionsController;
+use App\Http\Controllers\Api\ProfessorController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\RoomController;
 use App\Http\Controllers\Api\UserController;
@@ -28,22 +30,28 @@ Route::get('/', function(){
     return view('login');
 });
 
-Route::get('/login', function(){
-    return view('login');
-});
-
 Route::get('/posts',[PostController::class, 'index']);
 Route::get('/posts/{post:slug}',[PostController::class, 'show']);
-Route::get('administration/{user:id}',[UserController::class,'show']); //view: admin 
-Route::get('/buildings',[BuildingController::class, 'index']); //view: buildings 
-Route::get('/buildings/{building:name}',[BuildingController::class, 'show']); //view: building
-Route::get('/buildings/{building:name}/{room:name}',[BuildingController::class, 'showRoom']);//view: room
+Route::get('administration/{user:id}',[UserController::class,'show']);  
+Route::get('login/{user:id}',[UserController::class,'show']); 
+Route::get('/buildings',[BuildingController::class, 'index']);
+Route::get('/buildings/{building:name}',[BuildingController::class, 'show']);
+Route::get('/buildings/{building:name}/{room:name}',[BuildingController::class, 'showRoom']);
 
 Route::get('register', [UserController::class, 'create'])->middleware('guest');
 Route::post('register', [UserController::class, 'store'])->middleware('guest');
 
-Route::get('building/register', [BuildingController::class, 'create']);
-Route::post('building/register', [BuildingController::class, 'store']);
+Route::get('building', [BuildingController::class, 'create']);
+Route::post('building', [BuildingController::class, 'store']);
 
-Route::get('room/register', [RoomController::class, 'create']);
-Route::post('room/register', [RoomController::class, 'store']);
+Route::get('room', [RoomController::class, 'create']);
+Route::post('room', [RoomController::class, 'store']);
+
+Route::get('User/login', [UserController::class, 'login']);
+
+Route::get('profs', [ProfessorController::class, 'create']);
+Route::post('profs', [ProfessorController::class, 'store']);
+
+Route::get('modules', [ModuleController::class, 'create']);
+Route::post('modules', [ModuleController::class, 'store']);
+

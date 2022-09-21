@@ -1,6 +1,6 @@
 <x-layout>
     <section>
-        <form method='POST' action='/building/register'>
+        <form method='POST' action='/building'>
 
             @csrf
 
