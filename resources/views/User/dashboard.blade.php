@@ -4,7 +4,7 @@
 
             <hr>
 
-            <h1>Administration von: {{auth()->user()->name}}</h1>
+            <h1>Administration von: {{auth()->user()->name}}:{{auth()->user()->id}}</h1>
             <h1>Einen neuen Datenbankeintrag anlegen:</h1>
             <!-- <x-database-entry/> -->
             <h1>Raumanzeige</h1>
@@ -13,8 +13,12 @@
             <div class="select-room">
             </div>
 
-            
+            <h1>Meine Posts:</h1>
+            @foreach(auth()->user()->posts as $post)
+                <x-post-card :post=$post/>
+            @endforeach
 
+            <p></p>
             <div>
                 <form method="POST" action="/logout">
                     @csrf
