@@ -22,12 +22,12 @@
 
             <div class="form-item">
                 <label for="role">Rolle:</label>
-                <select id="role" name="role "> 
-                    <option value="1" selected> Gast </option>
-                    <option value="2" > Professor </option>
-                    <option value="3" > Admin </option>
+                <select id="role" name="role" required> 
+                    <option value="guest" selected> Gast </option>
+                    <option value="prof" > Professor </option>
+                    <option value="admin" > Admin </option>
                 </select>
-                @error('username')
+                @error('role')
                 <p>{{$message}}</p>
                 @enderror
             </div>

@@ -10,11 +10,28 @@ class SessionsController extends Controller
 {
     public function create()
     {
-        return view('Administration/create');
+        return view('/login');
     }
 
-    public function store()
+    public function store(){
+        $attributes = request()->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        if(auth()->attempt($attributes)){
+            session()->regenerate();
+            return redirect('/User/dashboard')->with('success','Welcome Back!');
+        }
+
+        return back()
+                ->withInput()
+                ->withErrors(['username' => 'Your provided credentials could not be verified.']);
+    }
+
+    public function destroy()
     {
-        return "Hello World";
+        auth()->logout();
+        return redirect('/login')->with('success', 'Goodbye!');
     }
 }

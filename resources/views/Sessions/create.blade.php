@@ -8,24 +8,31 @@
         </div>
         <div>
           <form method="POST" action="/login">
+
             @csrf
+
             <input type="text" name="username" placeholder="Username" required />
+            @error('username')
+            <p>{{$message}}</p>
+            @enderror
 
-            <input type="password" name="password" placeholder="Password" required />
+            <input type="password" name="password" placeholder="your password goes here" required />
+            @error('password')
+            <p>{{$message}}</p>
+            @enderror
+
             <button type="submit"> Einloggen </button>
-
-            @if($errors->any())
-            <ul>
-              @foreach ($errors->all() as $error)
-              <li>{{$error}}</li>
-              @endforeach
-            </ul>
-            @endif
 
           </form>
           <hr>
           <hr>
-
+          @if($errors->any())
+          <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+          </ul>
+          @endif
           <a href="#"> Screen starten </a>
         </div>
 
@@ -46,9 +53,6 @@
 
   }
 
-  li{
-    color: red;
-  }
 
   input[type=password] {
     padding: 5px;
@@ -87,7 +91,7 @@
   /*---------*/
   /*---------*/
 
-  button {
+  .button-login {
     /* Behavior deaktivieren */
     appearance: none;
     -webkit-appearance: none;
