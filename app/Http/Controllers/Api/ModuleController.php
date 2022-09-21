@@ -11,4 +11,29 @@ class ModuleController extends Controller
     public function index(){
         return Module::all();
     }
+
+    public function create()
+    {
+        return view('./Modules/create');
+    }
+
+    public function store()
+    {
+        
+
+            $attributes = request()->validate([
+                'name' => 'required|max:255',
+                'room_id' => 'required|max:255',
+                'prof_id' => 'required',
+                'courses_id' => 'required',
+                
+                
+                
+            ]);
+    
+            Module::create($attributes);
+    
+    
+            return redirect('/profs');
+        
 }

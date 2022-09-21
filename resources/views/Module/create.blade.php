@@ -1,27 +1,33 @@
 <x-layout>
     <section>
-        <form method='POST' action='/room'>
+        <form method='POST' action='/modules'>
 
             @csrf
 
 <center>
-        <h2> Raum erstellen <h2>
+        <h2> Modul erstellen <h2>
 
         <div>
             <label for='name'> Name </label>
 
             <input type="text" name="name" id="name" value="{{old('name')}}" required>
 
-            <label for='slug'> Slug </label>
+            <label for='room_id'> Raum </label>
 
-            <input type="text" name="slug" id="name" slug="{{old('slug')}}" required>
+            <input type="text" name="room_id" id="room_id"/>
 
-            <label for='building_id'> Name </label>
+            <label for='professors_id'> Professor </label>
 
-            <input type="text" name="building_id" id="building_id" value="{{old('building_id')}}" required>
+            <input type="text" name="prof_id"/>
+
+            <label for='courses_id'> Kurs </label>
+
+            <input type="text" name="courses_id"/>
+
+
 
             <hr> 
-            <button type="submit"> Raum anlegen </button> 
+            <button type="submit"> Modul anlegen </button> 
             
         </div>
 

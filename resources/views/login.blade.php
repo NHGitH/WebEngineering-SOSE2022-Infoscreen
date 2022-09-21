@@ -4,22 +4,33 @@
             <div class="login-container-neu">
                 <div class="login-container-caption">
                     <h1>Hochschule Flensburg</h1>
-                    <h1>Admin Login</h1>
+                    <h1>Herzlich Willkommen</h1>
+
+                    <div> 
+                    <form method="get" action="User/login">
+
+                    @csrf
+
+
+                      <label for="username">Username</label>
+                      
+                        <input type="text" name="username" placeholder="Username" required/>
+
+                      <label for="pw">Password </label>
+
+                        <input type="password" name="pw" placeholder="your password goes here" required/>
+
+                        <button type="submit"> Einloggen </button>
+
+                      </form>
+                      <hr><hr>
+
+                      <a href="#"> Screen starten </a>
+                    </div>
+
                 </div>
 
-                <form method="GET" action="">
-                    <div>
-                        <input type="text" class="user-text-input" placeholder="Benutzer" />
-                    </div>
-
-                    <div>
-                        <input type="password" class="user-password-input" placeholder="Passwort" />
-                    </div>
-
-                    <div>
-                        <button href="/administration/1" class="button-login"><a href="/administration/1">Bestätigen</a></button>
-                    </div>
-                </form>
+                
             </div>
         </div>
     </div>
@@ -106,8 +117,6 @@ input {
 }
 
 body {
-  background: no-repeat;
-  background-size: auto 100vh;
-  background-image: url("/images/layered-waves-haikei.svg");
+  background-color: grey;
 }
 </style>
