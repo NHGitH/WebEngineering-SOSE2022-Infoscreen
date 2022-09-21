@@ -11,4 +11,25 @@ class ProfessorController extends Controller
     public function index(){
         return Professor::all();
     }
-}
+
+    public function create()
+    {
+        return view('Professors/create');
+    }
+
+    
+        public function store(){
+
+            $attributes = request()->validate([
+                'name' => 'required|max:255',
+                
+                
+            ]);
+    
+            Professor::create($attributes);
+    
+    
+            return redirect('/profs');
+        }
+    }
+
