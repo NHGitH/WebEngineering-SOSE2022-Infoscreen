@@ -7,7 +7,7 @@
                     <h1>Herzlich Willkommen</h1>
 
                     <div> 
-                    <form method="post" action="User/login">
+                    <form method="get" action="User/login">
 
                     @csrf
 

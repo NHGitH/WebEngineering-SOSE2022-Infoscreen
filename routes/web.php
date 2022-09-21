@@ -44,14 +44,14 @@ Route::post('register', [UserController::class, 'store'])->middleware('guest');
 Route::get('building', [BuildingController::class, 'create']);
 Route::post('building', [BuildingController::class, 'store']);
 
-Route::get('room', [RoomController::Class, 'create']);
+Route::get('room', [RoomController::class, 'create']);
 Route::post('room', [RoomController::class, 'store']);
 
-Route::post('User/login', [UserController::class, 'login']);
+Route::get('User/login', [UserController::class, 'login']);
 
 Route::get('profs', [ProfessorController::class, 'create']);
 Route::post('profs', [ProfessorController::class, 'store']);
 
-Route::get('modules' [ModuleController::class, 'create']);
-Route::post('modules' [ModuleController::class, 'store']);
+Route::get('modules', [ModuleController::class, 'create']);
+Route::post('modules', [ModuleController::class, 'store']);
 

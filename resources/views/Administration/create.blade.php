@@ -20,8 +20,6 @@
                     </select>
                     <input type="text" name="search" placeholder="Choose Room">
                 </form>
-
-                <x-choose-room :rooms=$rooms :buildings=$buildings />
             </div>
         </main>
     </section>

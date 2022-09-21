@@ -35,6 +35,7 @@ class UserController extends Controller
         $attributes = request()->validate([
             'name' => 'required|max:255',
             'username' => 'required|max:255|min:3|unique:users,username',
+            'role' => '',
             'password' => 'required|min:7|max:255',
         ]);
 
@@ -53,7 +54,7 @@ class UserController extends Controller
         return view('./Administration/create', [
            // 'professors' => professors::all(),
             'buildings' => Building::all(),
-            'username' => Users::firstWhere('username', request('username'))
+            'user' => User::firstWhere('username', request('username'))
         ]
 
 
