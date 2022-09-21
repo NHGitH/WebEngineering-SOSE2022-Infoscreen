@@ -21,7 +21,6 @@
               @endforeach
             </ul>
             @endif
-
           </form>
           <hr>
           <hr>
