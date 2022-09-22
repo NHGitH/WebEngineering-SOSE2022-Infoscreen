@@ -1,7 +1,7 @@
 @props(['post'])
 <article>
     <div class="card_container">
-    <img src="{{$post->picture_path}}" alt="{{$post->picture_path}}" width="500px" height="500px">
+    <img src="/images/{{$post->picture_path}}" alt="/images/{{$post->picture_path}}" width="500px" height="500px">
         <div class="card-content">
             <h1>{{$post->title}}</h1>
             <p>Author: {{$post->author->name}}</p>

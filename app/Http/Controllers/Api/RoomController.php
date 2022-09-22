@@ -32,12 +32,12 @@ class RoomController extends Controller
         $attributes = request()->validate([
             'name' => 'required|max:255',
             'slug' => 'required|max:255',
-            'buidling_id' => 'required|max:1',
+            'buidling_id' => 'required',
         ]);
 
         Room::create($attributes);
 
 
-        return redirect('/');
+        return redirect('/dashboard');
     }
 }

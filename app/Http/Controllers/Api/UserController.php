@@ -45,7 +45,7 @@ class UserController extends Controller
 
         auth()->login($user);
 
-        return redirect('/');
+        return redirect('/dashboard');
     }
 
 
@@ -54,6 +54,7 @@ class UserController extends Controller
         return view('./User/dashboard', [
            // 'professors' => professors::all(),
             'buildings' => Building::all(),
+            'rooms' => Room::all(),
             'username' => User::firstWhere('username', request('username'))
         ]
 
