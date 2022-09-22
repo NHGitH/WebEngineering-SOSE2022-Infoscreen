@@ -22,7 +22,7 @@ class PostFactory extends Factory
             'room_id' => $this->faker->numberBetween(1,10),
             'building_id' => $this->faker->numberBetween(1,5),
             'body' => $this->faker->paragraph,
-            'picture_path' => '/images/illustration-1.png',
+            'picture_path' => 'illustration-1.png',
             'published_at' => $this->faker->date(),
         ];
     }

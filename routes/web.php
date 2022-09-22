@@ -46,6 +46,7 @@ Route::post('register', [UserController::class, 'store'])->middleware('guest');
 Route::get('building', [BuildingController::class, 'create']);
 Route::post('building', [BuildingController::class, 'store']);
 
+Route::get('/room/test', [RoomController::class, 'show']);
 Route::get('room', [RoomController::class, 'create']);
 Route::post('room', [RoomController::class, 'store']);
 
@@ -60,4 +61,6 @@ Route::post('modules', [ModuleController::class, 'store']);
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionsController::class, 'destroy']);
+
+Route::post('/dashboard/posts', [PostController::class, 'store']);
 
