@@ -21,7 +21,7 @@ class SessionsController extends Controller
 
         if(auth()->attempt($attributes)){
             session()->regenerate();
-            return redirect('/User/dashboard')->with('success','Welcome Back!');
+            return redirect('/dashboard')->with('success','Welcome Back!');
         }
 
         return back()

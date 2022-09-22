@@ -27,7 +27,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 |
 */
 Route::get('/', function(){
-    return view("/Administration/create",[
+    return view("/login",[
 
     ]);
 });
@@ -49,7 +49,7 @@ Route::post('building', [BuildingController::class, 'store']);
 Route::get('room', [RoomController::class, 'create']);
 Route::post('room', [RoomController::class, 'store']);
 
-Route::get('User/dashboard', [UserController::class, 'login']);
+Route::get('dashboard', [UserController::class, 'login']);
 
 Route::get('profs', [ProfessorController::class, 'create']);
 Route::post('profs', [ProfessorController::class, 'store']);
