@@ -56,13 +56,20 @@
 
                             <label for="date">Veranstaltungsdatum:</label>
                             <input type="date" name="date" id="date">
-                            
+
                             <label for="time">Veranstaltungszeit:</label>
                             <input type="time" name="time" id="time">
 
                             <button type="submit">hinzufügen</button>
                         </div>
 
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
                     </form>
                 </details>
             </div>
@@ -71,23 +78,30 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Raum anlegen:</summary>
-                    <form>
+                    <form method="POST" action="/dashboard/rooms">
                         @csrf
                         <div class="new-entry-div">
-                            <label for="buildingName">Gebäude:</label>
-                            <select name="building">
+                            <label for="building_id">Gebäude:</label>
+                            <select name="building_id">
                                 <option value="" disabled selected>Gebäude</option>
                                 @foreach($buildings as $building)
-                                <option value="{{$building->name}}">{{$building->name}}</option>
+                                <option value="{{$building->id}}">{{$building->name}}</option>
                                 @endforeach
                             </select>
 
-                            <label for="roomID">Raumnummer:</label>
-                            <input type="text" id="roomID" placeholder="Raumnummer">
+                            <label for="name">Raumnummer:</label>
+                            <input type="text" name="name" id="name" placeholder="Raumnummer">
 
-                            <button>Neuen Raum hinzufügen</button>
+                            <button type="submit">Neuen Raum hinzufügen</button>
                         </div>
 
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
                     </form>
                 </details>
             </div>

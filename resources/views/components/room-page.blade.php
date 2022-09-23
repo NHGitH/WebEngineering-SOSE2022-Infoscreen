@@ -14,7 +14,7 @@
     <div class="module-card">
       @if ($room->modules()->count())
       @foreach ($room->modules()
-      ->orderby('time','desc')
+      ->orderby('time','asc')
       ->take(3)
       ->get() as $module)
       <x-module_card :module="$module" />
