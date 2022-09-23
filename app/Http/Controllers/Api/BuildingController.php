@@ -34,8 +34,6 @@ class BuildingController extends Controller
     public function create()
     {
         return view('./Building/create');
-
-
     }
 
     public function store(){
@@ -45,7 +43,6 @@ class BuildingController extends Controller
         ]);
 
         Building::create($attributes);
-
         
         return redirect('/dashboard');
     }

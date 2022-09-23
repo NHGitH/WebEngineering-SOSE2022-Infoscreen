@@ -74,7 +74,7 @@
                 </details>
             </div>
 
-            <!-- EINEN NEUEN RAUM ANLEGEN -->
+            @if(auth()->user()->role == "admin")
             <div class="container-new-entry">
                 <details>
                     <summary>Raum anlegen:</summary>
@@ -149,6 +149,9 @@
                     </form>
                 </details>
             </div>
+            @endif
+            <!-- EINEN NEUEN RAUM ANLEGEN -->
+            
 
             <!-- EINEN NEUEN POST ANLEGEN -->
             <div class="container-new-entry">
@@ -160,12 +163,6 @@
 
                             <label for="title">Überschrift:</label>
                             <input type="text" name="title" id="title" placeholder="Überschrift">
-
-                            <!-- <label for="user_id">Autor:</label>
-                            <input type="text" id="authorName" placeholder="Autor"> -->
-
-                            <!-- <label for="published">Veröffentlicht am:</label>
-                            <input type="date" id="published"> -->
 
                             <label for="image">Bild hochladen (optional):</label>
                             <input type="file" size="500" accept="image/png, image/jpg, image/jpeg, image/svg" name="image" id="image">
@@ -190,7 +187,6 @@
                 @endif
             </div>
 
-            <!-- <x-database-entry/> -->
             <h1>Raumanzeige</h1>
 
             <p>Raum auswählen:</p>
@@ -223,16 +219,6 @@
         padding: 0;
         box-sizing: border-box;
     }
-
-    /*
-html {
-  background: url("/images/stacked-waves-haikei.svg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-*/
 
     summary {
         border: 4px solid transparent;
@@ -384,5 +370,9 @@ html {
 
     .menu li {
         padding: 5px 14px;
+    }
+
+    form>ul> li{
+        color: red;
     }
 </style>
