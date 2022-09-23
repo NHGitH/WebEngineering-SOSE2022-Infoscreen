@@ -14,7 +14,7 @@
     <div class="module-card">
       @if ($room->modules()->count())
       @foreach ($room->modules()
-      ->orderby('time','desc')
+      ->orderby('time','asc')
       ->take(3)
       ->get() as $module)
       <x-module_card :module="$module" />
@@ -31,7 +31,7 @@
     <x-post-card :post="$post" />
     @endforeach
     @else
-    <p class="text-center">No modules yet. Please check again later.</p>
+    <p class="text-center">No Posts yet. Please check again later.</p>
     @endif
   </div>
   </div>

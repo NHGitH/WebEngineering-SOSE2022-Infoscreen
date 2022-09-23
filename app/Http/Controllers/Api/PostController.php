@@ -30,10 +30,11 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'image' => 'required|mimes:jpg,png,jpeg|max:5048'
+            'image' => 'nullable|mimes:png'
         ]);
 
         $newImageName = Str::random(10) . '-' . $request->file('image')->getFilename() . '.' . 

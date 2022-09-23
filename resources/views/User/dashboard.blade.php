@@ -23,66 +23,85 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Veranstaltung anlegen:</summary>
-                    <form>
+                    <form method="POST" action="/dashboard/modules">
                         @csrf
                         <div class="new-entry-div">
                             <div class="test">
-                                <label for="moduleName">Name des Moduls:</label>
-                                <input type="text" id="moduleName" placeholder="Modulname">
+                                <label for="name">Name des Moduls:</label>
+                                <input type="text" name="name" id="name" placeholder="Modulname">
                             </div>
 
 
                             <label for="courseName">Studiengang:</label>
-                            <input type="text" id="courseName" placeholder="Studiengang">
-
-                            <label for="buildingName">Gebäude:</label>
-                            <select name="building">
-                                <option value="" disabled selected>Gebäude</option>
-                                @foreach($buildings as $building)
-                                <option value="{{$building->name}}">{{$building->name}}</option>
+                            <select name="courses_id">
+                                @foreach($courses as $course)
+                                <option value="{{$course->id}}">{{$course->name}}</option>
                                 @endforeach
                             </select>
 
-                            <label for="buildingID">Gebäude ID:</label>
-                            <input type="text" id="buildingID" placeholder="Gebäude ID">
-
-                            <label for="roomID">Raumnummer:</label>
-                            <input type="text" id="roomID" placeholder="Raumnummer">
+                            <label for="room_id">Raum:</label>
+                            <select name="room_id">
+                                @foreach($rooms as $room)
+                                <option value="{{$room->id}}">{{$room->building->name}}{{$room->name}}</option>
+                                @endforeach
+                            </select>
 
                             <label for="profName">Name des Professors:</label>
-                            <input type="text" id="profName" placeholder="Professor Name">
+                            <select name="professors_id">
+                                <option value="" disabled selected>Professor</option>
+                                @foreach($professors as $prof)
+                                <option value="{{$prof->id}}">{{$prof->name}}</option>
+                                @endforeach
+                            </select>
 
-                            <label for="picPath">Bild hochladen (optional):</label>
-                            <input type="file" size="50" accept="text/*" id="picPath">
+                            <label for="date">Veranstaltungsdatum:</label>
+                            <input type="date" name="date" id="date">
 
-                            <button>Neue Veranstaltung hinzufügen</button>
+                            <label for="time">Veranstaltungszeit:</label>
+                            <input type="time" name="time" id="time">
+
+                            <button type="submit">hinzufügen</button>
                         </div>
 
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
                     </form>
                 </details>
             </div>
 
-            <!-- EINEN NEUEN RAUM ANLEGEN -->
+            @if(auth()->user()->role == "admin")
             <div class="container-new-entry">
                 <details>
                     <summary>Raum anlegen:</summary>
-                    <form>
+                    <form method="POST" action="/dashboard/rooms">
                         @csrf
                         <div class="new-entry-div">
-                            <label for="buildingName">Gebäude:</label>
-                            <select name="building">
+                            <label for="building_id">Gebäude:</label>
+                            <select name="building_id">
                                 <option value="" disabled selected>Gebäude</option>
                                 @foreach($buildings as $building)
-                                <option value="{{$building->name}}">{{$building->name}}</option>
+                                <option value="{{$building->id}}">{{$building->name}}</option>
                                 @endforeach
                             </select>
 
-                            <label for="roomID">Raumnummer:</label>
-                            <input type="text" id="roomID" placeholder="Raumnummer">
+                            <label for="name">Raumnummer:</label>
+                            <input type="text" name="name" id="name" placeholder="Raumnummer">
 
-                            <button>Neuen Raum hinzufügen</button>
+                            <button type="submit">Neuen Raum hinzufügen</button>
                         </div>
 
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
                     </form>
                 </details>
             </div>
@@ -91,16 +110,78 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Gebäude anlegen:</summary>
-                    <form>
+                    <form method="POST" action="/dashboard/buildings">
                         @csrf
                         <div class="new-entry-div">
 
-                            <label for="buildingName">Name:</label>
-                            <input type="text" id="buildingName" placeholder="Gebäude">
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" placeholder="Gebäude">
 
-                            <button>Neuen Raum hinzufügen</button>
+                            <button type="submit">Hinzufügen</button>
                         </div>
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
+            </div>
 
+            <!-- EIN NEUEN STUDIENGANG ANLEGEN -->
+            <div class="container-new-entry">
+                <details>
+                    <summary>Studiengang anlegen:</summary>
+                    <form method="POST" action="/dashboard/courses">
+                        @csrf
+                        <div class="new-entry-div">
+
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" placeholder="Studiengang">
+
+                            <label for="building_id">Gebäude:</label>
+                            <select name="building_id">
+                                <option value="" disabled selected>Gebäude</option>
+                                @foreach($buildings as $building)
+                                <option value="{{$building->id}}">{{$building->name}}</option>
+                                @endforeach
+                            </select>
+
+                            <button type="submit">Hinzufügen</button>
+                        </div>
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
+            </div>
+
+            <!-- EIN NEUEN PROFESSOR ANLEGEN -->
+            <div class="container-new-entry">
+                <details>
+                    <summary>Professor anlegen:</summary>
+                    <form method="POST" action="/dashboard/professors">
+                        @csrf
+                        <div class="new-entry-div">
+
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" placeholder="Professor">
+
+                            <button type="submit">Hinzufügen</button>
+                        </div>
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
                     </form>
                 </details>
             </div>
@@ -124,6 +205,9 @@
                     </form>
                 </details>
             </div>
+            @endif
+            <!-- EINEN NEUEN RAUM ANLEGEN -->
+
 
             <!-- EINEN NEUEN POST ANLEGEN -->
             <div class="container-new-entry">
@@ -136,14 +220,8 @@
                             <label for="title">Überschrift:</label>
                             <input type="text" name="title" id="title" placeholder="Überschrift">
 
-                            <!-- <label for="user_id">Autor:</label>
-                            <input type="text" id="authorName" placeholder="Autor"> -->
-
-                            <!-- <label for="published">Veröffentlicht am:</label>
-                            <input type="date" id="published"> -->
-
-                            <label for="image">Bild hochladen (optional):</label>
-                            <input type="file" size="500" accept="image/png, image/jpg, image/jpeg, image/svg" name="image" id="image">
+                            <label for="image">Bild hochladen (nur png Dateien):</label>
+                            <input type="file" size="5000" accept="image/png" name="image" id="image">
 
                             <label for="body">Inhalt:</label>
                             <textarea id="body" name="body" rows="4" cols="50"></textarea>
@@ -153,6 +231,35 @@
                     </form>
                 </details>
             </div>
+
+            <!-- EIN NEUES GEBÄUDE ANLEGEN -->
+            <!-- <div class="container-new-entry">
+                <details>
+                    <summary>Test anlegen:</summary>
+                    <form method="#" action="/#">
+                        @csrf
+                        <div class="new-entry-div">
+
+                            <label for="name">Name:</label>
+                            <input list="rooms" name="name" id="name" placeholder="Raum">
+                            <datalist id="rooms">
+                                @foreach($rooms as $room)
+                                <option value="{{$room->id}}">{{$room->name}}</option>
+                                @endforeach
+                            </datalist>
+
+                            <button type="submit">Hinzufügen</button>
+                        </div>
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
+            </div> -->
 
             <div>
                 <h1>Meine Posts:</h1>
@@ -165,7 +272,6 @@
                 @endif
             </div>
 
-            <!-- <x-database-entry/> -->
             <h1>Raumanzeige</h1>
 
             <p>Raum auswählen:</p>
@@ -198,16 +304,6 @@
         padding: 0;
         box-sizing: border-box;
     }
-
-    /*
-html {
-  background: url("/images/stacked-waves-haikei.svg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-*/
 
     summary {
         border: 4px solid transparent;
@@ -359,5 +455,9 @@ html {
 
     .menu li {
         padding: 5px 14px;
+    }
+
+    form>ul>li {
+        color: red;
     }
 </style>

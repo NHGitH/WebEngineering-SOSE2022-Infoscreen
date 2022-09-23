@@ -10,7 +10,7 @@
             <p class="text-sm">Veranstaltungszeit: {{$module->time}}</p>
             <p class="text-sm">{{$module->date}}</p>
         </div>
-        <img class="picture" src="/images/pexels-cottonbro-6334771.jpg" alt="Hier sollte ein Profilbild sein.">
+        <img class="picture" src="/images/{{$module->professor->picture_path}}" alt="{{$module->professor->picture_path}}">
     </div>
 </section>
 

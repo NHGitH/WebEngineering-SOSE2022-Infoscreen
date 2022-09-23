@@ -9,6 +9,7 @@ class Module extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['room_id','courses_id','building_id','name', 'professors_id', 'date','time'];
     protected $guarded = [];
     protected $with = ['room','professor','course'];
 

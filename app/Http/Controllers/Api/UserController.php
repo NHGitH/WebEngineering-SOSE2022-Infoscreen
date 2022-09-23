@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Building;
+use App\Models\Course;
 use App\Models\Professor;
 use App\Models\User;
 use App\Models\Room;
@@ -55,7 +56,9 @@ class UserController extends Controller
            // 'professors' => professors::all(),
             'buildings' => Building::all(),
             'rooms' => Room::all(),
-            'username' => User::firstWhere('username', request('username'))
+            'courses' => Course::all(),
+            'username' => User::firstWhere('username', request('username')),
+            'professors' => Professor::all(),
         ]
 
 
