@@ -54,6 +54,12 @@
                                 @endforeach
                             </select>
 
+                            <label for="date">Veranstaltungsdatum:</label>
+                            <input type="date" name="date" id="date">
+                            
+                            <label for="time">Veranstaltungszeit:</label>
+                            <input type="time" name="time" id="time">
+
                             <button type="submit">hinzufügen</button>
                         </div>
 

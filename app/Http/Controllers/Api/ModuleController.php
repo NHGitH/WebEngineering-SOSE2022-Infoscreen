@@ -25,10 +25,10 @@ class ModuleController extends Controller
             'room_id' => 'required',
             'professors_id' => 'required',
             'courses_id' => 'required',
+            'date' => 'required',
+            'time' =>  'required',
         ]);
 
-        $attributes['date'] =  date('Y-m-d');
-        $attributes['time'] =  date('H:i:s');
         Module::create($attributes);
 
 

@@ -31,7 +31,7 @@
     <x-post-card :post="$post" />
     @endforeach
     @else
-    <p class="text-center">No modules yet. Please check again later.</p>
+    <p class="text-center">No Posts yet. Please check again later.</p>
     @endif
   </div>
   </div>
