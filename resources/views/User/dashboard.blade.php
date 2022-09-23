@@ -232,6 +232,35 @@
                 </details>
             </div>
 
+            <!-- EIN NEUES GEBÄUDE ANLEGEN -->
+            <div class="container-new-entry">
+                <details>
+                    <summary>Test anlegen:</summary>
+                    <form method="#" action="/#">
+                        @csrf
+                        <div class="new-entry-div">
+
+                            <label for="name">Name:</label>
+                            <input list="rooms" name="name" id="name" placeholder="Raum">
+                            <datalist id="rooms">
+                                @foreach($rooms as $room)
+                                <option value="{{$room->id}}">{{$room->name}}</option>
+                                @endforeach
+                            </datalist>
+
+                            <button type="submit">Hinzufügen</button>
+                        </div>
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
+            </div>
+
             <div>
                 <h1>Meine Posts:</h1>
                 @if(auth()->user()->posts->count())
