@@ -233,7 +233,7 @@
             </div>
 
             <!-- EIN NEUES GEBÄUDE ANLEGEN -->
-            <div class="container-new-entry">
+            <!-- <div class="container-new-entry">
                 <details>
                     <summary>Test anlegen:</summary>
                     <form method="#" action="/#">
@@ -259,7 +259,7 @@
                         @endif
                     </form>
                 </details>
-            </div>
+            </div> -->
 
             <div>
                 <h1>Meine Posts:</h1>
