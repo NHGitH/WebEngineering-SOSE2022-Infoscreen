@@ -220,8 +220,8 @@
                             <label for="title">Überschrift:</label>
                             <input type="text" name="title" id="title" placeholder="Überschrift">
 
-                            <label for="image">Bild hochladen (optional):</label>
-                            <input type="file" size="500" accept="image/png, image/jpg, image/jpeg, image/svg" name="image" id="image">
+                            <label for="image">Bild hochladen (nur png Dateien):</label>
+                            <input type="file" size="5000" accept="image/png" name="image" id="image">
 
                             <label for="body">Inhalt:</label>
                             <textarea id="body" name="body" rows="4" cols="50"></textarea>
