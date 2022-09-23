@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BuildingController;
+use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Api\SessionsController;
 use App\Http\Controllers\Api\ProfessorController;
@@ -68,3 +69,4 @@ Route::post('/dashboard/modules', [ModuleController::class, 'store']);
 Route::post('/dashboard/rooms', [RoomController::class, 'store']);
 Route::post('/dashboard/buildings', [BuildingController::class, 'store']);
 Route::post('/dashboard/professors', [ProfessorController::class, 'store']);
+Route::post('/dashboard/courses', [CourseController::class, 'store']);

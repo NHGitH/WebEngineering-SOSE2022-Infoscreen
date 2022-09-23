@@ -130,8 +130,40 @@
                 </details>
             </div>
 
-                        <!-- EIN NEUES GEBÄUDE ANLEGEN -->
-                        <div class="container-new-entry">
+            <!-- EIN NEUEN STUDIENGANG ANLEGEN -->
+            <div class="container-new-entry">
+                <details>
+                    <summary>Studiengang anlegen:</summary>
+                    <form method="POST" action="/dashboard/courses">
+                        @csrf
+                        <div class="new-entry-div">
+
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" placeholder="Studiengang">
+
+                            <label for="building_id">Gebäude:</label>
+                            <select name="building_id">
+                                <option value="" disabled selected>Gebäude</option>
+                                @foreach($buildings as $building)
+                                <option value="{{$building->id}}">{{$building->name}}</option>
+                                @endforeach
+                            </select>
+
+                            <button type="submit">Hinzufügen</button>
+                        </div>
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
+            </div>
+
+            <!-- EIN NEUEN PROFESSOR ANLEGEN -->
+            <div class="container-new-entry">
                 <details>
                     <summary>Professor anlegen:</summary>
                     <form method="POST" action="/dashboard/professors">
@@ -139,7 +171,7 @@
                         <div class="new-entry-div">
 
                             <label for="name">Name:</label>
-                            <input type="text" name="name" id="name" placeholder="Gebäude">
+                            <input type="text" name="name" id="name" placeholder="Professor">
 
                             <button type="submit">Hinzufügen</button>
                         </div>
@@ -175,7 +207,7 @@
             </div>
             @endif
             <!-- EINEN NEUEN RAUM ANLEGEN -->
-            
+
 
             <!-- EINEN NEUEN POST ANLEGEN -->
             <div class="container-new-entry">
@@ -396,7 +428,7 @@
         padding: 5px 14px;
     }
 
-    form>ul> li{
+    form>ul>li {
         color: red;
     }
 </style>
