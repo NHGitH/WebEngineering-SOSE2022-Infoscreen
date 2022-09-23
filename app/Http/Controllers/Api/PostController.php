@@ -33,7 +33,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'image' => 'required|mimes:jpg,png,jpeg|max:5048'
+            'image' => 'nullable|mimes:jpg,png,jpeg|max:5048'
         ]);
 
         $newImageName = Str::random(10) . '-' . $request->file('image')->getFilename() . '.' . 

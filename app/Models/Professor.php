@@ -9,7 +9,7 @@ class Professor extends Model
 {
     use HasFactory;
 
-    //protected $fillable = ['title', 'excerpt', 'body'];
+    protected $fillable = ['name','picture_path'];
     protected $guarded = [];
 
     public function module()

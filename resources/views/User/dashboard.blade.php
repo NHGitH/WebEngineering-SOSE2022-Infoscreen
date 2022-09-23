@@ -130,6 +130,30 @@
                 </details>
             </div>
 
+                        <!-- EIN NEUES GEBÄUDE ANLEGEN -->
+                        <div class="container-new-entry">
+                <details>
+                    <summary>Professor anlegen:</summary>
+                    <form method="POST" action="/dashboard/professors">
+                        @csrf
+                        <div class="new-entry-div">
+
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" placeholder="Gebäude">
+
+                            <button type="submit">Hinzufügen</button>
+                        </div>
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
+            </div>
+
             <!-- EIN NEUES EVENT ANLEGEN -->
             <div class="container-new-entry">
                 <details>
