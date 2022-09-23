@@ -23,39 +23,38 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Veranstaltung anlegen:</summary>
-                    <form>
+                    <form method="POST" action="/dashboard/modules">
                         @csrf
                         <div class="new-entry-div">
                             <div class="test">
-                                <label for="moduleName">Name des Moduls:</label>
-                                <input type="text" id="moduleName" placeholder="Modulname">
+                                <label for="name">Name des Moduls:</label>
+                                <input type="text" name="name" id="name" placeholder="Modulname">
                             </div>
 
 
                             <label for="courseName">Studiengang:</label>
-                            <input type="text" id="courseName" placeholder="Studiengang">
-
-                            <label for="buildingName">Gebäude:</label>
-                            <select name="building">
-                                <option value="" disabled selected>Gebäude</option>
-                                @foreach($buildings as $building)
-                                <option value="{{$building->name}}">{{$building->name}}</option>
+                            <select name="courses_id">
+                                @foreach($courses as $course)
+                                <option value="{{$course->id}}">{{$course->name}}</option>
                                 @endforeach
                             </select>
 
-                            <label for="buildingID">Gebäude ID:</label>
-                            <input type="text" id="buildingID" placeholder="Gebäude ID">
-
-                            <label for="roomID">Raumnummer:</label>
-                            <input type="text" id="roomID" placeholder="Raumnummer">
+                            <label for="room_id">Raum:</label>
+                            <select name="room_id">
+                                @foreach($rooms as $room)
+                                <option value="{{$room->id}}">{{$room->building->name}}{{$room->name}}</option>
+                                @endforeach
+                            </select>
 
                             <label for="profName">Name des Professors:</label>
-                            <input type="text" id="profName" placeholder="Professor Name">
+                            <select name="professors_id">
+                                <option value="" disabled selected>Professor</option>
+                                @foreach($professors as $prof)
+                                <option value="{{$prof->id}}">{{$prof->name}}</option>
+                                @endforeach
+                            </select>
 
-                            <label for="picPath">Bild hochladen (optional):</label>
-                            <input type="file" size="50" accept="text/*" id="picPath">
-
-                            <button>Neue Veranstaltung hinzufügen</button>
+                            <button type="submit">hinzufügen</button>
                         </div>
 
                     </form>

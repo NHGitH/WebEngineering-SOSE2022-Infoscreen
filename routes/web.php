@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BuildingController;
+use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Api\SessionsController;
 use App\Http\Controllers\Api\ProfessorController;
 use App\Http\Controllers\Api\PostController;
@@ -63,4 +64,5 @@ Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionsController::class, 'destroy']);
 
 Route::post('/dashboard/posts', [PostController::class, 'store']);
+Route::post('/dashboard/modules', [ModuleController::class, 'store']);
 

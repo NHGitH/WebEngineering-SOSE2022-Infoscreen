@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Post::factory(100)->create();
-        Module::factory(200)->create();
+        Post::factory(10)->create();
+        Module::factory(10)->create();
         Room::factory(10)->create();
         Building::factory(5)->create();
         Course::factory(7)->create();

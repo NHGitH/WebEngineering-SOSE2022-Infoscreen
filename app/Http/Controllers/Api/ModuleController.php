@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class ModuleController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return Module::all();
     }
 
@@ -19,21 +20,18 @@ class ModuleController extends Controller
 
     public function store()
     {
-        
+        $attributes = request()->validate([
+            'name' => 'required|max:255',
+            'room_id' => 'required',
+            'professors_id' => 'required',
+            'courses_id' => 'required',
+        ]);
 
-            $attributes = request()->validate([
-                'name' => 'required|max:255',
-                'room_id' => 'required|max:255',
-                'prof_id' => 'required',
-                'courses_id' => 'required',
-                
-                
-                
-            ]);
-    
-            Module::create($attributes);
-    
-    
-            return redirect('/profs');
-        
+        $attributes['date'] =  date('Y-m-d');
+        $attributes['time'] =  date('H:i:s');
+        Module::create($attributes);
+
+
+        return redirect('/dashboard');
+    }
 }
