@@ -41,13 +41,12 @@ class BuildingController extends Controller
     public function store(){
 
         $attributes = request()->validate([
-            'name' => 'required|max:255'
-            
+            'name' => 'required|max:255'   
         ]);
 
         Building::create($attributes);
 
         
-        return redirect('/');
+        return redirect('/dashboard');
     }
 }

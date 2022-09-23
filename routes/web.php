@@ -66,3 +66,4 @@ Route::post('logout', [SessionsController::class, 'destroy']);
 Route::post('/dashboard/posts', [PostController::class, 'store']);
 Route::post('/dashboard/modules', [ModuleController::class, 'store']);
 Route::post('/dashboard/rooms', [RoomController::class, 'store']);
+Route::post('/dashboard/buildings', [BuildingController::class, 'store']);

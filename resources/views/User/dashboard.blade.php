@@ -110,16 +110,22 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Gebäude anlegen:</summary>
-                    <form>
+                    <form method="POST" action="/dashboard/buildings">
                         @csrf
                         <div class="new-entry-div">
 
-                            <label for="buildingName">Name:</label>
-                            <input type="text" id="buildingName" placeholder="Gebäude">
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" placeholder="Gebäude">
 
-                            <button>Neuen Raum hinzufügen</button>
+                            <button type="submit">Hinzufügen</button>
                         </div>
-
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
                     </form>
                 </details>
             </div>
