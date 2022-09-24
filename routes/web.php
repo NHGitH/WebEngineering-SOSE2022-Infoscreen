@@ -71,14 +71,17 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard/posts/{post}/edit', [PostController::class, 'edit']);
     Route::patch('/dashboard/posts/{post}', [PostController::class, 'update']);
     Route::delete('/dashboard/posts/{post}', [PostController::class, 'delete']);
+
+    Route::get('/dashboard/modules', [ModuleController::class, 'index']);
 });
 
 Route::group(['middleware' => ['admin']], function() {
     //PostRoutes:
     Route::get('/admin',[AdminController::class, 'login'])->middleware('admin');
-    Route::get('/admin/posts', [AdminController::class, 'index']);
-    Route::post('/admin/posts/create', [AdminController::class, 'store']);
-    Route::get('/admin/posts/{post}/edit', [AdminController::class, 'edit']);
-    Route::patch('/admin/posts/{post}', [AdminController::class, 'update']);
-    Route::delete('/admin/posts/{post}', [AdminController::class, 'delete']);
+    Route::get('/admin/posts', [AdminController::class, 'posts']);
+    Route::get('/admin/modules', [AdminController::class, 'modules']);
+    Route::post('/admin/posts/create', [PostController::class, 'store']);
+    Route::get('/admin/posts/{post}/edit', [PostController::class, 'edit']);
+    Route::patch('/admin/posts/{post}', [PostController::class, 'update']);
+    Route::delete('/admin/posts/{post}', [PostController::class, 'delete']);
 });

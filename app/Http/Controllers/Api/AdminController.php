@@ -9,14 +9,22 @@ use App\Models\Professor;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Room;
+use App\Models\Module;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function posts()
     {
         return view('/Admin/posts', [
             'posts' => Post::all(),
+        ]);
+    }
+
+    public function modules()
+    {
+        return view('/Admin/modules', [
+            'modules' => Module::all(),
         ]);
     }
 

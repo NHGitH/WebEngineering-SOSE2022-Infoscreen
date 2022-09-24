@@ -17,12 +17,12 @@
         <ul class="nav-links">
 
             <div class="menu">
-                <li><a href="/dashboard/posts">Posts</a></li>
-                <li><a href="/dashboard/modules">Veranstaltungen</a></li>
-                <li><a href="/dashboard/buildings">Gebäude</a></li>
-                <li><a href="/dashboard/rooms">Räume</a></li>
-                <li><a href="/dashboard/courses">Studiengänge</a></li>
-                <li><a href="/dashboard/users">User</a></li>
+                <li><a href="/admin/posts">Posts</a></li>
+                <li><a href="/admin/modules">Veranstaltungen</a></li>
+                <li><a href="/admin/buildings">Gebäude</a></li>
+                <li><a href="/admin/rooms">Räume</a></li>
+                <li><a href="/admin/courses">Studiengänge</a></li>
+                <li><a href="/admin/users">User</a></li>
             </div>
 
         </ul>

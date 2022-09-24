@@ -4,8 +4,6 @@
     <section class="px-6 py-8">
         <main class="max-w-6xl mx-auto mt-10 lg:mt-10 space-y-6">
 
-
-
             <!-- ERSTMAL MIT HTML GELÖST, SPÄTER MIT JAVASCRIPT BZW. VUEJS -->
             <!-- EINE NEUE VERANSTALTUNG ANLEGEN -->
             <div class="container-new-entry">

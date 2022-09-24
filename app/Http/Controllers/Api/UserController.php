@@ -12,9 +12,16 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    public function posts()
     {
         return view('/User/posts', [
+
+        ]);
+    }
+
+    public function modules()
+    {
+        return view('/User/modules', [
 
         ]);
     }

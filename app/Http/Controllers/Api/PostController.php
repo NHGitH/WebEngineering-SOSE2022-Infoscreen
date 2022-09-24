@@ -82,7 +82,7 @@ class PostController extends Controller
 
         $post->update($attributes);
 
-        return redirect('/dashboard/posts');
+        return redirect('dashboard/posts');
     }
 
     public function delete(Post $post){
