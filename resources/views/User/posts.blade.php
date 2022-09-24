@@ -13,13 +13,15 @@
         <tr>
             <td> {{$post->title}} </td>
             <td> {{$post->body}}</td>
-            <td> <img src="/images/{{$post->picture_path}}" width="100px" height="100px"> </td>
+            <td> <img src="" width="100px" height="100px"> </td>
             <td> {{$post->published_at}}</td>
             <td>
             <div>
                     <a href="/dashboard/posts/{{$post->id}}/edit"> Bearbeiten </a>
 
                     <form method="POST" action="/dashboard/posts/{{$post->id}}">
+                        @csrf
+                        @method('DELETE')
                         <button type="submit">Entfernen</button>
                     </form>
                 </div>

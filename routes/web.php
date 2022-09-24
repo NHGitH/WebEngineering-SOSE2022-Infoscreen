@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ProfessorController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\RoomController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\DeleteController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\Category;
@@ -66,7 +67,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard/posts', [PostController::class, 'index']);
     Route::post('/dashboard/posts/create', [PostController::class, 'store']);
     Route::get('/dashboard/posts/{post}/edit', [PostController::class, 'edit']);
-    Route::post('/dashboard/posts/{post}', [PostController::class, 'update']);
+    Route::patch('/dashboard/posts/{post}', [PostController::class, 'update']);
+    Route::delete('/dashboard/posts/{post}', [PostController::class, 'delete']);
     
     Route::post('/dashboard/posts/delete', [PostController::class, 'store']);
     Route::post('/dashboard/modules/create', [ModuleController::class, 'store']);
