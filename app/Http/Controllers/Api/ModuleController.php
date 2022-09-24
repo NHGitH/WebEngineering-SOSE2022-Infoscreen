@@ -10,7 +10,12 @@ class ModuleController extends Controller
 {
     public function index()
     {
-        return Module::all();
+        return view('/User/modules', [
+
+        ]);
+    }
+
+    public function modules(){
     }
 
     public function create()
