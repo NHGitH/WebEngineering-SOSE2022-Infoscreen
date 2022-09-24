@@ -60,10 +60,7 @@ class UserController extends Controller
             'username' => User::firstWhere('username', request('username')),
             'professors' => Professor::all(),
         ]
-
-
         );
-        
     }
     
 }

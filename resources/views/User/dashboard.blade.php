@@ -14,7 +14,7 @@
         </ul>
     </nav>
     <section class="px-6 py-8">
-        <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
+        <main class="max-w-6xl mx-auto mt-10 lg:mt-10 space-y-6">
 
 
 
@@ -23,7 +23,7 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Veranstaltung anlegen:</summary>
-                    <form method="POST" action="/dashboard/modules">
+                    <form method="POST" action="/dashboard/modules/create">
                         @csrf
                         <div class="new-entry-div">
                             <div class="test">
@@ -78,7 +78,7 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Raum anlegen:</summary>
-                    <form method="POST" action="/dashboard/rooms">
+                    <form method="POST" action="/dashboard/rooms/create">
                         @csrf
                         <div class="new-entry-div">
                             <label for="building_id">Gebäude:</label>
@@ -110,7 +110,7 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Gebäude anlegen:</summary>
-                    <form method="POST" action="/dashboard/buildings">
+                    <form method="POST" action="/dashboard/buildings/create">
                         @csrf
                         <div class="new-entry-div">
 
@@ -134,7 +134,7 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Studiengang anlegen:</summary>
-                    <form method="POST" action="/dashboard/courses">
+                    <form method="POST" action="/dashboard/courses/create">
                         @csrf
                         <div class="new-entry-div">
 
@@ -166,7 +166,7 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Professor anlegen:</summary>
-                    <form method="POST" action="/dashboard/professors">
+                    <form method="POST" action="/dashboard/professors/create">
                         @csrf
                         <div class="new-entry-div">
 
@@ -213,7 +213,7 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Post anlegen:</summary>
-                    <form method="POST" action="/dashboard/posts" enctype="multipart/form-data">
+                    <form method="POST" action="/dashboard/posts/create" enctype="multipart/form-data">
                         @csrf
                         <div class="new-entry-div">
 
@@ -222,7 +222,6 @@
 
                             <label for="image">Bild hochladen (nur png Dateien):</label>
                             <input type="file" size="5000" accept="image/png" name="image" id="image">
-
                             <label for="body">Inhalt:</label>
                             <textarea id="body" name="body" rows="4" cols="50"></textarea>
 
@@ -455,6 +454,7 @@
 
     .menu li {
         padding: 5px 14px;
+        align-self: center;
     }
 
     form>ul>li {
