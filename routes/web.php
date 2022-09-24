@@ -34,10 +34,14 @@ Route::get('/', function(){
     ]);
 });
 
+Route::get('/test', function(){
+    return view("test",[
+        'users' => User::all(),
+    ]);
+});
+
 Route::get('/posts',[PostController::class, 'index']);
 Route::get('/posts/{post:slug}',[PostController::class, 'show']);
-Route::get('administration/{user:id}',[UserController::class,'show']);  
-Route::get('login/{user:id}',[UserController::class,'show']); 
 Route::get('/buildings',[BuildingController::class, 'index']);
 Route::get('/buildings/{building:name}',[BuildingController::class, 'show']);
 Route::get('/buildings/{building:name}/{room:name}',[BuildingController::class, 'showRoom']);
@@ -52,21 +56,22 @@ Route::get('/room/test', [RoomController::class, 'show']);
 Route::get('room', [RoomController::class, 'create']);
 Route::post('room', [RoomController::class, 'store']);
 
-Route::get('dashboard', [UserController::class, 'login']);
-
-Route::get('profs', [ProfessorController::class, 'create']);
-Route::post('profs', [ProfessorController::class, 'store']);
-
-Route::get('modules', [ModuleController::class, 'create']);
-Route::post('modules', [ModuleController::class, 'store']);
+Route::get('/dashboard', [UserController::class, 'login'])->middleware('auth');
 
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
-Route::post('logout', [SessionsController::class, 'destroy']);
+Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
-Route::post('/dashboard/posts', [PostController::class, 'store']);
-Route::post('/dashboard/modules', [ModuleController::class, 'store']);
-Route::post('/dashboard/rooms', [RoomController::class, 'store']);
-Route::post('/dashboard/buildings', [BuildingController::class, 'store']);
-Route::post('/dashboard/professors', [ProfessorController::class, 'store']);
-Route::post('/dashboard/courses', [CourseController::class, 'store']);
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/dashboard/posts', [PostController::class, 'index']);
+    Route::post('/dashboard/posts/create', [PostController::class, 'store']);
+    Route::get('/dashboard/posts/{post}/edit', [PostController::class, 'edit']);
+    Route::post('/dashboard/posts/{post}', [PostController::class, 'update']);
+    
+    Route::post('/dashboard/posts/delete', [PostController::class, 'store']);
+    Route::post('/dashboard/modules/create', [ModuleController::class, 'store']);
+    Route::post('/dashboard/rooms/create', [RoomController::class, 'store']);
+    Route::post('/dashboard/buildings/create', [BuildingController::class, 'store']);
+    Route::post('/dashboard/professors/create', [ProfessorController::class, 'store']);
+    Route::post('/dashboard/courses/create', [CourseController::class, 'store']);
+});

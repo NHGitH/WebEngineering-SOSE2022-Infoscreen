@@ -12,8 +12,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('posts', [
-            'posts' => Post::all()
+        return view('/User/posts', [
+
         ]);
     }
 
@@ -31,25 +31,69 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'image' => 'nullable|mimes:png'
+        $attributes = request()->validate([
+                'title' => 'required',
+                'body' => 'required',
+                'image' => 'nullable|mimes:png'
         ]);
 
-        $newImageName = Str::random(10) . '-' . $request->file('image')->getFilename() . '.' . 
-        $request->image->extension();
+        $attributes['user_id'] = auth()->id();
+        $attributes['image'] = request()->file('image')->store('images');
+        
+        Post::create($attributes);
 
-        $request->image->move(public_path('images'), $newImageName);
-
-        $post = Post::create([
-            'title' => $request->input('title'),
-            'body' => $request->input('body'),
-            'user_id' => auth()->id(),
-            'picture_path' => $newImageName,
-            'published_at' => date('Y-m-d'),
-        ]);
+        // if($request->hasFile('image')){
+        // //     $request->validate([
+        // //         'title' => 'required',
+        // //         'body' => 'required',
+        // //         'image' => 'nullable|mimes:png'
+        // //     ]);
+    
+        // //     $newImageName = Str::random(10) . '-' . $request->file('image')->getFilename() . '.' . 
+        // //     $request->image->extension();
+    
+        // //     $request->image->move(public_path('images'), $newImageName);   
+        // //     $post = Post::create([
+        // //         'title' => $request->input('title'),
+        // //         'body' => $request->input('body'),
+        // //         'user_id' => auth()->id(),
+        // //         'picture_path' => $newImageName,
+        // //         'published_at' => date('Y-m-d'),
+        // //     ]);
+        // }
+        // else{
+        // //     $request->validate([
+        // //         'title' => 'required',
+        // //         'body' => 'required',
+        // //     ]);
+        // //     $post = Post::create([
+        // //         'title' => $request->input('title'),
+        // //         'body' => $request->input('body'),
+        // //         'user_id' => auth()->id(),
+        // //         'picture_path' => '/illustration-1.png',
+        // //         'published_at' => date('Y-m-d'),
+        // //     ]);
+        // // }
 
         return redirect('/dashboard');
+    }
+
+    public function edit(Post $post){
+        return view('/Post/edit',[
+            'post' => $post,
+        ]);
+    }
+
+    public function update(Post $post){
+
+        $attributes = request()->validate([
+            'title' => 'required',
+            'image' => 'nullable|image',
+            'body' => 'required',
+        ]);
+
+        $post->update($attributes);
+
+        return redirect('/dashboard/posts');
     }
 }
