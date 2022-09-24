@@ -3,6 +3,7 @@
         <summary>Post anlegen:</summary>
         <form method="POST" action="/dashboard/posts/{{$post->id}}" enctype="multipart/form-data">
             @csrf
+            @method('PATCH')
             <div class="new-entry-div">
 
                 <label for="title">Überschrift:</label>

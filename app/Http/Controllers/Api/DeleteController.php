@@ -24,4 +24,6 @@ class DeleteController extends Controller
     public function course(Course $course){ $course->delete(); return back()->with('success','Kurs entfernt');}
 
     public function building(Building $building){ $building->delete(); return back()->with('success','Gebäude entfernt');}
+
+    public function post(Building $building){ $building->delete(); return back()->with('success','Gebäude entfernt');}
 }

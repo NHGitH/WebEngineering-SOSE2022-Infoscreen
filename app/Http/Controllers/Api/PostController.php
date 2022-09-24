@@ -38,8 +38,8 @@ class PostController extends Controller
         ]);
 
         $attributes['user_id'] = auth()->id();
-        $attributes['image'] = request()->file('image')->store('images');
-        
+        $attributes['picture_path'] = request()->file('image')->store('images');
+
         Post::create($attributes);
 
         // if($request->hasFile('image')){
@@ -95,5 +95,9 @@ class PostController extends Controller
         $post->update($attributes);
 
         return redirect('/dashboard/posts');
+    }
+
+    public function delete(Post $post){
+       $post->delete(); return back()->with('success','Gebäude entfernt');
     }
 }
