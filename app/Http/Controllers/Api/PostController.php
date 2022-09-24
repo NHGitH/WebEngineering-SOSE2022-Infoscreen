@@ -30,50 +30,38 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-
-        $attributes = request()->validate([
+        if($request->hasFile('image')){
+            $request->validate([
                 'title' => 'required',
                 'body' => 'required',
                 'image' => 'nullable|mimes:png'
-        ]);
-
-        $attributes['user_id'] = auth()->id();
-        $attributes['picture_path'] = request()->file('image')->store('images');
-
-        Post::create($attributes);
-
-        // if($request->hasFile('image')){
-        // //     $request->validate([
-        // //         'title' => 'required',
-        // //         'body' => 'required',
-        // //         'image' => 'nullable|mimes:png'
-        // //     ]);
+            ]);
     
-        // //     $newImageName = Str::random(10) . '-' . $request->file('image')->getFilename() . '.' . 
-        // //     $request->image->extension();
+            $newImageName = Str::random(10) . '-' . $request->file('image')->getFilename() . '.' . 
+            $request->image->extension();
     
-        // //     $request->image->move(public_path('images'), $newImageName);   
-        // //     $post = Post::create([
-        // //         'title' => $request->input('title'),
-        // //         'body' => $request->input('body'),
-        // //         'user_id' => auth()->id(),
-        // //         'picture_path' => $newImageName,
-        // //         'published_at' => date('Y-m-d'),
-        // //     ]);
-        // }
-        // else{
-        // //     $request->validate([
-        // //         'title' => 'required',
-        // //         'body' => 'required',
-        // //     ]);
-        // //     $post = Post::create([
-        // //         'title' => $request->input('title'),
-        // //         'body' => $request->input('body'),
-        // //         'user_id' => auth()->id(),
-        // //         'picture_path' => '/illustration-1.png',
-        // //         'published_at' => date('Y-m-d'),
-        // //     ]);
-        // // }
+            $request->image->move(public_path('images'), $newImageName);   
+            $post = Post::create([
+                'title' => $request->input('title'),
+                'body' => $request->input('body'),
+                'user_id' => auth()->id(),
+                'picture_path' => $newImageName,
+                'published_at' => date('Y-m-d'),
+            ]);
+        }
+        else{
+            $request->validate([
+                'title' => 'required',
+                'body' => 'required',
+            ]);
+            $post = Post::create([
+                'title' => $request->input('title'),
+                'body' => $request->input('body'),
+                'user_id' => auth()->id(),
+                'picture_path' => '/illustration-1.png',
+                'published_at' => date('Y-m-d'),
+            ]);
+        }
 
         return redirect('/dashboard');
     }

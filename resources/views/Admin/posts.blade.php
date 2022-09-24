@@ -1,5 +1,5 @@
 <x-layout>
-    @include('_dashboard-header')
+    @include('_admin-header')
 
     <div class="px-6 py-8">
         @if (auth()->user()->posts->count())
