@@ -1,4 +1,5 @@
 <x-layout>
+    @include('_dashboard-header')
     <div class="container-new-entry">
         <summary>Post anlegen:</summary>
         <form method="POST" action="/dashboard/posts/{{$post->id}}" enctype="multipart/form-data">
@@ -11,6 +12,7 @@
 
                 <label for="image">Bild hochladen (nur png Dateien):</label>
                 <input type="file" size="5000" accept="image/png" name="image" id="image">
+
                 <label for="body">Inhalt:</label>
                 <textarea id="body" name="body" rows="4" cols="50" placeholder="{{$post->body}}"></textarea>
 

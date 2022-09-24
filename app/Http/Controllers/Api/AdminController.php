@@ -7,27 +7,18 @@ use App\Models\Building;
 use App\Models\Course;
 use App\Models\Professor;
 use App\Models\User;
+use App\Models\Post;
 use App\Models\Room;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
     public function index()
     {
-        return view('/User/posts', [
-
+        return view('/Admin/posts', [
+            'posts' => Post::all(),
         ]);
     }
-
-    // public function show(User $user)
-    // {
-    //     return view('login', [
-    //         'user' => $user,
-    //         'rooms' => Room::latest()->filter(request(['search', 'building']))->get(),
-    //         'buildings' => Building::all(),
-    //         'currentBuilding' => Building::firstWhere('name', request('building'))
-    //     ]);
-    // }
 
     public function create(){
         return view('./User/create');
@@ -54,7 +45,7 @@ class UserController extends Controller
 
     public function login()
     {
-        return view('./User/dashboard', [
+        return view('./Admin/dashboard', [
             'buildings' => Building::all(),
             'rooms' => Room::all(),
             'courses' => Course::all(),

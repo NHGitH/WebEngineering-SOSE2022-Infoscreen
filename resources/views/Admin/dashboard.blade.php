@@ -1,5 +1,5 @@
 <x-layout>
-    @include('_dashboard-header')
+    @include('_admin-header')
 
     <section class="px-6 py-8">
         <main class="max-w-6xl mx-auto mt-10 lg:mt-10 space-y-6">
@@ -62,6 +62,141 @@
                 </details>
             </div>
 
+            @if(auth()->user()->role == "admin")
+            <div class="container-new-entry">
+                <details>
+                    <summary>Raum anlegen:</summary>
+                    <form method="POST" action="/dashboard/rooms/create">
+                        @csrf
+                        <div class="new-entry-div">
+                            <label for="building_id">Gebäude:</label>
+                            <select name="building_id">
+                                <option value="" disabled selected>Gebäude</option>
+                                @foreach($buildings as $building)
+                                <option value="{{$building->id}}">{{$building->name}}</option>
+                                @endforeach
+                            </select>
+
+                            <label for="name">Raumnummer:</label>
+                            <input type="text" name="name" id="name" placeholder="Raumnummer">
+
+                            <button type="submit">Neuen Raum hinzufügen</button>
+                        </div>
+
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
+            </div>
+
+            <!-- EIN NEUES GEBÄUDE ANLEGEN -->
+            <div class="container-new-entry">
+                <details>
+                    <summary>Gebäude anlegen:</summary>
+                    <form method="POST" action="/dashboard/buildings/create">
+                        @csrf
+                        <div class="new-entry-div">
+
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" placeholder="Gebäude">
+
+                            <button type="submit">Hinzufügen</button>
+                        </div>
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
+            </div>
+
+            <!-- EIN NEUEN STUDIENGANG ANLEGEN -->
+            <div class="container-new-entry">
+                <details>
+                    <summary>Studiengang anlegen:</summary>
+                    <form method="POST" action="/dashboard/courses/create">
+                        @csrf
+                        <div class="new-entry-div">
+
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" placeholder="Studiengang">
+
+                            <label for="building_id">Gebäude:</label>
+                            <select name="building_id">
+                                <option value="" disabled selected>Gebäude</option>
+                                @foreach($buildings as $building)
+                                <option value="{{$building->id}}">{{$building->name}}</option>
+                                @endforeach
+                            </select>
+
+                            <button type="submit">Hinzufügen</button>
+                        </div>
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
+            </div>
+
+            <!-- EIN NEUEN PROFESSOR ANLEGEN -->
+            <div class="container-new-entry">
+                <details>
+                    <summary>Professor anlegen:</summary>
+                    <form method="POST" action="/dashboard/professors/create">
+                        @csrf
+                        <div class="new-entry-div">
+
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" placeholder="Professor">
+
+                            <button type="submit">Hinzufügen</button>
+                        </div>
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
+            </div>
+
+            <!-- EIN NEUES EVENT ANLEGEN -->
+            <div class="container-new-entry">
+                <details>
+                    <summary>Event anlegen:</summary>
+                    <form>
+                        @csrf
+                        <div class="new-entry-div">
+                            <label for="captionName">Überschrift:</label>
+                            <input type="text" id="captionName" placeholder="Überschrift">
+
+                            <label for="picPath">Bild hochladen (optional):</label>
+                            <input type="file" size="50" accept="text/*" id="picPath">
+
+                            <button>Neues Event hinzufügen</button>
+                        </div>
+
+                    </form>
+                </details>
+            </div>
+            @endif
+            <!-- EINEN NEUEN RAUM ANLEGEN -->
+
+
             <!-- EINEN NEUEN POST ANLEGEN -->
             <div class="container-new-entry">
                 <details>
@@ -83,6 +218,36 @@
                     </form>
                 </details>
             </div>
+
+            <!-- EIN NEUES GEBÄUDE ANLEGEN -->
+            <!-- <div class="container-new-entry">
+                <details>
+                    <summary>Test anlegen:</summary>
+                    <form method="#" action="/#">
+                        @csrf
+                        <div class="new-entry-div">
+
+                            <label for="name">Name:</label>
+                            <input list="rooms" name="name" id="name" placeholder="Raum">
+                            <datalist id="rooms">
+                                @foreach($rooms as $room)
+                                <option value="{{$room->id}}">{{$room->name}}</option>
+                                @endforeach
+                            </datalist>
+
+                            <button type="submit">Hinzufügen</button>
+                        </div>
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
+            </div> -->
+
             <div>
                 <h1>Meine Posts:</h1>
                 @if(auth()->user()->posts->count())

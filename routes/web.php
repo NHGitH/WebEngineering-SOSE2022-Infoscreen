@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\BuildingController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\ModuleController;
@@ -59,21 +60,25 @@ Route::post('room', [RoomController::class, 'store']);
 
 Route::get('/dashboard', [UserController::class, 'login'])->middleware('auth');
 
-Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
+Route::get('login', [SessionsController::class, 'create'])->middleware('guest')->name('login');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
 Route::group(['middleware' => ['auth']], function() {
+    //PostRoutes:
     Route::get('/dashboard/posts', [PostController::class, 'index']);
     Route::post('/dashboard/posts/create', [PostController::class, 'store']);
     Route::get('/dashboard/posts/{post}/edit', [PostController::class, 'edit']);
     Route::patch('/dashboard/posts/{post}', [PostController::class, 'update']);
     Route::delete('/dashboard/posts/{post}', [PostController::class, 'delete']);
-    
-    Route::post('/dashboard/posts/delete', [PostController::class, 'store']);
-    Route::post('/dashboard/modules/create', [ModuleController::class, 'store']);
-    Route::post('/dashboard/rooms/create', [RoomController::class, 'store']);
-    Route::post('/dashboard/buildings/create', [BuildingController::class, 'store']);
-    Route::post('/dashboard/professors/create', [ProfessorController::class, 'store']);
-    Route::post('/dashboard/courses/create', [CourseController::class, 'store']);
+});
+
+Route::group(['middleware' => ['admin']], function() {
+    //PostRoutes:
+    Route::get('/admin',[AdminController::class, 'login'])->middleware('admin');
+    Route::get('/admin/posts', [AdminController::class, 'index']);
+    Route::post('/admin/posts/create', [AdminController::class, 'store']);
+    Route::get('/admin/posts/{post}/edit', [AdminController::class, 'edit']);
+    Route::patch('/admin/posts/{post}', [AdminController::class, 'update']);
+    Route::delete('/admin/posts/{post}', [AdminController::class, 'delete']);
 });
