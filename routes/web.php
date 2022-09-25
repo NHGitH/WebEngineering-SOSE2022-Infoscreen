@@ -84,4 +84,13 @@ Route::group(['middleware' => ['admin']], function() {
     Route::get('/admin/posts/{post}/edit', [PostController::class, 'edit']);
     Route::patch('/admin/posts/{post}', [PostController::class, 'update']);
     Route::delete('/admin/posts/{post}', [PostController::class, 'delete']);
-});
+
+    Route::get('admin/buildings', [AdminController::class, 'buildings']);
+    Route::delete('admin/rooms/{builidng}', [BuildingController::class, 'delete']);
+    Route::delete('admin/courses/{course}', [CourseController::class, 'delete']);
+    Route::delete('admin/room/{room}', [RoomController::class, 'delete']);
+
+    Route::get('admin/rooms', [AdminController::class, 'rooms']);
+    Route::get('admin/courses', [AdminController::class, 'courses']);
+    Route::get('admin/users', [AdminController::class, 'users']);
+}); 

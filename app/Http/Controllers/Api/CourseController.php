@@ -22,4 +22,10 @@ class CourseController extends Controller
 
         return redirect('/dashboard');
     }
+
+    public function delete(Course $course){
+        $course->delete(); 
+        
+        return back()->with('success','Kurs entfernt');
+     }
 }

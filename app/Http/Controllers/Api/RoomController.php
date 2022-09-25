@@ -38,4 +38,10 @@ class RoomController extends Controller
 
         return redirect('/dashboard');
     }
+
+    public function delete(Room $room){
+        $room->delete(); 
+        
+        return back()->with('success','Gebäude entfernt');
+     }
 }
