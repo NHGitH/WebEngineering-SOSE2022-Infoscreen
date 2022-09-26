@@ -44,6 +44,32 @@ class BuildingController extends Controller
 
         Building::create($attributes);
         
-        return redirect('/dashboard');
+        return redirect('/admin');
+    }
+
+    public function edit()
+    {
+        return view('/Building/edit');
+    }
+
+   
+
+    // public function update(Post $post){
+
+    //     $attributes = request()->validate([
+    //         'title' => 'required',
+    //         'image' => 'nullable|image',
+    //         'body' => 'required',
+    //     ]);
+
+    //     $post->update($attributes);
+
+    //     return redirect('dashboard/posts');
+    // }
+
+    public function delete(Building $building){
+       $building->delete(); 
+       
+       return back()->with('success','Gebäude entfernt');
     }
 }

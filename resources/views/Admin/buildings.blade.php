@@ -1,27 +1,22 @@
 <x-layout>
-    @include('_dashboard-header')
+    @include('_admin-header')
 
     <div class="px-6 py-8">
-        @if (auth()->user()->modules->count())
+        @if ($buildings->count())
         <table class="table">
             <tr>
-                <th> Name </th>
-                <th> Studiengang </th>
-                <th> Zeitpunkt: </th>
-                <th> Funktionen </th>
+                <th> Name </th> 
+                <th> Erstellt am: </th>
             </tr>
             <!-- //Einbindung der User -->
-            @foreach (auth()->user()->modules as $module)
+            @foreach ($buildings as $building)
             <tr>
-                <td> {{$module->name}} </td>
-                <td> {{$module->course->name}} </td>
-                <td></td>
-                <!-- <td> {{$module->course->name}} </td> -->
+                <td> {{$building->name}} </td>
+                <td> {{$building->created_at}} </td>
+               
                 <td>
                     <div>
-                        <a href="/dashboard/modules/{{$module->id}}/edit"> Bearbeiten </a>
-
-                        <form method="POST" action="/dashboard/modules/{{$module->id}}">
+                        <form method="POST" action="/admin/buildings/{{$building->id}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Entfernen</button>
@@ -38,11 +33,13 @@
 </x-layout>
 
 <style>
-    td {
+    td, th, table {
         text-align: center;
+        border: 1px solid black;
+        border-collapse: collapse;
     }
 
     table {
         width: 100%;
     }
-</style>
+</style>  

@@ -5,7 +5,7 @@
         <div class="card-content">
             <h1>{{$post->title}}</h1>
             <p>Author: {{$post->author->name}}</p>
-            <p>Veröffentlicht am: {{$post->published_at}}</p>
+            <p>Veröffentlicht am: {{$post->published_at ? Carbon\Carbon::parse($post->published_at)->format('d-m-Y') : '-'}}</p>
             <p>{{$post->body}}</p>
         </div>
     </div>

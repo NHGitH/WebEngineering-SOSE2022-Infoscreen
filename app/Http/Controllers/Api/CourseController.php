@@ -20,6 +20,12 @@ class CourseController extends Controller
 
         Course::create($attributes);
 
-        return redirect('/dashboard');
+        return redirect('/admin');
     }
+
+    public function delete(Course $course){
+        $course->delete(); 
+        
+        return back()->with('success','Kurs entfernt');
+     }
 }

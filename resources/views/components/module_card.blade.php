@@ -5,12 +5,10 @@
         <div class="text-area">
             <p class="text-2xl">{{$module->name}}</h2>
             <p class="text-sm">Raum: {{$module->room->name}}</p>
-            <p class="text-sm">Professor: {{$module->professor->name}}</p>
+            <p class="text-sm">Professor: {{$module->user->name}}</p>
             <p class="text-sm">Studiengang: {{$module->course->name}}</p>
-            <p class="text-sm">Veranstaltungszeit: {{$module->time}}</p>
-            <p class="text-sm">{{$module->date}}</p>
         </div>
-        <img class="picture" src="/images/{{$module->professor->picture_path}}" alt="{{$module->professor->picture_path}}">
+        <img class="picture" src="/images/{{$module->user->name}}" alt="{{$module->user->name}}">
     </div>
 </section>
 

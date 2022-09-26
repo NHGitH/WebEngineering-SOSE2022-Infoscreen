@@ -7,11 +7,13 @@
             <tr>
                 <th> Name </th>
                 <th> Studiengang </th>
+                <th> Modul </th>
                 <th> Zeitpunkt: </th>
                 <th> Funktionen </th>
             </tr>
             <!-- //Einbindung der User -->
             @foreach (auth()->user()->modules as $module)
+            @foreach ($module->lessons as $lesson)
             <tr>
                 <td> {{$module->name}} </td>
                 <td> {{$module->course->name}} </td>
@@ -30,6 +32,7 @@
                 </td>
             </tr>
             @endforeach
+            @endforeach
         </table>
         @else
         <p>Sie haben noch keine Posts verfasst.</p>
@@ -38,8 +41,10 @@
 </x-layout>
 
 <style>
-    td {
+    td, th, table {
         text-align: center;
+        border: 1px solid black;
+        border-collapse: collapse;
     }
 
     table {

@@ -36,6 +36,12 @@ class RoomController extends Controller
 
         Room::create($attributes);
 
-        return redirect('/dashboard');
+        return redirect('/admin');
     }
+
+    public function delete(Room $room){
+        $room->delete(); 
+        
+        return back()->with('success','Gebäude entfernt');
+     }
 }

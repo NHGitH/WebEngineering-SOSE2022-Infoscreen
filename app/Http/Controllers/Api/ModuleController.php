@@ -27,16 +27,19 @@ class ModuleController extends Controller
     {
         $attributes = request()->validate([
             'name' => 'required|max:255',
-            'room_id' => 'required',
-            'professors_id' => 'required',
+            'user_id' => 'required',
             'courses_id' => 'required',
-            'date' => 'required',
-            'time' =>  'required',
         ]);
 
         Module::create($attributes);
 
 
-        return redirect('/dashboard');
+        return redirect('/admin');
     }
+
+    public function delete(Module $module){
+        $module->delete(); 
+        
+        return back()->with('success','Modul entfernt');
+     }
 }

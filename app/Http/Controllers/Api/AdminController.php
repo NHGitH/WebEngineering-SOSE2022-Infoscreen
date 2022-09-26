@@ -21,6 +21,35 @@ class AdminController extends Controller
         ]);
     }
 
+    public function buildings()
+    {
+        return view('/Admin/buildings', [
+            'buildings' => Building::all(),
+        ]);
+    }
+
+    public function users()
+    {
+        return view('/Admin/users', [
+            'users' => User::all(),
+        ]);
+    }
+
+    public function courses()
+    {
+        return view('Admin/courses',
+        [
+            'courses' => Course::all(),
+        ]);
+    }
+
+    public function rooms()
+    {
+        return view('/Admin/rooms', [
+            'rooms' => Room::all(),
+        ]);
+    }
+
     public function modules()
     {
         return view('/Admin/modules', [
@@ -58,7 +87,7 @@ class AdminController extends Controller
             'rooms' => Room::all(),
             'courses' => Course::all(),
             'username' => User::firstWhere('username', request('username')),
-            'professors' => Professor::all(),
+            'users' => User::all(),
         ]
         );
     }

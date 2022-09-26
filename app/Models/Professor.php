@@ -12,8 +12,4 @@ class Professor extends Model
     protected $fillable = ['name','picture_path'];
     protected $guarded = [];
 
-    public function module()
-    {
-        return $this->hasMany(Module::class);
-    }
 }
