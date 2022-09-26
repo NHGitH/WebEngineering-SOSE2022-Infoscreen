@@ -87,7 +87,7 @@ class AdminController extends Controller
             'rooms' => Room::all(),
             'courses' => Course::all(),
             'username' => User::firstWhere('username', request('username')),
-            'professors' => Professor::all(),
+            'users' => User::all(),
         ]
         );
     }

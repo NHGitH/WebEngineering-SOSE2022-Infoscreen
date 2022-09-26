@@ -8,8 +8,8 @@
             <!-- EINE NEUE VERANSTALTUNG ANLEGEN -->
             <div class="container-new-entry">
                 <details>
-                    <summary>Veranstaltung anlegen:</summary>
-                    <form method="POST" action="/dashboard/modules/create">
+                    <summary>Modul anlegen:</summary>
+                    <form method="POST" action="/admin/modules/create">
                         @csrf
                         <div class="new-entry-div">
                             <div class="test">
@@ -25,26 +25,13 @@
                                 @endforeach
                             </select>
 
-                            <label for="room_id">Raum:</label>
-                            <select name="room_id">
-                                @foreach($rooms as $room)
-                                <option value="{{$room->id}}">{{$room->building->name}}{{$room->name}}</option>
-                                @endforeach
-                            </select>
-
                             <label for="profName">Name des Professors:</label>
-                            <select name="professors_id">
+                            <select name="user_id">
                                 <option value="" disabled selected>Professor</option>
-                                @foreach($professors as $prof)
-                                <option value="{{$prof->id}}">{{$prof->name}}</option>
+                                @foreach($users as $user)
+                                <option value="{{$user->id}}">{{$user->name}}</option>
                                 @endforeach
                             </select>
-
-                            <label for="date">Veranstaltungsdatum:</label>
-                            <input type="date" name="date" id="date">
-
-                            <label for="time">Veranstaltungszeit:</label>
-                            <input type="time" name="time" id="time">
 
                             <button type="submit">hinzufügen</button>
                         </div>
@@ -64,7 +51,7 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Raum anlegen:</summary>
-                    <form method="POST" action="/dashboard/rooms/create">
+                    <form method="POST" action="/admin/rooms/create">
                         @csrf
                         <div class="new-entry-div">
                             <label for="building_id">Gebäude:</label>
@@ -96,7 +83,7 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Gebäude anlegen:</summary>
-                    <form method="POST" action="/dashboard/buildings/create">
+                    <form method="POST" action="/admin/buildings/create">
                         @csrf
                         <div class="new-entry-div">
 
@@ -120,7 +107,7 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Studiengang anlegen:</summary>
-                    <form method="POST" action="/dashboard/courses/create">
+                    <form method="POST" action="/admin/courses/create">
                         @csrf
                         <div class="new-entry-div">
 
@@ -148,32 +135,63 @@
                 </details>
             </div>
 
-            <!-- EIN NEUEN PROFESSOR ANLEGEN -->
+            <!-- EIN NEUEN USER ANLEGEN -->
             <div class="container-new-entry">
                 <details>
-                    <summary>Professor anlegen:</summary>
-                    <form method="POST" action="/dashboard/professors/create">
-                        @csrf
-                        <div class="new-entry-div">
+                    <summary>User anlegen:</summary>
+                    <form method="POST" action="/admin/users/create">
+            @csrf
+            <div class="form-item">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" id="name" value="{{old('name')}}" required>
+                @error('name')
+                <p>{{$message}}</p>
+                @enderror
+            </div>
 
-                            <label for="name">Name:</label>
-                            <input type="text" name="name" id="name" placeholder="Professor">
+            <div class="form-item">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" id="username" value="{{old('username')}}" required>
+                @error('username')
+                <p>{{$message}}</p>
+                @enderror
+            </div>
 
-                            <button type="submit">Hinzufügen</button>
-                        </div>
-                        @if($errors->any())
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                        @endif
-                    </form>
+            <div class="form-item">
+                <label for="role">Rolle:</label>
+                <select id="role" name="role" required> 
+                    <option value="prof" > Professor </option>
+                    <option value="admin" > Admin </option>
+                </select>
+                @error('role')
+                <p>{{$message}}</p>
+                @enderror
+            </div>
+
+            <div class="form-item">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" id="password" required>
+                @error('password')
+                <p>{{$message}}</p>
+                @enderror
+            </div>
+            <div class="form-item">
+                <button type="submit">Submit</button>
+            </div>
+
+            @if($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+            @endif
+        </form>
                 </details>
             </div>
 
             <!-- EIN NEUES EVENT ANLEGEN -->
-            <div class="container-new-entry">
+            <!-- <div class="container-new-entry">
                 <details>
                     <summary>Event anlegen:</summary>
                     <form>
@@ -190,16 +208,16 @@
 
                     </form>
                 </details>
-            </div>
+            </div> -->
             @endif
             <!-- EINEN NEUEN RAUM ANLEGEN -->
 
 
             <!-- EINEN NEUEN POST ANLEGEN -->
-            <div class="container-new-entry">
+            <!-- <div class="container-new-entry">
                 <details>
                     <summary>Post anlegen:</summary>
-                    <form method="POST" action="/dashboard/posts/create" enctype="multipart/form-data">
+                    <form method="POST" action="/admin/posts/create" enctype="multipart/form-data">
                         @csrf
                         <div class="new-entry-div">
 
@@ -215,7 +233,7 @@
                         </div>
                     </form>
                 </details>
-            </div>
+            </div> -->
 
             <!-- EIN NEUES GEBÄUDE ANLEGEN -->
             <!-- <div class="container-new-entry">

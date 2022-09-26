@@ -2,25 +2,23 @@
     @include('_admin-header')
 
     <div class="px-6 py-8">
-        @if ($rooms->count())
+        @if ($modules->count())
         <table class="table">
             <tr>
-                <th> Name </th> 
-                <th> Gebäude </th> 
-                <th> erstellt am: </th>
+                <th> Name </th>
+                <th> Professor </th>
+                <th> Studiengang </th>
                 <th> Funktionen </th>
             </tr>
             <!-- //Einbindung der User -->
-            @foreach ($rooms as $room)
+            @foreach ($modules as $module)
             <tr>
-                <td> {{$room->name}} </td>
-                <td> {{$room->building->name}} </td>
-                <td> {{$room->created_at}} </td>
-                
-               
+                <td> {{$module->name}} </td>
+                <td> {{$module->user->name}} </td>
+                <td> {{$module->course->name}}</td>
                 <td>
                     <div>
-                        <form method="POST" action="/admin/rooms/{{$room->id}}">
+                        <form method="POST" action="/admin/modules/{{$module->id}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Entfernen</button>
@@ -46,4 +44,4 @@
     table {
         width: 100%;
     }
-</style>  
+</style>

@@ -18,7 +18,7 @@
 
             <div class="menu">
                 <li><a href="/admin/posts">Posts</a></li>
-                <li><a href="/admin/modules">Veranstaltungen</a></li>
+                <li><a href="/admin/modules">Module</a></li>
                 <li><a href="/admin/buildings">Gebäude</a></li>
                 <li><a href="/admin/rooms">Räume</a></li>
                 <li><a href="/admin/courses">Studiengänge</a></li>

@@ -16,7 +16,7 @@
                
                 <td>
                     <div>
-                        <form method="POST" action="/dashboard/buildings/{{$building->id}}">
+                        <form method="POST" action="/admin/buildings/{{$building->id}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Entfernen</button>

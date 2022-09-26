@@ -6,22 +6,22 @@
         <table class="table">
             <tr>
                 <th> Name </th>
-                <th> Body </th>
-                <th> Image </th>
-                <th> Gepostet am: </th>
+                <th> Studiengang </th>
+                <th> Zeitpunkt: </th>
                 <th> Funktionen </th>
             </tr>
             <!-- //Einbindung der User -->
             @foreach (auth()->user()->modules as $module)
             <tr>
                 <td> {{$module->name}} </td>
-                <td> {{$module->room}}</td>
-                <td> {{$module->room->building}}</td>
+                <td> {{$module->course->name}} </td>
+                <td></td>
+                <!-- <td> {{$module->course->name}} </td> -->
                 <td>
                     <div>
-                        <a href="/dashboard/posts/{{$post->id}}/edit"> Bearbeiten </a>
+                        <a href="/dashboard/modules/{{$module->id}}/edit"> Bearbeiten </a>
 
-                        <form method="POST" action="/dashboard/posts/{{$post->id}}">
+                        <form method="POST" action="/dashboard/modules/{{$module->id}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Entfernen</button>

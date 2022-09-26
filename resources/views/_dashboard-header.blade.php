@@ -18,7 +18,7 @@
 
             <div class="menu">
                 <li><a href="/dashboard/posts">Meine Posts</a></li>
-                <li><a href="/dashboard/modules">Meine Veranstaltungen</a></li>
+                <li><a href="/dashboard/lessons">Meine Veranstaltungen</a></li>
                 @if(auth()->user()->role == 'admin')
                 <li><a href="/admin">Meine Adminbereich</a></li>
                 @endif

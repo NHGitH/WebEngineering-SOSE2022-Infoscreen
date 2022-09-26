@@ -44,14 +44,12 @@ class BuildingController extends Controller
 
         Building::create($attributes);
         
-        return redirect('/dashboard');
+        return redirect('/admin');
     }
 
     public function edit()
     {
         return view('/Building/edit');
-            
-        
     }
 
    

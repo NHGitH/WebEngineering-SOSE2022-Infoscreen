@@ -23,7 +23,6 @@
             <div class="form-item">
                 <label for="role">Rolle:</label>
                 <select id="role" name="role" required> 
-                    <option value="guest" selected> Gast </option>
                     <option value="prof" > Professor </option>
                     <option value="admin" > Admin </option>
                 </select>

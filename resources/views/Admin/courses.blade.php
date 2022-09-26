@@ -19,7 +19,7 @@
                
                 <td>
                     <div>
-                        <form method="POST" action="/dashboard/course/{{$course->id}}">
+                        <form method="POST" action="/admin/courses/{{$course->id}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Entfernen</button>

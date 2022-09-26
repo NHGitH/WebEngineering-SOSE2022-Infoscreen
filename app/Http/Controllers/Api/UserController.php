@@ -58,6 +58,22 @@ class UserController extends Controller
         return redirect('/dashboard');
     }
 
+    public function storeAdmin(){
+
+        $attributes = request()->validate([
+            'name' => 'required|max:255',
+            'username' => 'required|max:255|min:3|unique:users,username',
+            'role' => 'required',
+            'password' => 'required|min:7|max:255',
+        ]);
+
+        $user = User::create($attributes);
+
+        // session()->flash('success','Your account has been created.');
+
+        return redirect('/admin');
+    }
+
 
     public function login()
     {

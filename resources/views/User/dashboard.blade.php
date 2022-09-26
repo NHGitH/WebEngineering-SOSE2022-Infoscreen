@@ -8,37 +8,26 @@
 
             <!-- ERSTMAL MIT HTML GELÖST, SPÄTER MIT JAVASCRIPT BZW. VUEJS -->
             <!-- EINE NEUE VERANSTALTUNG ANLEGEN -->
+            @if(auth()->user()->modules->count())
             <div class="container-new-entry">
                 <details>
                     <summary>Veranstaltung anlegen:</summary>
-                    <form method="POST" action="/dashboard/modules/create">
+                    <form method="POST" action="/dashboard/lessons/create">
                         @csrf
                         <div class="new-entry-div">
                             <div class="test">
-                                <label for="name">Name des Moduls:</label>
-                                <input type="text" name="name" id="name" placeholder="Modulname">
-                            </div>
-
-
-                            <label for="courseName">Studiengang:</label>
-                            <select name="courses_id">
-                                @foreach($courses as $course)
-                                <option value="{{$course->id}}">{{$course->name}}</option>
+                            <label for="courseName">Modul:</label>
+                            <select name="module_id">
+                                @foreach(auth()->user()->modules as $module)
+                                <option value="{{$module->id}}">{{$module->name}}</option>
                                 @endforeach
                             </select>
 
                             <label for="room_id">Raum:</label>
                             <select name="room_id">
-                                @foreach($rooms as $room)
-                                <option value="{{$room->id}}">{{$room->building->name}}{{$room->name}}</option>
-                                @endforeach
-                            </select>
-
-                            <label for="profName">Name des Professors:</label>
-                            <select name="professors_id">
-                                <option value="" disabled selected>Professor</option>
-                                @foreach($professors as $prof)
-                                <option value="{{$prof->id}}">{{$prof->name}}</option>
+                                <option value="" disabled selected>Raum</option>
+                                @foreach($rooms->sortBy('building.name') as $room)
+                                <option value="{{$room->id}}">{{$room->building->name}}-{{$room->name}}</option>
                                 @endforeach
                             </select>
 
@@ -61,6 +50,7 @@
                     </form>
                 </details>
             </div>
+            @endif
 
             <!-- EINEN NEUEN POST ANLEGEN -->
             <div class="container-new-entry">

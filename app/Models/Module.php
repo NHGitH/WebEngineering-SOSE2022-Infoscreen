@@ -9,23 +9,24 @@ class Module extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['room_id','courses_id','building_id','name', 'professors_id', 'date','time'];
+    protected $fillable = ['room_id','courses_id','building_id','name', 'user_id', 'date','time'];
     protected $guarded = [];
-    protected $with = ['room','professor','course'];
+    protected $with = ['user','course'];
 
-    public function room()
-    {
-        return $this->belongsTo(Room::class,'room_id');
-    }
 
-    public function professor()
+    public function user()
     {
-        return $this->belongsTo(Professor::class,'professors_id');
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function course()
     {
         return $this->belongsTo(Course::class,'courses_id');
+    }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
     }
 
 }

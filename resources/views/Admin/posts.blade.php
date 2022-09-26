@@ -22,7 +22,7 @@
                 <td> {{$post->published_at}}</td>
                 <td>
                     <div>
-                        <form method="POST" action="/dashboard/posts/{{$post->id}}">
+                        <form method="POST" action="/admin/posts/{{$post->id}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Entfernen</button>

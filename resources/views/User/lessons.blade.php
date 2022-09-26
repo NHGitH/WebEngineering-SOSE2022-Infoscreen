@@ -1,26 +1,29 @@
 <x-layout>
-    @include('_admin-header')
+    @include('_dashboard-header')
 
     <div class="px-6 py-8">
-        @if ($rooms->count())
+        @if (auth()->user()->modules->count())
         <table class="table">
             <tr>
-                <th> Name </th> 
-                <th> Gebäude </th> 
-                <th> erstellt am: </th>
+                <th> Name </th>
+                <th> Studiengang </th>
+                <th> Modul </th>
+                <th> Zeitpunkt: </th>
                 <th> Funktionen </th>
             </tr>
             <!-- //Einbindung der User -->
-            @foreach ($rooms as $room)
+            @foreach (auth()->user()->modules as $module)
+            @foreach ($module->lessons as $lesson)
             <tr>
-                <td> {{$room->name}} </td>
-                <td> {{$room->building->name}} </td>
-                <td> {{$room->created_at}} </td>
-                
-               
+                <td> {{$module->name}} </td>
+                <td> {{$module->course->name}} </td>
+                <td></td>
+                <!-- <td> {{$module->course->name}} </td> -->
                 <td>
                     <div>
-                        <form method="POST" action="/admin/rooms/{{$room->id}}">
+                        <a href="/dashboard/modules/{{$module->id}}/edit"> Bearbeiten </a>
+
+                        <form method="POST" action="/dashboard/modules/{{$module->id}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Entfernen</button>
@@ -28,6 +31,7 @@
                     </div>
                 </td>
             </tr>
+            @endforeach
             @endforeach
         </table>
         @else
@@ -46,4 +50,4 @@
     table {
         width: 100%;
     }
-</style>  
+</style>
