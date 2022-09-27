@@ -23,17 +23,6 @@ class UserFactory extends Factory
         ];
     }
 
-    public function admin()
-    {
-        return [
-            'name' => "admin",
-            'username' => "admin",
-            'role' => "admin",
-            'password' => 'admin', // password
-            'remember_token' => Str::random(10),
-        ];
-    }
-
     /**
      * Indicate that the model's email address should be unverified.
      *

@@ -1,125 +1,175 @@
 <x-layout>
-  <div class="login-main-container">
-    <div class="picture-container">
-      <div class="login-container-neu">
-        <div class="login-container-caption">
-          <h1>Hochschule Flensburg</h1>
-          <h1>Infoscreen-Login</h1>
-        </div>
-        <div>
-          <form method="POST" action="/login">
-            @csrf
-            <input type="text" name="username" placeholder="Username" required />
+  <!-- <div class="login-main-container">
+    <div class="login-container-neu">
+      <div class="login-container-caption">
+        <h1>Infoscreen</h1>
+        <h1>Hochschule Flensburg</h1>
+      </div>
+      <div>
+        <form method="POST" action="/login">
+          @csrf
+          <input type="text" name="username" placeholder="Username" required />
 
-            <input type="password" name="password" placeholder="Password" required />
-            <button type="submit"> Einloggen </button>
+          <input type="password" name="password" placeholder="Password" required />
+          <button type="submit">Einloggen</button>
 
-            @if($errors->any())
-            <ul>
-              @foreach ($errors->all() as $error)
-              <li>{{$error}}</li>
-              @endforeach
-            </ul>
-            @endif
-          </form>
-          <hr>
-          <hr>
+          @if($errors->any())
+          <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+          </ul>
+          @endif
+        </form>
+        <hr>
+        <hr>
 
-          <a href="#"> Screen starten </a>
-        </div>
+        <a href="/dashboard"> Screen starten </a>
       </div>
     </div>
+  </div> -->
+
+
+  <form method="POST" action="/login">
+    @csrf
+    <div class="grid-container">
+      <div class="grid-item-1">
+        <h1>Infoscreen<br />Hochschule Flensburg</h1>
+      </div>
+
+      <div>
+        <!-- DUMMY DIV --- NICHT ENTFERNEN -->
+        <!--<hr class="hr-margin-first">-->
+      </div>
+
+      <div class="grid-item-2">
+        <label for="username">BENUTZER</label><br />
+        <input type="text" name="username" id="username" required>
+      </div>
+
+      <div class="grid-item-3">
+        <label for="password">PASSWORT</label><br />
+        <input type="password" name="password" id="password" required>
+      </div>
+
+      <div class="grid-item-4 login-button">
+        <button type="submit">EINLOGGEN</button>
+      </div>
+
+      <div>
+        <hr class="hr-margin-second">
+      </div>
+
+      <div>
+        @if($errors->any())
+        @foreach ($errors->all() as $error)
+        <p>{{$error}}</p>
+        @endforeach
+        @endif
+      </div>
+
+      <div class="grid-item-5">
+        <a href="/dashboard"><button type="button">RAUMÜBERSICHT</button></a>
+      </div>
+  </form>
+
   </div>
-  </div>
+
+
 </x-layout>
 
 <style>
-  input[type=text] {
-    padding: 5px;
-    margin: 5px 0;
-    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-    border-radius: 5px;
-
-  }
-
-  li{
-    color: red;
-  }
-
-  input[type=password] {
-    padding: 5px;
-    margin: 5px 0;
-    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-    border-radius: 5px;
-  }
-
-  input {
-    width: 70%;
-    font-family: inherit;
-    font-size: inherit;
-  }
-
-  .login-container-neu {
-    width: 15%;
-    min-width: 200px;
-    height: 50%;
-    min-height: 300px;
-    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.165);
-    background-color: rgba(204, 204, 204, 0.2);
-    margin: 15% auto;
-    border-radius: 10px;
-    text-align: center;
-  }
-
-  .user-text-input,
-  .user-password-input {
-    border: 0;
-    border-bottom: 1px solid #eee;
-  }
-
-  /*---------*/
-  /*---------*/
-  /* BUTTON */
-  /*---------*/
-  /*---------*/
-
-  button {
-    /* Behavior deaktivieren */
-    appearance: none;
-    -webkit-appearance: none;
-
-    /* Styles */
-    padding: 7px;
-    margin: 20px 0;
-    border: none;
-    background-color: #3f51b576;
-    color: #fff;
-    font-weight: 600;
-    border-radius: 5px;
-    width: 50%;
-  }
-
-  ::placeholder {
-    text-align: center;
-  }
-
-  /*---------*/
-  /*---------*/
-  /* H1 */
-  /*---------*/
-  /*---------*/
-
-  .login-container-neu h1 {}
-
-  .login-container-caption {
-    text-align: center;
-    font-weight: 200;
-    padding: 10% 0 15% 0;
-    color: white;
-  }
-
   body {
     background-size: auto 100vh;
     background-image: url("/images/layered-waves-haikei.svg");
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .grid-container {
+    right: 50%;
+    bottom: 50%;
+    position: absolute;
+    transform: translate(50%, 30%);
+    background-color: rgba(232, 232, 232, 0.6);
+    min-width: 290px;
+
+    display: grid;
+    grid-template-rows: 110px 18px 55px 55px 55px 18px 35px;
+
+  }
+
+  .grid-item-1 h1 {
+    font-size: 150%;
+    font-weight: bold;
+    text-align: center;
+    margin: 15px 15px 0 15px;
+  }
+
+  .grid-item-2,
+  .grid-item-3 {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .grid-item-2 label,
+  .grid-item-3 label {
+    font-size: 80%;
+  }
+
+  .grid-item-4 button {
+    background-color: #313131;
+    color: #fff;
+    border: none;
+    padding: 5px 15px;
+    font-size: 70%;
+    transition: 0.2s ease 0s;
+    margin: 15px auto 0 auto;
+  }
+
+  .grid-item-5 button {
+    background-color: #313131;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    margin: 0 auto;
+    font-size: 90%;
+    transition: 0.2s;
+
+    position: absolute;
+    top: 95%;
+    right: 22%;
+  }
+
+  .login-button {
+    height: 28px;
+    margin: 0 auto;
+  }
+
+  .grid-item-4 button:hover,
+  .grid-item-5 button:hover {
+    background-color: #616161;
+    transition: 0.2s;
+  }
+
+  hr {
+    width: 75%;
+    background-color: black;
+  }
+
+  .hr-margin-first {
+    margin: 0 auto;
+  }
+
+  .hr-margin-second {
+    margin: 0 auto 0 auto;
+  }
+
+  input {
+    border: none;
+    height: 20px;
   }
 </style>
