@@ -1,18 +1,15 @@
 <header>
   <!-- NEUE NAVBAR -->
   <div class="nav-caption">
-    <a href="/dashboard"><h1>Infoscreen<br />Hochschule Flensburg</h1></a>
+    <h1>Infoscreen<br />Hochschule Flensburg</h1>
     <!--<img src="/public/images/Logo_der_Hochschule_Flensburg.png">-->
   </div>
 
   <nav>
     <ul class="nav-links">
-      <li><a href="/admin/posts">Posts</a></li>
-      <li><a href="/admin/modules">Module</a></li>
-      <li><a href="/admin/buildings">Gebäude</a></li>
-      <li><a href="/admin/rooms">Räume</a></li>
-      <li><a href="/admin/courses">Studiengänge</a></li>
-      <li><a href="/admin/users">User</a></li>
+      <li><a href="/dashboards/posts">Meine Posts</a></li>
+      <li><a href="/dashboard/lessons">Meine Veranstaltungen</a></li>
+      <li><a href="/admin">Mein Adminbereich</a></li>
     </ul>
   </nav>
 

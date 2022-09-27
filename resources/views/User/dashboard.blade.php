@@ -2,90 +2,100 @@
     @include('_dashboard-header')
 
     <section class="px-6 py-8">
-        <main class="max-w-6xl mx-auto mt-10 lg:mt-10 space-y-6">
-
-
-
+        <main class="max-w-3xl mx-auto mt-10 lg:mt-10 space-y-6">
             <!-- ERSTMAL MIT HTML GELÖST, SPÄTER MIT JAVASCRIPT BZW. VUEJS -->
             <!-- EINE NEUE VERANSTALTUNG ANLEGEN -->
             @if(auth()->user()->modules->count())
+            <div class="container-new-entry">
+                <details>
+                    <summary>Veranstaltung anlegen:</summary>
+                    <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/lessons/create">
+                        @csrf
+                        <div class="grid-item-label-and-input">
+                            <label for="module_id">Modul:</label><br>
+                            <select name="module_id">
+                                @foreach(auth()->user()->modules->sortBy('name') as $module)
+                                <option value="{{$module->id}}">{{$module->name}} | {{$module->course->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-            <div class="container-lessons">
-                <p>Meine Veranstaltungen:</p>
-                @foreach(auth()->user()->modules as $module)
-                {{$module->name}}
-                @foreach($module->lessons()->take(1)->get() as $lesson)
-                {{$lesson->date}}
-                @endforeach
-                @endforeach
+                        <div class="grid-item-label-and-input">
+                            <label for="room_id">Raum:</label><br>
+                            <select name="room_id">
+                                <option value="" disabled selected>Raum</option>
+                                @foreach($rooms->sortBy('building.name') as $room)
+                                <option value="{{$room->id}}">{{$room->building->name}}-{{$room->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="grid-item-label-and-input">
+                            <label for="date">Veranstaltungsdatum:</label><br>
+                            <input type="date" name="date" id="date">
+                        </div>
+
+                        <div class="grid-item-label-and-input">
+                            <label for="time">Veranstaltungszeit:</label><br>
+                            <input type="time" name="time" id="time">
+                        </div>
+
+                        <button class="add-button" type="submit">hinzufügen</button>
+
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
             </div>
 
             <div class="container-new-entry">
                 <details>
-                    <summary>Veranstaltung anlegen:</summary>
-                    <form method="POST" action="/dashboard/lessons/create">
-                        @csrf
-                        <div class="new-entry-div">
-                            <div class="test">
-                                <label for="courseName">Modul:</label>
-                                <select name="module_id">
-                                    @foreach(auth()->user()->modules->sortBy('name') as $module)
-                                    <option value="{{$module->id}}">{{$module->name}} | {{$module->course->name}}</option>
-                                    @endforeach
-                                </select>
-
-                                <label for="room_id">Raum:</label>
-                                <select name="room_id">
-                                    <option value="" disabled selected>Raum</option>
-                                    @foreach($rooms->sortBy('building.name') as $room)
-                                    <option value="{{$room->id}}">{{$room->building->name}}-{{$room->name}}</option>
-                                    @endforeach
-                                </select>
-
-                                <label for="date">Veranstaltungsdatum:</label>
-                                <input type="date" name="date" id="date">
-
-                                <label for="time">Veranstaltungszeit:</label>
-                                <input type="time" name="time" id="time">
-
-                                <button type="submit">hinzufügen</button>
-                            </div>
-
-                            @if($errors->any())
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{$error}}</li>
-                                @endforeach
-                            </ul>
-                            @endif
-                    </form>
+                    <summary>Meine nächsten Veranstaltungen:</summary>
+                    @foreach(auth()->user()->modules as $module)
+                    <p>{{$module->name}} | {{$module->course->name}}</p>
+                    @foreach($module->lessons()->take(1)->get() as $lesson)
+                    <p>{{$lesson->date}} | {{$lesson->time}}</p>
+                    @endforeach
+                    @endforeach
                 </details>
             </div>
+
             @endif
 
             <!-- EINEN NEUEN POST ANLEGEN -->
             <div class="container-new-entry">
                 <details>
                     <summary>Post anlegen:</summary>
-                    <form method="POST" action="/dashboard/posts/create" enctype="multipart/form-data">
+                    <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/posts/create" enctype="multipart/form-data">
                         @csrf
-                        <div class="new-entry-div">
 
-                            <label for="title">Überschrift:</label>
+                        <div class="grid-item-label-and-input">
+                            <label for="title">Überschrift:</label><br>
                             <input type="text" name="title" id="title" placeholder="Überschrift">
-
-                            <label for="image">Bild hochladen (nur png Dateien):</label>
-                            <input type="file" size="5000" accept="image/png" name="image" id="image">
-                            <label for="body">Inhalt:</label>
-                            <textarea id="body" name="body" rows="4" cols="50"></textarea>
-
-                            <button type="submit">Neuen Post hinzufügen</button>
                         </div>
+
+                        <div class="grid-item-label-and-input">
+                            <label for="image">Bild hochladen (nur png Dateien):</label><br>
+                            <input type="file" size="5000" accept="image/png" name="image" id="image">
+                        </div>
+
+                        <div class="grid-item-label-and-input grid-textarea">
+                            <label for="body">Inhalt:</label><br>
+                            <textarea id="body" name="body" rows="4" cols="88"></textarea>
+                        </div>
+
+                        <button class="add-button" type="submit">Neuen Post hinzufügen</button>
                     </form>
                 </details>
             </div>
+
             <div>
-                <h1>Meine Posts:</h1>
+                <h1>Meine letzten Posts:</h1>
                 @if(auth()->user()->posts->count())
                 @foreach(auth()->user()->posts as $post)
                 <x-post-card :post=$post />
@@ -128,29 +138,43 @@
         box-sizing: border-box;
     }
 
+    .container-form-grid {
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .form-grid-gap-event {
+        grid-row-gap: 20px;
+    }
+
+    .form-grid-gap-post {
+        grid-row-gap: 0;
+        grid-template-rows: 80px 150px 61px;
+    }
+
     summary {
-        border: 4px solid transparent;
         outline: none;
         padding: 1rem;
         display: block;
-        background: #444;
-        color: white;
-        padding-left: 2.5rem;
+        background: #1a2a36;
+        color: #fff;
+        padding-left: 1rem;
         position: relative;
         cursor: pointer;
         margin-bottom: 20px;
+        font-weight: bold;
     }
 
     summary:focus {
         border-color: black;
     }
 
-
     details {
         max-width: auto;
         box-sizing: border-box;
-        margin-top: 5px;
-        background: white;
+        margin-top: 0px;
+        background-color: #DEDEDE;
     }
 
     details summary::-webkit-details-marker {
@@ -167,11 +191,12 @@
         border-style: solid;
         border-color: transparent transparent transparent #fff;
         position: absolute;
-        top: 0.3rem;
-        left: 1rem;
+        top: 1.3rem;
+        right: 2rem;
+        /*left: 1rem;*/
         transform: rotate(0);
         transform-origin: .2rem 50%;
-        transition: .25s transform ease;
+        transition: 0.2s transform ease 0s;
     }
 
     form>a {
@@ -182,61 +207,11 @@
 
     .container-new-entry {
         padding: 10px;
-        border: 2px solid black;
-        border-radius: 5px;
-
         box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.165);
         background-color: rgba(204, 204, 204, 0.2);
         margin: 0 auto;
-        border-radius: 10px;
-    }
-
-    .container-new-entry form div {
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        grid-row-gap: 5px;
-    }
-
-    .container-new-entry form div label {
-        grid-column: 1 / 2;
-        grid-row-gap: 20px;
-    }
-
-    /*
-.test {
-  display: flex;
-  align-items: center;
-  grid-column-start: 1;
-  grid-column-end: 2;
-}
-*/
-
-    input {
-        grid-column: 2 / 3;
-        margin-bottom: 20px;
-    }
-
-    button {
-        grid-column: 1 / 3;
-        width: 12rem;
-        height: 3.5rem;
-        margin: 0 auto 10px auto;
-        border: 1px solid black;
-        border-radius: 5px;
-        background-color: #AEBD93;
-        color: #363636;
-    }
-
-    button:hover {
-        background-color: #7A8450;
-    }
-
-    select,
-    input {
-        border: 2px solid #DEDEDE;
-        padding: 5px;
-        border-radius: 10px;
-        margin-bottom: 20px;
+        border-radius: 2px;
+        min-width: 700px;
     }
 
     /*----------------*/
@@ -283,5 +258,76 @@
 
     form>ul>li {
         color: red;
+    }
+
+    /*-----------------------------------*/
+    /*----- NEUES DESIGN DASHBOARD ------*/
+    /*-----------------------------------*/
+
+    .grid-item-label-and-input {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .grid-item-label-and-input label {
+        font-size: 80%;
+        font-weight: bold;
+    }
+
+    .grid-item-label-and-input select {
+        width: 200px;
+        height: 28px;
+        font-size: 90%;
+    }
+
+    .grid-textarea {
+        grid-column: 1 / -1;
+        resize: horizontal;
+    }
+
+    textarea {
+        font-size: 12px;
+    }
+
+    input {
+        border: none;
+        height: 28px;
+        font-size: 80%;
+        width: 200px;
+        padding: 5px;
+    }
+
+    input[type="file"] {
+        width: 250px;
+    }
+
+    button {
+        background-color: #313131;
+        color: #fff;
+        border: none;
+        padding: 10px 25px;
+        margin: 0 auto;
+        transition: 0.2s;
+        border-radius: 2px;
+    }
+
+    button:hover {
+        background-color: #616161;
+        transition: 0.2s;
+    }
+
+    .logout-button {
+        background-color: #919191;
+        color: #edf0f1;
+        width: 100px;
+    }
+
+    .add-button {
+        /*position: absolute;
+  right: 45%;
+  top: 67%;*/
+        font-size: 14px;
+        grid-column: 1 / -1;
+        margin: 0px auto 20px auto;
     }
 </style>

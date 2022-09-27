@@ -2,39 +2,40 @@
     @include('_admin-header')
 
     <section class="px-6 py-8">
-        <main class="max-w-6xl mx-auto mt-10 lg:mt-10 space-y-6">
+        <main class="max-w-3xl mx-auto mt-10 lg:mt-10 space-y-6">
 
             <!-- ERSTMAL MIT HTML GELÖST, SPÄTER MIT JAVASCRIPT BZW. VUEJS -->
             <!-- EINE NEUE VERANSTALTUNG ANLEGEN -->
             <div class="container-new-entry">
                 <details>
                     <summary>Modul anlegen:</summary>
-                    <form method="POST" action="/admin/modules/create">
+                    <form class="container-form-grid form-grid-gap-event" method="POST" action="/admin/modules/create">
                         @csrf
-                        <div class="new-entry-div">
-                            <div class="test">
-                                <label for="name">Name des Moduls:</label>
-                                <input type="text" name="name" id="name" placeholder="Modulname">
-                            </div>
+                        <div class="grid-item-label-and-input">
+                            <label for="name">Name des Moduls:</label><br>
+                            <input type="text" name="name" id="name" placeholder="Modulname">
+                        </div>
 
-
-                            <label for="courseName">Studiengang:</label>
+                        <div class="grid-item-label-and-input">
+                            <label for="courseName">Studiengang:</label><br>
                             <select name="courses_id">
                                 @foreach($courses as $course)
                                 <option value="{{$course->id}}">{{$course->name}}</option>
                                 @endforeach
                             </select>
+                        </div>
 
-                            <label for="profName">Name des Professors:</label>
+                        <div class="grid-item-label-and-input">
+                            <label for="profName">Name des Professors:</label><br>
                             <select name="user_id">
                                 <option value="" disabled selected>Professor</option>
                                 @foreach($users as $user)
                                 <option value="{{$user->id}}">{{$user->name}}</option>
                                 @endforeach
                             </select>
-
-                            <button type="submit">hinzufügen</button>
                         </div>
+
+                        <button class="add-button" type="submit">hinzufügen</button>
 
                         @if($errors->any())
                         <ul>
@@ -51,22 +52,24 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Raum anlegen:</summary>
-                    <form method="POST" action="/admin/rooms/create">
+                    <form class="container-form-grid form-grid-gap-event" method="POST" action="/admin/rooms/create">
                         @csrf
-                        <div class="new-entry-div">
-                            <label for="building_id">Gebäude:</label>
+                        <div class="grid-item-label-and-input">
+                            <label for="building_id">Gebäude:</label><br>
                             <select name="building_id">
                                 <option value="" disabled selected>Gebäude</option>
                                 @foreach($buildings as $building)
                                 <option value="{{$building->id}}">{{$building->name}}</option>
                                 @endforeach
                             </select>
-
-                            <label for="name">Raumnummer:</label>
-                            <input type="text" name="name" id="name" placeholder="Raumnummer">
-
-                            <button type="submit">Neuen Raum hinzufügen</button>
                         </div>
+
+                        <div class="grid-item-label-and-input">
+                            <label for="name">Raumnummer:</label><br>
+                            <input type="text" name="name" id="name" placeholder="Raumnummer">
+                        </div>
+
+                        <button class="add-button" type="submit">Neuen Raum hinzufügen</button>
 
                         @if($errors->any())
                         <ul>
@@ -83,15 +86,15 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Gebäude anlegen:</summary>
-                    <form method="POST" action="/admin/buildings/create">
+                    <form class="container-form-grid form-grid-gap-event" method="POST" action="/admin/buildings/create">
                         @csrf
-                        <div class="new-entry-div">
 
-                            <label for="name">Name:</label>
+                        <div class="grid-item-label-and-input">
+                            <label for="name">Name:</label><br>
                             <input type="text" name="name" id="name" placeholder="Gebäude">
-
-                            <button type="submit">Hinzufügen</button>
                         </div>
+
+                        <button class="add-button" type="submit">Hinzufügen</button>
                         @if($errors->any())
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -107,13 +110,15 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Studiengang anlegen:</summary>
-                    <form method="POST" action="/admin/courses/create">
+                    <form class="container-form-grid form-grid-gap-event" method="POST" action="/admin/courses/create">
                         @csrf
-                        <div class="new-entry-div">
 
+                        <div class="grid-item-label-and-input">
                             <label for="name">Name:</label>
                             <input type="text" name="name" id="name" placeholder="Studiengang">
+                        </div>
 
+                        <div class="grid-item-label-and-input">
                             <label for="building_id">Gebäude:</label>
                             <select name="building_id">
                                 <option value="" disabled selected>Gebäude</option>
@@ -121,9 +126,10 @@
                                 <option value="{{$building->id}}">{{$building->name}}</option>
                                 @endforeach
                             </select>
-
-                            <button type="submit">Hinzufügen</button>
                         </div>
+
+                        <button class="add-button" type="submit">Hinzufügen</button>
+
                         @if($errors->any())
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -139,54 +145,41 @@
             <div class="container-new-entry">
                 <details>
                     <summary>User anlegen:</summary>
-                    <form method="POST" action="/admin/users/create">
-            @csrf
-            <div class="form-item">
-                <label for="name">Name:</label>
-                <input type="text" name="name" id="name" id="name" value="{{old('name')}}" required>
-                @error('name')
-                <p>{{$message}}</p>
-                @enderror
-            </div>
+                    <form class="container-form-grid form-grid-gap-event" method="POST" action="/admin/users/create">
+                        @csrf
+                        <div class="grid-item-label-and-input">
+                            <label for="name">Name:</label><br>
+                            <input type="text" name="name" id="name" id="name" value="{{old('name')}}" required>
+                        </div>
 
-            <div class="form-item">
-                <label for="username">Username:</label>
-                <input type="text" name="username" id="username" id="username" value="{{old('username')}}" required>
-                @error('username')
-                <p>{{$message}}</p>
-                @enderror
-            </div>
+                        <div class="grid-item-label-and-input">
+                            <label for="username">Username:</label><br>
+                            <input type="text" name="username" id="username" id="username" value="{{old('username')}}" required>
+                        </div>
 
-            <div class="form-item">
-                <label for="role">Rolle:</label>
-                <select id="role" name="role" required> 
-                    <option value="prof" > Professor </option>
-                    <option value="admin" > Admin </option>
-                </select>
-                @error('role')
-                <p>{{$message}}</p>
-                @enderror
-            </div>
+                        <div class="grid-item-label-and-input">
+                            <label for="role">Rolle:</label><br>
+                            <select id="role" name="role" required>
+                                <option value="prof"> Professor </option>
+                                <option value="admin"> Admin </option>
+                            </select>
+                        </div>
 
-            <div class="form-item">
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" id="password" required>
-                @error('password')
-                <p>{{$message}}</p>
-                @enderror
-            </div>
-            <div class="form-item">
-                <button type="submit">Submit</button>
-            </div>
+                        <div class="grid-item-label-and-input">
+                            <label for="password">Password:</label><br>
+                            <input type="password" name="password" id="password" id="password" required>
+                        </div>
 
-            @if($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-            </ul>
-            @endif
-        </form>
+                        <button class="add-button" type="submit">Submit</button>
+
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
                 </details>
             </div>
 
@@ -264,17 +257,7 @@
                 </details>
             </div> -->
 
-            <div>
-                <h1>Meine Posts:</h1>
-                @if(auth()->user()->posts->count())
-                @foreach(auth()->user()->posts as $post)
-                <x-post-card :post=$post />
-                @endforeach
-                @else
-                <p style="color:red">Du hast bisher noch keine Posts gemacht.</p>
-                @endif
-            </div>
-
+            <div class="container-new-entry">
             <h1>Raumanzeige</h1>
 
             <p>Raum auswählen:</p>
@@ -290,6 +273,7 @@
                 </form>
 
                 <x-choose-room :rooms=$rooms :buildings=$buildings />
+            </div>
             </div>
         </main>
     </section>
@@ -308,29 +292,43 @@
         box-sizing: border-box;
     }
 
+    .container-form-grid {
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .form-grid-gap-event {
+        grid-row-gap: 20px;
+    }
+
+    .form-grid-gap-post {
+        grid-row-gap: 0;
+        grid-template-rows: 80px 150px 61px;
+    }
+
     summary {
-        border: 4px solid transparent;
         outline: none;
         padding: 1rem;
         display: block;
-        background: #444;
-        color: white;
-        padding-left: 2.5rem;
+        background: #1a2a36;
+        color: #fff;
+        padding-left: 1rem;
         position: relative;
         cursor: pointer;
         margin-bottom: 20px;
+        font-weight: bold;
     }
 
     summary:focus {
         border-color: black;
     }
 
-
     details {
         max-width: auto;
         box-sizing: border-box;
-        margin-top: 5px;
-        background: white;
+        margin-top: 0px;
+        background-color: #DEDEDE;
     }
 
     details summary::-webkit-details-marker {
@@ -347,11 +345,12 @@
         border-style: solid;
         border-color: transparent transparent transparent #fff;
         position: absolute;
-        top: 0.3rem;
-        left: 1rem;
+        top: 1.3rem;
+        right: 2rem;
+        /*left: 1rem;*/
         transform: rotate(0);
         transform-origin: .2rem 50%;
-        transition: .25s transform ease;
+        transition: 0.2s transform ease 0s;
     }
 
     form>a {
@@ -362,61 +361,10 @@
 
     .container-new-entry {
         padding: 10px;
-        border: 2px solid black;
-        border-radius: 5px;
-
         box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.165);
         background-color: rgba(204, 204, 204, 0.2);
         margin: 0 auto;
-        border-radius: 10px;
-    }
-
-    .container-new-entry form div {
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        grid-row-gap: 5px;
-    }
-
-    .container-new-entry form div label {
-        grid-column: 1 / 2;
-        grid-row-gap: 20px;
-    }
-
-    /*
-.test {
-  display: flex;
-  align-items: center;
-  grid-column-start: 1;
-  grid-column-end: 2;
-}
-*/
-
-    input {
-        grid-column: 2 / 3;
-        margin-bottom: 20px;
-    }
-
-    button {
-        grid-column: 1 / 3;
-        width: 12rem;
-        height: 3.5rem;
-        margin: 0 auto 10px auto;
-        border: 1px solid black;
-        border-radius: 5px;
-        background-color: #AEBD93;
-        color: #363636;
-    }
-
-    button:hover {
-        background-color: #7A8450;
-    }
-
-    select,
-    input {
-        border: 2px solid #DEDEDE;
-        padding: 5px;
-        border-radius: 10px;
-        margin-bottom: 20px;
+        border-radius: 2px;
     }
 
     /*----------------*/
@@ -463,5 +411,76 @@
 
     form>ul>li {
         color: red;
+    }
+
+    /*-----------------------------------*/
+    /*----- NEUES DESIGN DASHBOARD ------*/
+    /*-----------------------------------*/
+
+    .grid-item-label-and-input {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .grid-item-label-and-input label {
+        font-size: 80%;
+        font-weight: bold;
+    }
+
+    .grid-item-label-and-input select {
+        width: 200px;
+        height: 28px;
+        font-size: 90%;
+    }
+
+    .grid-textarea {
+        grid-column: 1 / -1;
+        resize: horizontal;
+    }
+
+    textarea {
+        font-size: 12px;
+    }
+
+    input {
+        border: none;
+        height: 28px;
+        font-size: 80%;
+        width: 200px;
+        padding: 5px;
+    }
+
+    input[type="file"] {
+        width: 250px;
+    }
+
+    button {
+        background-color: #313131;
+        color: #fff;
+        border: none;
+        padding: 10px 25px;
+        margin: 0 auto;
+        transition: 0.2s;
+        border-radius: 2px;
+    }
+
+    button:hover {
+        background-color: #616161;
+        transition: 0.2s;
+    }
+
+    .logout-button {
+        background-color: #919191;
+        color: #edf0f1;
+        width: 100px;
+    }
+
+    .add-button {
+        /*position: absolute;
+  right: 45%;
+  top: 67%;*/
+        font-size: 14px;
+        grid-column: 1 / -1;
+        margin: 0px auto 20px auto;
     }
 </style>
