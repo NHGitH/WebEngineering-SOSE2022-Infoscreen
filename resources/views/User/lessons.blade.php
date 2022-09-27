@@ -5,9 +5,8 @@
         @if (auth()->user()->modules->count())
         <table class="table">
             <tr>
-                <th> Name </th>
-                <th> Studiengang </th>
                 <th> Modul </th>
+                <th> Studiengang </th>
                 <th> Zeitpunkt: </th>
                 <th> Funktionen </th>
             </tr>
@@ -17,13 +16,13 @@
             <tr>
                 <td> {{$module->name}} </td>
                 <td> {{$module->course->name}} </td>
-                <td></td>
+                <td> {{$lesson->time}}</td>
                 <!-- <td> {{$module->course->name}} </td> -->
                 <td>
                     <div>
-                        <a href="/dashboard/modules/{{$module->id}}/edit"> Bearbeiten </a>
+                        <a href="/dashboard/lessons/{{$lesson->id}}/edit"> Bearbeiten </a>
 
-                        <form method="POST" action="/dashboard/modules/{{$module->id}}">
+                        <form method="POST" action="/dashboard/lessons/{{$lesson->id}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Entfernen</button>

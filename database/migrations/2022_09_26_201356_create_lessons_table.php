@@ -17,7 +17,6 @@ class CreateLessonsTable extends Migration
             $table->id();
             $table->foreignId('module_id');
             $table->foreignId('room_id');
-            $table->foreignId('course_id');
             $table->date('date');
             $table->time('time');
             $table->timestamps();
