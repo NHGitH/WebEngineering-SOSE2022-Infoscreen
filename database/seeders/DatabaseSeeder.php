@@ -26,6 +26,12 @@ class DatabaseSeeder extends Seeder
         Building::factory(5)->create();
         Course::factory(7)->create();
         Professor::factory(20)->create();
+        User::factory(1)->create([
+            'name' => 'admin',
+            'username' => 'admin',
+            'role' => 'admin',
+            'password' => 'admin123',
+        ]);
         User::factory(40)->create();
     }
 }

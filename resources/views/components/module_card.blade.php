@@ -1,14 +1,16 @@
-@props(['module'])
+@props(['lesson'])
 <section class="
     mt-10 mb-10 ">
     <div class="container">
         <div class="text-area">
-            <p class="text-2xl">{{$module->name}}</h2>
-            <p class="text-sm">Raum: {{$module->room->name}}</p>
-            <p class="text-sm">Professor: {{$module->user->name}}</p>
-            <p class="text-sm">Studiengang: {{$module->course->name}}</p>
+            <p class="text-2xl">{{$lesson->module->name}}</h2>
+            <p class="text-sm">Raum: {{$lesson->room->name}}</p>
+            <p class="text-sm">Professor: {{$lesson->module->user->name}}</p>
+            <p class="text-sm">Studiengang: {{$lesson->module->course->name}}</p>
+            <p class="text-sm">Datum: {{\Carbon\Carbon::createFromFormat('Y-m-d',$lesson->date)->format('d-m-Y')}}</p>
+            <p class="text-sm">Uhrzeit: {{\Carbon\Carbon::createFromFormat('H:i:s',$lesson->time)->format('h:i')}}</p>
         </div>
-        <img class="picture" src="/images/{{$module->user->name}}" alt="{{$module->user->name}}">
+        <img class="picture" src="/images/{{$lesson->module->user->name}}" alt="{{$lesson->module->user->name}}">
     </div>
 </section>
 

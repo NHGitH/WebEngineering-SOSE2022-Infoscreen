@@ -39,11 +39,27 @@
 </x-layout>
 
 <style>
-    td {
+.functions a{
+        color:black;
+    }
+
+    .functions form button{
+        color:black;
+    }
+
+    td,
+    th,
+    table {
         text-align: center;
+        border: 1px solid black;
+        border-collapse: collapse;
     }
 
     table {
         width: 100%;
+    }
+
+    p{
+        text-align: center;
     }
 </style>
