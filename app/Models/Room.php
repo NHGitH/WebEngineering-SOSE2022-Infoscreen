@@ -12,9 +12,9 @@ class Room extends Model
     protected $guarded = [];
     protected $with = ['building'];
 
-    public function modules()
+    public function lessons()
     {
-        return $this->hasMany(Module::class);
+        return $this->hasMany(Lesson::class);
     }
 
     public function building()

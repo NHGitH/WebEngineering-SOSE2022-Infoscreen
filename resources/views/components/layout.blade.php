@@ -9,7 +9,6 @@
 
 <body style="font-family: Open Sans, sans-serif">
     <div class="f" id="app">
-        <app></app>
         {{$slot}}
     </div>
 </body>
