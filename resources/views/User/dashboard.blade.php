@@ -9,6 +9,17 @@
             <!-- ERSTMAL MIT HTML GELÖST, SPÄTER MIT JAVASCRIPT BZW. VUEJS -->
             <!-- EINE NEUE VERANSTALTUNG ANLEGEN -->
             @if(auth()->user()->modules->count())
+
+            <div class="container-lessons">
+                <p>Meine Veranstaltungen:</p>
+                @foreach(auth()->user()->modules as $module)
+                {{$module->name}}
+                @foreach($module->lessons()->take(1)->get() as $lesson)
+                {{$lesson->date}}
+                @endforeach
+                @endforeach
+            </div>
+
             <div class="container-new-entry">
                 <details>
                     <summary>Veranstaltung anlegen:</summary>
@@ -16,37 +27,37 @@
                         @csrf
                         <div class="new-entry-div">
                             <div class="test">
-                            <label for="courseName">Modul:</label>
-                            <select name="module_id">
-                                @foreach(auth()->user()->modules as $module)
-                                <option value="{{$module->id}}">{{$module->name}}</option>
+                                <label for="courseName">Modul:</label>
+                                <select name="module_id">
+                                    @foreach(auth()->user()->modules->sortBy('name') as $module)
+                                    <option value="{{$module->id}}">{{$module->name}} | {{$module->course->name}}</option>
+                                    @endforeach
+                                </select>
+
+                                <label for="room_id">Raum:</label>
+                                <select name="room_id">
+                                    <option value="" disabled selected>Raum</option>
+                                    @foreach($rooms->sortBy('building.name') as $room)
+                                    <option value="{{$room->id}}">{{$room->building->name}}-{{$room->name}}</option>
+                                    @endforeach
+                                </select>
+
+                                <label for="date">Veranstaltungsdatum:</label>
+                                <input type="date" name="date" id="date">
+
+                                <label for="time">Veranstaltungszeit:</label>
+                                <input type="time" name="time" id="time">
+
+                                <button type="submit">hinzufügen</button>
+                            </div>
+
+                            @if($errors->any())
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
                                 @endforeach
-                            </select>
-
-                            <label for="room_id">Raum:</label>
-                            <select name="room_id">
-                                <option value="" disabled selected>Raum</option>
-                                @foreach($rooms->sortBy('building.name') as $room)
-                                <option value="{{$room->id}}">{{$room->building->name}}-{{$room->name}}</option>
-                                @endforeach
-                            </select>
-
-                            <label for="date">Veranstaltungsdatum:</label>
-                            <input type="date" name="date" id="date">
-
-                            <label for="time">Veranstaltungszeit:</label>
-                            <input type="time" name="time" id="time">
-
-                            <button type="submit">hinzufügen</button>
-                        </div>
-
-                        @if($errors->any())
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                        @endif
+                            </ul>
+                            @endif
                     </form>
                 </details>
             </div>

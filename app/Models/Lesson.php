@@ -9,9 +9,9 @@ class Lesson extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['room_id','course_id','name', 'user_id', 'date','time', 'module_id'];
+    protected $fillable = ['room_id','name', 'user_id', 'date','time', 'module_id'];
     protected $guarded = [];
-    protected $with = ['room','user','course', 'module'];
+    protected $with = ['room','user', 'module'];
 
     public function room()
     {
@@ -21,11 +21,6 @@ class Lesson extends Model
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');
-    }
-
-    public function course()
-    {
-        return $this->belongsTo(Course::class,'course_id');
     }
 
     public function module()

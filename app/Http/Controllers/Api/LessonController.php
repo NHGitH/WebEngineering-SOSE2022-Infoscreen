@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Models\Lesson;
 use App\Http\Controllers\Controller;
+use App\Models\Room;
 
 class LessonController extends Controller
 {
@@ -34,6 +35,27 @@ class LessonController extends Controller
 
 
         return redirect('/dashboard');
+    }
+
+    public function edit(Lesson $lesson){
+        return view('/Lesson/edit',[
+            'lesson' => $lesson,
+            'rooms' => Room::all(),
+        ]);
+    }
+
+    public function update(Lesson $lesson){
+
+        $attributes = request()->validate([
+            'module_id' => 'required',
+            'room_id' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+        ]);
+
+        $lesson->update($attributes);
+
+        return redirect('dashboard/lessons');
     }
 
     public function delete(Lesson $lesson){
