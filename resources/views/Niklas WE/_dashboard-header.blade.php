@@ -1,21 +1,15 @@
 <header>
   <!-- NEUE NAVBAR -->
   <div class="nav-caption">
-    <a href="/dashboard">
-      <h1>Infoscreen<br />Hochschule Flensburg</h1>
-    </a>
+    <h1>Infoscreen<br />Hochschule Flensburg</h1>
     <!--<img src="/public/images/Logo_der_Hochschule_Flensburg.png">-->
   </div>
 
   <nav>
     <ul class="nav-links">
-      <li><a href="/admin/posts">Posts</a></li>
-      <li><a href="/admin/news">News</a></li>
-      <li><a href="/admin/modules">Module</a></li>
-      <li><a href="/admin/buildings">Gebäude</a></li>
-      <li><a href="/admin/rooms">Räume</a></li>
-      <li><a href="/admin/courses">Studiengänge</a></li>
-      <li><a href="/admin/users">User</a></li>
+      <li><a href="/dashboards/posts">Meine Posts</a></li>
+      <li><a href="/dashboard/lessons">Meine Veranstaltungen</a></li>
+      <li><a href="/admin">Mein Adminbereich</a></li>
     </ul>
   </nav>
 
@@ -23,9 +17,11 @@
     <li>Moin <strong>{{auth()->user()->name}}</strong>!</li>
   </div>
 
-  <form method="POST" action="/logout">
-    @csrf<button class="logout-button" type="submit">Logout</button>
-  </form>
+  <div class="nav-links">
+    <li>
+      <form method="POST" action="/logout">@csrf<button class="logout-button" type="submit">Logout</button></form>
+    </li>
+  </div>
 
 
   <!-- -->
@@ -142,11 +138,5 @@ nav a li {
 .menu li {
   padding: 5px 14px;
   align-self: center;
-}
-
-.logout-button {
-  background-color: #919191;
-  color: #edf0f1;
-  width: 100px;
 }
 </style>

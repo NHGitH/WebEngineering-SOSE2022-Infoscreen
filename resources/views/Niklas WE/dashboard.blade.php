@@ -3,43 +3,48 @@
 
   <section class="px-6 py-8">
     <main class="max-w-3xl mx-auto mt-10 lg:mt-10 space-y-6">
-      <!-- ERSTMAL MIT HTML GELÖST, SPÄTER MIT JAVASCRIPT BZW. VUEJS -->
+
+      <!-- ERSTMAL MIT HTML GELÖST, SPÄTER VLLT MIT JAVASCRIPT BZW. VUEJS -->
       <!-- EINE NEUE VERANSTALTUNG ANLEGEN -->
-      @if(auth()->user()->modules->count())
       <div class="container-new-entry">
         <details>
           <summary>Veranstaltung anlegen:</summary>
-          <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/lessons/create">
+          <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/modules/create">
             @csrf
+
             <div class="grid-item-label-and-input">
-              <label for="module_id">MODUL:</label><br>
-              <select name="module_id">
-                @foreach(auth()->user()->modules->sortBy('name') as $module)
-                <option value="{{$module->id}}">{{$module->name}} | {{$module->course->name}}</option>
-                <!--<option value="{{$module->id}}">{{$module->name}} | {{$module->course->name}}</option>-->
+              <label for="name">NAME DES MODULS</label><br>
+              <input type="text" name="name" id="name">
+            </div>
+
+            <div class="grid-item-label-and-input">
+              <label for="courseName">STUDIENGANG</label><br>
+              <select name="courses_id">
+                @foreach($courses as $course)
+                <option value="{{$course->id}}">{{$course->name}}</option>
                 @endforeach
               </select>
             </div>
 
             <div class="grid-item-label-and-input">
-              <label for="room_id">RAUM:</label><br>
+              <label for="room_id">RAUM</label><br>
               <select name="room_id">
-                <option value="" disabled selected>Bitte auswählen</option>
-                @foreach($rooms->sortBy('building.name') as $room)
-                <option value="{{$room->id}}">{{$room->building->name}}-{{$room->name}}</option>
+                @foreach($rooms as $room)
+                <option value="{{$room->id}}">{{$room->building->name}}{{$room->name}}</option>
                 @endforeach
               </select>
             </div>
 
             <div class="grid-item-label-and-input">
-              <label for="date">VERANSTALTUNGSDATUM:</label><br>
-              <input type="date" name="date" id="date">
+              <label for="profName">NAME DES PROFESSORS</label><br>
+              <select name="professors_id">
+                <option value="" disabled selected>Professor</option>
+                @foreach($professors as $prof)
+                <option value="{{$prof->id}}">{{$prof->name}}</option>
+                @endforeach
+              </select>
             </div>
 
-            <div class="grid-item-label-and-input">
-              <label for="time">VERANSTALTUNGSZEIT:</label><br>
-              <input type="time" name="time" id="time">
-            </div>
 
             <button class="add-button" type="submit">HINZUFÜGEN</button>
 
@@ -54,25 +59,11 @@
         </details>
       </div>
 
-      <div class="container-new-entry">
-        <details>
-          <summary>Meine nächsten Veranstaltungen:</summary>
-          @foreach(auth()->user()->modules as $module)
-          <p>{{$module->name}} | {{$module->course->name}}</p>
-          @foreach($module->lessons()->take(1)->get() as $lesson)
-          <p>{{$lesson->date}} | {{$lesson->time}}</p>
-          @endforeach
-          @endforeach
-        </details>
-      </div>
-
-      @endif
-
       <!-- EINEN NEUEN POST ANLEGEN -->
       <div class="container-new-entry">
         <details>
           <summary>Post anlegen:</summary>
-          <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/posts/create"
+          <form class="container-form-grid form-grid-gap-post" method="POST" action="/dashboard/posts/create"
             enctype="multipart/form-data">
             @csrf
 
@@ -82,7 +73,7 @@
             </div>
 
             <div class="grid-item-label-and-input">
-              <label for="image">BILD HOCHLADEN (nur png Dateien):</label><br>
+              <label for="image">BILD HOCHLADEN (nur .png Dateien):</label><br>
               <input type="file" size="5000" accept="image/png" name="image" id="image">
             </div>
 
@@ -91,34 +82,25 @@
               <textarea id="body" name="body" rows="4" cols="88"></textarea>
             </div>
 
+
             <button class="add-button" type="submit">HINZUFÜGEN</button>
 
-            @if($errors->any())
-            <ul>
-              @foreach ($errors->all() as $error)
-              <li>{{$error}}</li>
-              @endforeach
-            </ul>
-            @endif
           </form>
         </details>
       </div>
 
-      <!-- MEINE LETZTEN POSTS -->
-      <div class="container-last-posts">
-        <details>
-          <summary>Meine letzten Posts:</summary>
-          <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/posts/create">
-            @if(auth()->user()->posts->count())
-            @foreach(auth()->user()->posts as $post)
-            <x-post-card :post=$post />
-            @endforeach
-            @else
-            <p style="color:red">Du hast bisher noch keine Posts gemacht.</p>
-            @endif
-          </form>
-        </details>
+      <!--
+      <div>
+        <h1>Meine Posts:</h1>
+        @if(auth()->user()->posts->count())
+        @foreach(auth()->user()->posts as $post)
+        <x-post-card :post=$post />
+        @endforeach
+        @else
+        <p style="color:red">Du hast bisher noch keine Posts gemacht.</p>
+        @endif
       </div>
+-->
 
       <h1>Raumanzeige</h1>
 
@@ -226,34 +208,6 @@ form>a {
   background-color: rgba(204, 204, 204, 0.2);
   margin: 0 auto;
   border-radius: 2px;
-  min-width: 700px;
-}
-
-.container-last-posts {
-  padding: 10px;
-  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.165);
-  background-color: rgba(204, 204, 204, 0.2);
-  margin: 0 auto;
-  border-radius: 2px;
-  min-width: 700px;
-}
-
-.container-last-posts h1 {
-  font-size: 18px;
-}
-
-.container-last-posts p {
-  font-size: 12px;
-}
-
-article {
-  margin: 0 10px;
-  padding-left: 10px;
-}
-
-.card_container {
-  background-color: white;
-  margin: 0 auto;
 }
 
 /*----------------*/
@@ -365,6 +319,9 @@ button:hover {
 }
 
 .add-button {
+  /*position: absolute;
+  right: 45%;
+  top: 67%;*/
   font-size: 14px;
   grid-column: 1 / -1;
   margin: 0px auto 20px auto;
