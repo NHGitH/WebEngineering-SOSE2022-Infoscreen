@@ -93,6 +93,7 @@ class UserController extends Controller
     }
 
     public function delete(User $user){
+        foreach($user->posts as $post){$post->delete();}
         $user->delete(); 
         return back()->with('success','User entfernt');
      }
