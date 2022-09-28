@@ -12,8 +12,8 @@ class RoomController extends Controller
     public function index()
     {
         return view('/Room/rooms', [
-            'rooms' => Room::all(),
-            'buildings' => Building::all(),
+            'rooms' => Room::latest()->filter(request(['search','building']))->get(),
+            'buildings' =>Building::all(),
         ]);
     }
 
@@ -45,5 +45,5 @@ class RoomController extends Controller
         $room->delete(); 
         
         return back()->with('success','Gebäude entfernt');
-     }
+    }
 }

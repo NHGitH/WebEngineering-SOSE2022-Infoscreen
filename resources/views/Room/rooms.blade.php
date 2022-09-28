@@ -11,18 +11,9 @@
                             <option value="{{$building->name}}">{{$building->name}}</option>
                             @endforeach
                         </select>
-                        <input type="text" name="search" placeholder="Raum auswählen">
+                        <input type="text" name="search" id="search" placeholder="Raum auswählen" value="{{request('search')}}">
                     </form>
-                    @foreach($buildings as $building)
-                    <details>
-                        <summary>{{$building->name}}</summary>
-                        @foreach($building->rooms as $room)
-                        <a href="/buildings/{{$building->name}}/{{$room->name}}">{{$room->name}}</a>
-                        @endforeach
-                    </details>
-                    @endforeach
-                    @else
-                    <p class="text-center">Es sind noch keine Gebäude erstellt worden.</p>
+                    <x-choose-room :rooms="$rooms"></x-choose-room>
                     @endif
                 </div>
             </div>
