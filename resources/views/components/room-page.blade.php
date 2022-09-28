@@ -1,8 +1,11 @@
 @props(['room'])
 <section>
-  <div class="head-container">
-    <img class="hochschuleLogo" src="/images/Logo_der_Hochschule_Flensburg.png" width="150px">
-    <h1 class="welcome">Willkommen im Raum {{$room->name}} des {{$room->building->name}}-Gebäudes</h1>
+<div class="head-container">
+    <!--<img class="hochschuleLogo" src="/images/Logo_der_Hochschule_Flensburg.png" width="150px">-->
+    <h1 class="infoscreen-caption">Infoscreen<br>Hochschule Flensburg</h1>
+    <h1 class="welcome">Willkommen im <strong>Raum{{$room->name}}</strong> des
+      <strong>{{$room->building->name}}-Gebäudes</strong>
+    </h1>
     <div class="clock">
       <h1 class="time">
         {{$now = date('H:i')}}
@@ -17,7 +20,7 @@
       ->orderby('time','asc')
       ->take(3)
       ->get() as $lesson)
-      <x-module_card :lesson="$lesson" />
+      <x-lesson-card :lesson="$lesson" />
       @endforeach
       @else
       <p class="text-center">No modules yet. Please check again later.</p>
@@ -38,57 +41,80 @@
 </section>
 
 <style>
-  .head-container {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 20% 60% 20%;
-    align-items: center;
-    justify-items: center;
-    border-bottom: 2px solid #D9D9D9;
-    padding-bottom: 20px;
-  }
 
-  .posts-container {
-    padding: 10px;
-    height: 100%;
-    width: 100%;
-    display: block;
-    grid-column-start: 2;
-  }
+*{
+  margin: 0;
+  padding: 0;
+}
 
-  .main-container {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 30% 70%;
-    align-items: center;
-    justify-items: center;
-    border-bottom: 2px solid #D9D9D9;
-    padding-bottom: 20px;
-  }
+.head-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  align-items: center;
+  justify-items: center;
+  border-bottom: 2px solid #D9D9D9;
+  background-color: #1a2a36;
+  padding: 10px 0;
+  color: #efefef;
+}
 
-  .module-card {
-    width: 100%;
-    grid-column-start: 1;
+.posts-container {
+  width: 90%;
+  display: block;
+  grid-column-start: 2;
+  align-items: center;
+  justify-items: center;
+  padding: 10px;
+}
 
-  }
+.main-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: center;
+  justify-items: center;
+  border-bottom: 2px solid #D9D9D9;
+}
 
-  .hochschuleLogo {
-    grid-column-start: 1;
-  }
+.caption-lessons {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
 
-  .time {
-    font-size: x-large;
-    text-align: center;
-  }
+.caption-events-and-posts {
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
 
-  .welcome {
-    font-size: x-large;
-    text-align: center;
-  }
+.module-card {
+  width: 90%;
+  grid-column-start: 1;
+}
 
-  .clock {
-    border: 2px solid #D9D9D9;
-    border-radius: 10px;
-    padding: 10px;
-  }
+.infoscreen-caption {
+  font-weight: bold;
+}
+
+.time {
+  font-size: x-large;
+  text-align: center;
+}
+
+.welcome {
+  font-size: x-large;
+  text-align: center;
+  border-top: 3px solid #D9D9D9;
+  border-bottom: 3px solid #D9D9D9;
+  padding: 10px 0;
+  letter-spacing: 1px;
+}
+
+.clock {
+  border-top: 3px solid #D9D9D9;
+  border-bottom: 3px solid #D9D9D9;
+  padding: 10px 15px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
 </style>

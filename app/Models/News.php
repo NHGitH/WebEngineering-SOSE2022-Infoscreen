@@ -25,7 +25,7 @@ class News extends Model
 
     public function module()
     {
-        return $this->belongsTo(Module::class,'module_id');
+        return $this->belongsTo(Module::class, 'module_id');
     }
 
 }
