@@ -10,6 +10,6 @@
 
 # Sie können sich unter website_name/login anmelden und werden direkt auf ein Dashboard geleitet, welches, bis auf die Verlinkung zum Adminbereich, jeder Nutzer nach dessen Einloggen sehen können.
  
-# Der Admin kann alle Gebäude, Räume, Module und Studiengänge selbstständig anlegen. Dieser Schritt ist besonders wichtig, da Professoren-User nur Veranstaltungen zu ihren zugewiesenen Modulen machen.
+# Der Admin kann alle Gebäude, Räume, Module und Studiengänge selbstständig anlegen. Dieser Schritt ist besonders wichtig, da Professoren-User nur Veranstaltungen zu ihren zugewiesenen Modulen machen können.
 
 # Außerdem können User angelegt werden, welche mit den Rollen "Professor" und "Admin" bestückt werden können. Admin User, können genauso viel bearbeiten, wie sie es in dem admin-Account können. Allerdings können Admin-Accounts, welche so angelegt wurden noch gelöscht werden. Der admin-Account allerdings nicht.
