@@ -42,7 +42,7 @@
 
 <style>
 
-*{
+.head-container *{
   margin: 0;
   padding: 0;
 }

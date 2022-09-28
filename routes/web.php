@@ -89,8 +89,6 @@ Route::group(['middleware' => ['admin' , 'auth']], function () {
     Route::patch('/admin/posts/{post}', [PostController::class, 'update']);
     Route::delete('/admin/posts/{post}', [PostController::class, 'delete']);
 
-    Route::get('/admin/news', [AdminController::class, 'news']);
-
     Route::get('admin/rooms', [AdminController::class, 'rooms']);
     Route::post('/admin/rooms/create', [RoomController::class, 'store']);
     Route::get('/admin/rooms/{room}/edit', [RoomController::class, 'edit']);
@@ -122,4 +120,5 @@ Route::group(['middleware' => ['admin' , 'auth']], function () {
     Route::delete('/admin/users/{user}', [UserController::class, 'delete']);
 
     Route::get('admin/news', [AdminController::class, 'news']);
+    Route::delete('/admin/news/{user}', [NewsController::class, 'delete']);
 });

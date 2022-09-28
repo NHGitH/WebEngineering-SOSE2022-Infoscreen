@@ -16,11 +16,6 @@ class Building extends Model
         return $this->hasMany(Room::class);
     }
 
-    public function posts()
-    {
-        return $this->hasMany(Post::class);
-    }
-
         public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {

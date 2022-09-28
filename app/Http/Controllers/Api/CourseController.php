@@ -24,6 +24,10 @@ class CourseController extends Controller
     }
 
     public function delete(Course $course){
+        
+        foreach($course->modules as $module){
+            $module->delete();
+        }
         $course->delete(); 
         
         return back()->with('success','Kurs entfernt');

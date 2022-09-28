@@ -18,7 +18,7 @@ class CreateModulesTable extends Migration
             $table->string('name');
             $table->string('slug')->nullable();
             $table->foreignId('user_id');
-            $table->foreignId('courses_id');
+            $table->foreignId('course_id');
             $table->timestamps();
         });
     }
