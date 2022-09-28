@@ -5,15 +5,19 @@
         @if ($newslist->count())
         <table class="table">
             <tr>
-                <th> Name </th>
+                <th> Postname </th>
                 <th> Modul </th>
-                <th> Gebäude </th>
+                <th> Raum </th>
                 <th> Funktionen </th>
             </tr>
             <!-- //Einbindung der User -->
             @foreach ($newslist as $news)
             <tr>
-            <td> {{$news->post->title}} </td>
+                @if($news->post != null)
+                <td> {{$news->post->title}} </td>
+                @else
+                <td> kein Post zugewiesen </td>
+                @endif
                 @if($news->module != null)
                 <td> {{$news->module->name}} </td>
                 @else
