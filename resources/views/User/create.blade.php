@@ -1,7 +1,7 @@
 <x-layout>
-   
 
-<section class="register-form">
+
+    <section class="register-form">
         <form method="POST" action="/register">
             @csrf
             <div class="form-item">
@@ -22,9 +22,9 @@
 
             <div class="form-item">
                 <label for="role">Rolle:</label>
-                <select id="role" name="role" required> 
-                    <option value="prof" > Professor </option>
-                    <option value="admin" > Admin </option>
+                <select id="role" name="role" required>
+                    <option value="prof"> Professor </option>
+                    <option value="admin"> Admin </option>
                 </select>
                 @error('role')
                 <p>{{$message}}</p>
@@ -41,14 +41,6 @@
             <div class="form-item">
                 <button type="submit">Submit</button>
             </div>
-
-            @if($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-            </ul>
-            @endif
         </form>
     </section>
 

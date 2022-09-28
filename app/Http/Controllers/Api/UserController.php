@@ -87,10 +87,14 @@ class UserController extends Controller
         );
     }
 
+    public function loginDeactivated()
+    {
+        return redirect('/deactivated');
+    }
+
     public function delete(User $user){
         $user->delete(); 
-        
-        return back()->with('success','Gebäude entfernt');
+        return back()->with('success','User entfernt');
      }
     
 }
