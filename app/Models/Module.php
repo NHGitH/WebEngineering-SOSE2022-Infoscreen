@@ -9,7 +9,7 @@ class Module extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['room_id','courses_id','building_id','name', 'user_id', 'date','time'];
+    protected $fillable = ['room_id','course_id','building_id','name', 'user_id', 'date','time'];
     protected $guarded = [];
     protected $with = ['user','course'];
 
@@ -21,7 +21,7 @@ class Module extends Model
 
     public function course()
     {
-        return $this->belongsTo(Course::class,'courses_id');
+        return $this->belongsTo(Course::class,'course_id');
     }
 
     public function lessons()
