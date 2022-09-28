@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Room;
 use App\Models\Module;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -32,6 +33,13 @@ class AdminController extends Controller
     {
         return view('/Admin/users', [
             'users' => User::all(),
+        ]);
+    }
+
+    public function news()
+    {
+        return view('/Admin/news', [
+            'news' => News::all(),
         ]);
     }
 
