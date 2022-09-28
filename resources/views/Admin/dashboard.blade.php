@@ -257,24 +257,7 @@
                 </details>
             </div> -->
 
-      <div class="container-new-entry">
-        <h1>Raumanzeige</h1>
 
-        <p>Raum auswählen:</p>
-        <div class="select-room">
-          <form method="GET" action"#">
-            <select name="building">
-              <option value="" disabled selected>Gebäude</option>
-              @foreach($buildings as $building)
-              <option value="{{$building->name}}">{{$building->name}}</option>
-              @endforeach
-            </select>
-            <input type="text" name="search" placeholder="Raum auswählen">
-          </form>
-
-          <x-choose-room :rooms=$rooms :buildings=$buildings />
-        </div>
-      </div>
     </main>
   </section>
 </x-layout>
@@ -286,201 +269,201 @@
 <!--------->
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-.container-form-grid {
-  display: grid;
-  grid-template-columns: 2fr 2fr;
-  grid-template-rows: 1fr 1fr 1fr;
-}
+  .container-form-grid {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
 
-.form-grid-gap-event {
-  grid-row-gap: 20px;
-}
+  .form-grid-gap-event {
+    grid-row-gap: 20px;
+  }
 
-.form-grid-gap-post {
-  grid-row-gap: 0;
-  grid-template-rows: 80px 150px 61px;
-}
+  .form-grid-gap-post {
+    grid-row-gap: 0;
+    grid-template-rows: 80px 150px 61px;
+  }
 
-summary {
-  outline: none;
-  padding: 1rem;
-  display: block;
-  background: #1a2a36;
-  color: #fff;
-  padding-left: 1rem;
-  position: relative;
-  cursor: pointer;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
+  summary {
+    outline: none;
+    padding: 1rem;
+    display: block;
+    background: #1a2a36;
+    color: #fff;
+    padding-left: 1rem;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
 
-summary:focus {
-  border-color: black;
-}
+  summary:focus {
+    border-color: black;
+  }
 
-details {
-  max-width: auto;
-  box-sizing: border-box;
-  margin-top: 0px;
-  background-color: #DEDEDE;
-}
+  details {
+    max-width: auto;
+    box-sizing: border-box;
+    margin-top: 0px;
+    background-color: #DEDEDE;
+  }
 
-details summary::-webkit-details-marker {
-  display: none;
-}
+  details summary::-webkit-details-marker {
+    display: none;
+  }
 
-details[open]>summary:before {
-  transform: rotate(90deg);
-}
+  details[open]>summary:before {
+    transform: rotate(90deg);
+  }
 
-summary:before {
-  content: '';
-  border-width: .4rem;
-  border-style: solid;
-  border-color: transparent transparent transparent #fff;
-  position: absolute;
-  top: 1.3rem;
-  right: 2rem;
-  /*left: 1rem;*/
-  transform: rotate(0);
-  transform-origin: .2rem 50%;
-  transition: 0.2s transform ease 0s;
-}
+  summary:before {
+    content: '';
+    border-width: .4rem;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+    position: absolute;
+    top: 1.3rem;
+    right: 2rem;
+    /*left: 1rem;*/
+    transform: rotate(0);
+    transform-origin: .2rem 50%;
+    transition: 0.2s transform ease 0s;
+  }
 
-form>a {
-  border: 1px solid #DEDEDE;
-  padding: 4px;
-  border-radius: 10px;
-}
+  form>a {
+    border: 1px solid #DEDEDE;
+    padding: 4px;
+    border-radius: 10px;
+  }
 
-.container-new-entry {
-  padding: 10px;
-  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.165);
-  background-color: rgba(204, 204, 204, 0.2);
-  margin: 0 auto;
-  border-radius: 2px;
-}
+  .container-new-entry {
+    padding: 10px;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.165);
+    background-color: rgba(204, 204, 204, 0.2);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
 
-/*----------------*/
-/*---- NAVBAR ----*/
-/*----------------*/
+  /*----------------*/
+  /*---- NAVBAR ----*/
+  /*----------------*/
 
-nav a {
-  text-decoration: none;
-}
+  nav a {
+    text-decoration: none;
+  }
 
-nav a li {
-  list-style: none;
-}
+  nav a li {
+    list-style: none;
+  }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  background-color: teal;
-  color: #fff;
-}
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: teal;
+    color: #fff;
+  }
 
-.nav-links {
-  color: #fff;
-}
+  .nav-links {
+    color: #fff;
+  }
 
-.menu {
-  display: flex;
-  gap: 1em;
-  font-size: 18px;
-}
+  .menu {
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+  }
 
-.menu li:hover {
-  background-color: #4c9e9e;
-  border-radius: 5px;
-  transition: 0.3s ease;
-}
+  .menu li:hover {
+    background-color: #4c9e9e;
+    border-radius: 5px;
+    transition: 0.3s ease;
+  }
 
-.menu li {
-  padding: 5px 14px;
-  align-self: center;
-}
+  .menu li {
+    padding: 5px 14px;
+    align-self: center;
+  }
 
-form>ul>li {
-  color: red;
-}
+  form>ul>li {
+    color: red;
+  }
 
-/*-----------------------------------*/
-/*----- NEUES DESIGN DASHBOARD ------*/
-/*-----------------------------------*/
+  /*-----------------------------------*/
+  /*----- NEUES DESIGN DASHBOARD ------*/
+  /*-----------------------------------*/
 
-.grid-item-label-and-input {
-  margin: 0 auto;
-  padding: 0;
-}
+  .grid-item-label-and-input {
+    margin: 0 auto;
+    padding: 0;
+  }
 
-.grid-item-label-and-input label {
-  font-size: 80%;
-  font-weight: bold;
-}
+  .grid-item-label-and-input label {
+    font-size: 80%;
+    font-weight: bold;
+  }
 
-.grid-item-label-and-input select {
-  width: 200px;
-  height: 28px;
-  font-size: 90%;
-}
+  .grid-item-label-and-input select {
+    width: 200px;
+    height: 28px;
+    font-size: 90%;
+  }
 
-.grid-textarea {
-  grid-column: 1 / -1;
-  resize: horizontal;
-}
+  .grid-textarea {
+    grid-column: 1 / -1;
+    resize: horizontal;
+  }
 
-textarea {
-  font-size: 12px;
-}
+  textarea {
+    font-size: 12px;
+  }
 
-input {
-  border: none;
-  height: 28px;
-  font-size: 80%;
-  width: 200px;
-  padding: 5px;
-}
+  input {
+    border: none;
+    height: 28px;
+    font-size: 80%;
+    width: 200px;
+    padding: 5px;
+  }
 
-input[type="file"] {
-  width: 250px;
-}
+  input[type="file"] {
+    width: 250px;
+  }
 
-button {
-  background-color: #313131;
-  color: #fff;
-  border: none;
-  padding: 10px 25px;
-  margin: 0 auto;
-  transition: 0.2s;
-  border-radius: 2px;
-}
+  button {
+    background-color: #313131;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    margin: 0 auto;
+    transition: 0.2s;
+    border-radius: 2px;
+  }
 
-button:hover {
-  background-color: #616161;
-  transition: 0.2s;
-}
+  button:hover {
+    background-color: #616161;
+    transition: 0.2s;
+  }
 
-.logout-button {
-  background-color: #919191;
-  color: #edf0f1;
-  width: 100px;
-}
+  .logout-button {
+    background-color: #919191;
+    color: #edf0f1;
+    width: 100px;
+  }
 
-.add-button {
-  /*position: absolute;
+  .add-button {
+    /*position: absolute;
   right: 45%;
   top: 67%;*/
-  font-size: 14px;
-  grid-column: 1 / -1;
-  margin: 0px auto 20px auto;
-}
+    font-size: 14px;
+    grid-column: 1 / -1;
+    margin: 0px auto 20px auto;
+  }
 </style>

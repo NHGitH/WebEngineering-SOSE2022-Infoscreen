@@ -3,7 +3,7 @@
 
   <div class="px-6 py-8">
     @if (auth()->user()->posts->count())
-    <table class="table">
+    <table class="container-table">
       <tr>
         <th>Titel</th>
         <th>Body</th>
@@ -20,13 +20,13 @@
             height="100px"> </td>
         <td> {{$post->published_at}}</td>
         <td>
-          <div>
-            <a href="/dashboard/posts/{{$post->id}}/edit"> Bearbeiten </a>
+          <div class="functions">
+            <a class="edit-a" href="/dashboard/posts/{{$post->id}}/edit"> Bearbeiten </a>
 
-            <form method="POST" action="/dashboard/posts/{{$post->id}}">
+            <form class="button-center" method="POST" action="/dashboard/posts/{{$post->id}}">
               @csrf
               @method('DELETE')
-              <button type="submit">Entfernen</button>
+              <button class="delete-button" type="submit">Entfernen</button>
             </form>
           </div>
         </td>
@@ -40,27 +40,63 @@
 </x-layout>
 
 <style>
-.functions a {
-  color: black;
-}
 
-.functions form button {
-  color: black;
+.functions{
+  display: flex;
 }
 
 td,
 th,
 table {
-  text-align: center;
   border: 1px solid black;
   border-collapse: collapse;
+  padding: 10px;
 }
 
-table {
-  width: 100%;
+.edit-a{
+  background-color: #919191;
+  text-align: center;
+  border-radius: 2px;
+  padding: 5px;
+  font-size: 15px;
+  margin: 0 auto;
 }
 
-p {
+.container-table {
+  border-collapse: collapse;
+  margin: 25px auto;
+  font-size: 0.9rem;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 50%;
+  text-align: center;
+}
+
+.styled-tr {
+  background-color: #1a2a36;
+  color: #fff;
+  text-align: center;
+}
+
+tr:nth-of-type(even) {
+  background-color: #eee;
+}
+
+.delete-button {
+  background-color: #919191;
+  text-align: center;
+  border-radius: 2px;
+  padding: 5px;
+  font-size: 15px;
+  margin: 0 auto;
+}
+
+.delete-button:hover {
+  background-color: #313f4a;
+  transition: 0.2 ease 0s;
+}
+
+.button-center {
   text-align: center;
 }
 </style>

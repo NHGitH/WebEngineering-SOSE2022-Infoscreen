@@ -12,9 +12,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('/User/posts', [
-
-        ]);
+        return view('/User/posts', []);
     }
 
     public function show(Post $post)
@@ -26,22 +24,21 @@ class PostController extends Controller
 
     public function create()
     {
-        
     }
 
     public function store(Request $request)
     {
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $request->validate([
                 'title' => 'required',
                 'body' => 'required',
                 'image' => 'nullable|mimes:png'
             ]);
-    
-            $newImageName = Str::random(10) . '-' . $request->file('image')->getFilename() . '.' . 
-            $request->image->extension();
-    
-            $request->image->move(public_path('images'), $newImageName);   
+
+            $newImageName = Str::random(10) . '-' . $request->file('image')->getFilename() . '.' .
+                $request->image->extension();
+
+            $request->image->move(public_path('images'), $newImageName);
             $post = Post::create([
                 'title' => $request->input('title'),
                 'body' => $request->input('body'),
@@ -49,8 +46,7 @@ class PostController extends Controller
                 'picture_path' => $newImageName,
                 'published_at' => date('Y-m-d'),
             ]);
-        }
-        else{
+        } else {
             $request->validate([
                 'title' => 'required',
                 'body' => 'required',
@@ -67,26 +63,52 @@ class PostController extends Controller
         return redirect('/dashboard');
     }
 
-    public function edit(Post $post){
-        return view('/Post/edit',[
+    public function edit(Post $post)
+    {
+        return view('/Post/edit', [
             'post' => $post,
         ]);
     }
 
-    public function update(Post $post){
+    public function update(Post $post)
+    {
 
-        $attributes = request()->validate([
-            'title' => 'required',
-            'image' => 'nullable|image',
-            'body' => 'required',
-        ]);
+        if (request()->hasFile('image')) {
+            request()->validate([
+                'title' => 'required',
+                'body' => 'required',
+                'image' => 'nullable|mimes:png'
+            ]);
 
-        $post->update($attributes);
+            $newImageName = Str::random(10) . '-' . request()->file('image')->getFilename() . '.' .
+                request()->image->extension();
+
+            request()->image->move(public_path('images'), $newImageName);
+            $post->update([
+                'title' => request()->input('title'),
+                'body' => request()->input('body'),
+                'user_id' => auth()->id(),
+                'picture_path' => $newImageName,
+            ]);
+        } else {
+            request()->validate([
+                'title' => 'required',
+                'body' => 'required',
+            ]);
+            $post->update([
+                'title' => request()->input('title'),
+                'body' => request()->input('body'),
+                'user_id' => auth()->id(),
+                'picture_path' => '/illustration-1.png',
+            ]);
+        }
 
         return redirect('dashboard/posts');
     }
 
-    public function delete(Post $post){
-       $post->delete(); return back()->with('success','Gebäude entfernt');
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return back()->with('success', 'Gebäude entfernt');
     }
 }

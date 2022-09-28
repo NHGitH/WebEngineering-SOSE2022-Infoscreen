@@ -8,23 +8,8 @@ use Illuminate\Http\Request;
 
 class ModuleController extends Controller
 {
-    public function index()
-    {
-        return view('/User/modules', [
-
-        ]);
-    }
-
-    public function modules(){
-    }
-
-    public function create()
-    {
-        return view('./Modules/create');
-    }
-
     public function store()
-    {
+    {   //creates and stores a module given by an incoming request. redirects to admin.
         $attributes = request()->validate([
             'name' => 'required|max:255',
             'user_id' => 'required',
@@ -38,8 +23,8 @@ class ModuleController extends Controller
     }
 
     public function delete(Module $module){
+        //deletes a given module in database.
         $module->delete(); 
-        
         return back()->with('success','Modul entfernt');
      }
 }
