@@ -69,7 +69,7 @@
       </div>
 
       <div class="grid-item-5">
-        <a href="/dashboard"><button type="button">RAUMÜBERSICHT</button></a>
+        <a href="/rooms"><button type="button">RAUMÜBERSICHT</button></a>
       </div>
   </form>
 
