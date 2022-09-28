@@ -121,7 +121,7 @@
 
             <div class="container-new-entry">
                 <details>
-                    <summary>News verknüpfen:</summary>
+                    <summary>News in Modul einbinden:</summary>
                     <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/news/create" enctype="multipart/form-data">
                         @csrf
 
@@ -143,7 +143,7 @@
                             </select>
                         </div>
 
-                        <button class="add-button" type="submit">Neuen Post hinzufügen</button>
+                        <button class="add-button" type="submit">News hinzufügen</button>
 
                         @if($errors->any())
                         <ul>
@@ -155,24 +155,6 @@
                     </form>
                 </details>
             </div>
-
-            <div>
-                <h1>Raumanzeige</h1>
-
-                <p>Raum auswählen:</p>
-                <div class="select-room">
-                    <form method="GET" action"#">
-                        <select name="building">
-                            <option value="" disabled selected>Gebäude</option>
-                            @foreach($buildings as $building)
-                            <option value="{{$building->name}}">{{$building->name}}</option>
-                            @endforeach
-                        </select>
-                        <input type="text" name="search" placeholder="Raum auswählen">
-                    </form>
-
-                    <x-choose-room :rooms=$rooms :buildings=$buildings />
-                </div>
         </main>
     </section>
 </x-layout>

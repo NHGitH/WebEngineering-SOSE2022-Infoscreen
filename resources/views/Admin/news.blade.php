@@ -2,25 +2,33 @@
     @include('_admin-header')
 
     <div class="px-6 py-8">
-        @if ($news->count())
+        @if ($newslist->count())
         <table class="table">
             <tr>
                 <th> Name </th>
+                <th> Modul </th>
                 <th> Gebäude </th>
-                <th> erstellt am: </th>
                 <th> Funktionen </th>
             </tr>
             <!-- //Einbindung der User -->
             @foreach ($newslist as $news)
             <tr>
-                <td> {{$news->post->title}} </td>
+            <td> {{$news->post->title}} </td>
+                @if($news->module != null)
+                <td> {{$news->module->name}} </td>
+                @else
+                <td> kein Modul zugewiesen </td>
+                @endif
+                @if($news->room != null)
                 <td> {{$news->room->name}} </td>
-                <td> {{$news->lesson->name}} </td>
+                @else
+                <td> kein Raum zugewiesen </td>
+                @endif
 
 
                 <td>
                     <div>
-                        <form method="POST" action="/admin/rooms/{{$room->id}}">
+                        <form method="POST" action="/admin/news/{{$news->id}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Entfernen</button>

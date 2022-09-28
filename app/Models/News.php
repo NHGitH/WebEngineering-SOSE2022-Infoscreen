@@ -20,7 +20,7 @@ class News extends Model
 
     public function post()
     {
-        return $this->belongsTo(post::class,'post_id');
+        return $this->belongsTo(Post::class,'post_id');
     }
 
     public function module()

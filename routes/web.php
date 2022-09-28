@@ -66,8 +66,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/dashboard/posts/{post}', [PostController::class, 'update']);
     Route::delete('/dashboard/posts/{post}', [PostController::class, 'delete']);
 
-    Route::post('/dashboard/news', [NewsController::class, 'index']);
+    Route::get('/dashboard/news', [NewsController::class, 'index']);
     Route::post('/dashboard/news/create', [NewsController::class, 'store']);
+    Route::get('/dashboard/news/{news}/edit', [NewsController::class, 'edit']);
+    Route::delete('/dashboard/news/{news}', [NewsController::class, 'delete']);
+    Route::patch('/dashboard/news/{news}', [NewsController::class, 'update']);
 
     Route::get('/dashboard/lessons', [LessonController::class, 'index']);
     Route::post('/dashboard/lessons/create', [LessonController::class, 'store']);
@@ -118,4 +121,5 @@ Route::group(['middleware' => ['admin' , 'auth']], function () {
     // Route::patch('/admin/users/{user}', [UserController::class, 'update']);
     Route::delete('/admin/users/{user}', [UserController::class, 'delete']);
 
+    Route::get('admin/news', [AdminController::class, 'news']);
 });

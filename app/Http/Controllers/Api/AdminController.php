@@ -39,7 +39,7 @@ class AdminController extends Controller
     public function news()
     {
         return view('/Admin/news', [
-            'news' => News::all(),
+            'newslist' => News::all(),
         ]);
     }
 

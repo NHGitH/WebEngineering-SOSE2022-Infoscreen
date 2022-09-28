@@ -17,7 +17,7 @@ class CreateNewsTable extends Migration
             $table->id();
             $table->foreignId('post_id');
             $table->foreignId('room_id')->nullable();
-            $table->foreignId('module_id')->nullable();
+            $table->foreignId('module_id')->unique()->nullable();
             $table->timestamps();
         });
     }
