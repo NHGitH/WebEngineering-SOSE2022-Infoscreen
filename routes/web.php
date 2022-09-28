@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\BuildingController;
 use App\Http\Controllers\Api\CourseController;
@@ -51,9 +52,6 @@ Route::get('/buildings/{building:name}/{room:name}', [BuildingController::class,
 Route::get('register', [UserController::class, 'create'])->middleware('guest');
 Route::post('register', [UserController::class, 'store'])->middleware('guest');
 
-Route::get('building', [BuildingController::class, 'create']);
-Route::post('building', [BuildingController::class, 'store']);
-
 Route::get('/room/test', [RoomController::class, 'show']);
 Route::get('room', [RoomController::class, 'create']);
 Route::post('room', [RoomController::class, 'store']);
@@ -71,6 +69,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/dashboard/posts/{post}', [PostController::class, 'update']);
     Route::delete('/dashboard/posts/{post}', [PostController::class, 'delete']);
 
+    Route::post('/dashboard/news', [NewsController::class, 'index']);
+    Route::post('/dashboard/news/create', [NewsController::class, 'store']);
+
     Route::get('/dashboard/lessons', [LessonController::class, 'index']);
     Route::post('/dashboard/lessons/create', [LessonController::class, 'store']);
     Route::get('/dashboard/lessons/{lesson}/edit', [LessonController::class, 'edit']);
@@ -87,6 +88,8 @@ Route::group(['middleware' => ['admin' , 'auth']], function () {
     Route::get('/admin/posts/{post}/edit', [PostController::class, 'edit']);
     Route::patch('/admin/posts/{post}', [PostController::class, 'update']);
     Route::delete('/admin/posts/{post}', [PostController::class, 'delete']);
+
+    Route::get('/admin/news', [AdminController::class, 'news']);
 
     Route::get('admin/rooms', [AdminController::class, 'rooms']);
     Route::post('/admin/rooms/create', [RoomController::class, 'store']);

@@ -8,6 +8,7 @@
   <nav>
     <ul class="nav-links">
       <li><a href="/admin/posts">Posts</a></li>
+      <li><a href="/admin/news">News</a></li>
       <li><a href="/admin/modules">Module</a></li>
       <li><a href="/admin/buildings">Gebäude</a></li>
       <li><a href="/admin/rooms">Räume</a></li>

@@ -102,6 +102,43 @@
                 </details>
             </div>
 
+            <div class="container-new-entry">
+                <details>
+                    <summary>News verknüpfen:</summary>
+                    <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/news/create" enctype="multipart/form-data">
+                        @csrf
+
+                        <div class="grid-item-label-and-input">
+                            <label for="post">Post:</label><br>
+                            <select name="post_id">
+                                @foreach(auth()->user()->posts->sortBy('name') as $post)
+                                <option value="{{$post->id}}">{{$post->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="grid-item-label-and-input">
+                            <label for="module_id">Modul:</label><br>
+                            <select name="module_id">
+                                @foreach(auth()->user()->modules->sortBy('name') as $module)
+                                <option value="{{$module->id}}">{{$module->name}} | {{$module->course->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <button class="add-button" type="submit">Neuen Post hinzufügen</button>
+
+                        @if($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                    </form>
+                </details>
+            </div>
+
             <div>
                 <h1>Meine letzten Posts:</h1>
                 @if(auth()->user()->posts->count())
