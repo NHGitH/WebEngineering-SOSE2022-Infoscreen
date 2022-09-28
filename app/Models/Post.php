@@ -17,12 +17,4 @@ class Post extends Model
     {
         return $this->belongsTo(User::class,'user_id');
     }
-
-    public function building(){
-        return $this->belongsTo(Building::class,'building_id');
-    }
-
-    public function room(){
-        return $this->belongsTo(Room::class,'room_id');
-    }
 }

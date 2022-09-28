@@ -23,6 +23,8 @@
         <td> {{$post->published_at}}</td>
         <td>
           <div>
+            @if(auth()->user()->username == "admin")
+            
             <form class="button-center" method="POST" action="/admin/posts/{{$post->id}}">
               @csrf
               @method('DELETE')
