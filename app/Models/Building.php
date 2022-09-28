@@ -21,6 +21,18 @@ class Building extends Model
         return $this->hasMany(Post::class);
     }
 
+        public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            $query
+                ->wherehas('rooms', fn($query)=> $query->where('name'),$search);
+        });
+        $query->when($filters['building'] ?? false, function ($query, $building) {
+            $query
+                ->where('name', 'like', '%' . $building . '%');
+        });
+    }
+
 
     protected $fillable = [
         'name',
