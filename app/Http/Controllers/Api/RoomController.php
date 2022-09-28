@@ -4,14 +4,16 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Room;
+use App\Models\Building;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
     public function index()
     {
-        return view('rooms', [
-            'rooms' => Room::all()
+        return view('/Room/rooms', [
+            'rooms' => Room::all(),
+            'buildings' => Building::all(),
         ]);
     }
 

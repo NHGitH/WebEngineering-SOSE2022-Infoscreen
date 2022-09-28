@@ -43,18 +43,15 @@ Route::get('/test', function () {
     ]);
 });
 
-Route::get('/posts', [PostController::class, 'index']);
-Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+
+Route::get('/rooms', [RoomController::class, 'index']);
+
 Route::get('/buildings', [BuildingController::class, 'index']);
 Route::get('/buildings/{building:name}', [BuildingController::class, 'show']);
 Route::get('/buildings/{building:name}/{room:name}', [BuildingController::class, 'showRoom']);
 
 Route::get('register', [UserController::class, 'create'])->middleware('guest');
 Route::post('register', [UserController::class, 'store'])->middleware('guest');
-
-Route::get('/room/test', [RoomController::class, 'show']);
-Route::get('room', [RoomController::class, 'create']);
-Route::post('room', [RoomController::class, 'store']);
 
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest')->name('login');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
