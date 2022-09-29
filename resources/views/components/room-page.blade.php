@@ -15,23 +15,27 @@
 
   <div class="main-container">
     <div class="module-card">
+      <!--Erstellt eine Collection für Lessons, welche an dem jeweiligen Tag in dem Raum stattfinden. 
+          Uhrzeit in der Zukunft! Sortiert nach der Zeit!
+          Von dieser Collection werden die nächsten vier Lessons genommen und and die Componente Lesson-card weitergegeben.
+          Wenn keine Lessons vorhanden sind, soll ausgegeben werden, dass noch keine Lessons für heute eingetragen sind.-->
       @if ($room->lessons()->count())
       @foreach ($room->lessons()
+      ->where('date', '=', date('Y-m-d'))
+      ->where('time', '>=', $now)
       ->orderby('time','asc')
-      ->take(3)
+      ->take(4)
       ->get() as $lesson)
       <x-lesson-card :lesson="$lesson" />
       @endforeach
       @else
-      <p class="text-center">No modules yet. Please check again later.</p>
+      <p class="text-center">Für heute sind noch keine Veranstaltungen eingetragen.</p>
       @endif
     </div>
     <div class="posts-container">
-      @if ($room->posts()->count())
-      @foreach ($room->posts()
-      ->take(3)
-      ->get() as $post)
-      <x-post-card :post="$post" />
+      @if ($room->building->news()->count())
+      @foreach ($room->building->news as $news)
+      <x-post-card :post="$news->post"/>
       @endforeach
       @else
       <p class="text-center">No Posts yet. Please check again later.</p>
@@ -117,7 +121,6 @@
   font-weight: bold;
   color: goldenrod;
 }
-
 .different-color-caption {
   color: goldenrod;
 }
