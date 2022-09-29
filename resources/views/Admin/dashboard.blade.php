@@ -18,7 +18,7 @@
 
             <div class="grid-item-label-and-input">
               <label for="courseName">STUDIENGANG:</label><br>
-              <select name="courses_id">
+              <select name="course_id">
                 @foreach($courses as $course)
                 <option value="{{$course->id}}">{{$course->name}}</option>
                 @endforeach
@@ -185,8 +185,8 @@
 
       <div class="container-new-entry">
         <details>
-          <summary>News in Modul einbinden:</summary>
-          <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/news/create" enctype="multipart/form-data">
+          <summary>News in Raum einbinden:</summary>
+          <form class="container-form-grid form-grid-gap-event" method="POST" action="/admin/news/create" enctype="multipart/form-data">
             @csrf
 
             <div class="grid-item-label-and-input">
@@ -203,6 +203,44 @@
               <select name="room_id">
                 @foreach($rooms->sortBy('building.name') as $room)
                 <option value="{{$room->id}}">{{$room->building->name}} | {{$room->name}}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <button class="add-button" type="submit">News hinzufügen</button>
+
+            @if($errors->any())
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{$error}}</li>
+              @endforeach
+            </ul>
+            @endif
+          </form>
+        </details>
+      </div>
+
+      
+      <div class="container-new-entry">
+        <details>
+          <summary>News in Gebäude einbinden:</summary>
+          <form class="container-form-grid form-grid-gap-event" method="POST" action="/admin/news/create" enctype="multipart/form-data">
+            @csrf
+
+            <div class="grid-item-label-and-input">
+              <label for="post">Post:</label><br>
+              <select name="post_id">
+                @foreach($posts->sortBy('author.name') as $post)
+                <option value="{{$post->id}}">{{$post->author->name}}| {{$post->title}}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="grid-item-label-and-input">
+              <label for="building_id">Gebäude:</label><br>
+              <select name="building_id">
+                @foreach($buildings->sortBy('name') as $building)
+                <option value="{{$building->id}}">{{$building->name}}</option>
                 @endforeach
               </select>
             </div>

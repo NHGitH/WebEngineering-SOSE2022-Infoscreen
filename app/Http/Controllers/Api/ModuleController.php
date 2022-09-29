@@ -13,7 +13,7 @@ class ModuleController extends Controller
         $attributes = request()->validate([
             'name' => 'required|max:255',
             'user_id' => 'required',
-            'courses_id' => 'required',
+            'course_id' => 'required',
         ]);
 
         Module::create($attributes);
