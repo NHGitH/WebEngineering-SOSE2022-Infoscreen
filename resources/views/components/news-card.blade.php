@@ -7,11 +7,6 @@
     <div class="news-image">
       <img src="/images/{{$post->picture_path}}" alt="">
     </div>
-    <div class="news-content">
-      <p>Author: {{$post->author->name}}</p>
-      <p>Veröffentlicht am: {{$post->published_at ? Carbon\Carbon::parse($post->published_at)->format('d-m-Y') : '-'}}
-      </p>
-    </div>
     <p class="news-body">{{$post->body}}</p>
   </div>
 </article>
