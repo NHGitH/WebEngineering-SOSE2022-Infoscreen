@@ -8,6 +8,7 @@
         <th> Postname </th>
         <th> Modul </th>
         <th> Raum </th>
+        <th> Gebäude </th>
         <th> Funktionen </th>
       </tr>
       <!-- //Einbindung der User -->
@@ -27,6 +28,11 @@
         <td> {{$news->room->name}} </td>
         @else
         <td> kein Raum zugewiesen </td>
+        @endif
+        @if($news->building != null)
+        <td> {{$news->building->name}} </td>
+        @else
+        <td> kein Gebäude zugewiesen </td>
         @endif
         <td>
           <div>
