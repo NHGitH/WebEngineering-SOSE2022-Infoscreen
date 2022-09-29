@@ -42,6 +42,11 @@ class RoomController extends Controller
     }
 
     public function delete(Room $room){
+        
+        foreach($room->lessons as $lesson){
+            $lesson->delete();
+        }
+
         $room->delete(); 
         
         return back()->with('success','Gebäude entfernt');

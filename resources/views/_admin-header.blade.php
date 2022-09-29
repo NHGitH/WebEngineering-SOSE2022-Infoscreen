@@ -63,6 +63,7 @@
     </ul>
   </nav> -->
 </header>
+<p style="color:red">Bitte bedenken sie: Beim löschen werden ggf. Beziehungen gelöscht, wodurch Daten verloren gehen können.</p>
 
 
 <style>

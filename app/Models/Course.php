@@ -12,7 +12,7 @@ class Course extends Model
     protected $fillable = ['name','building_id'];
     protected $guarded = [];
 
-    public function module()
+    public function modules()
     {
         return $this->hasMany(Module::class);
     }

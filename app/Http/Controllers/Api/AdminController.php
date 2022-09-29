@@ -92,6 +92,7 @@ class AdminController extends Controller
     {
         return view('./Admin/dashboard', [
             'buildings' => Building::all(),
+            'posts' => Post::all(),
             'rooms' => Room::all(),
             'courses' => Course::all(),
             'username' => User::firstWhere('username', request('username')),

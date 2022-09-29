@@ -8,6 +8,7 @@
                 <tr>
                     <th> Modul </th>
                     <th> Studiengang </th>
+                    <th> Raum </th>
                     <th> Zeitpunkt: </th>
                     <th> Funktionen </th>
                 </tr>
@@ -17,6 +18,7 @@
                 <tr>
                     <td> {{$module->name}} </td>
                     <td> {{$module->course->name}} </td>
+                    <td> {{$lesson->room->name}}</td>
                     <td> {{$lesson->time}}</td>
                     <!-- <td> {{$module->course->name}} </td> -->
                     <td>
