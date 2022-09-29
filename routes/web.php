@@ -121,7 +121,7 @@ Route::group(['middleware' => ['admin', 'auth']], function () {
 
     Route::get('admin/news', [AdminController::class, 'news']);
     Route::post('/admin/news/create', [NewsController::class, 'storeAdmin']);
-    Route::get('/admin/news/{news}/edit', [NewsController::class, 'edit']);
+    Route::get('/admin/news/{news}/edit', [NewsController::class, 'editAdmin']);
     Route::patch('/admin/news/{news}', [NewsController::class, 'updateAdmin']);
     Route::delete('/admin/news/{news}', [NewsController::class, 'delete']);
 });

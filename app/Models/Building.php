@@ -25,8 +25,16 @@ class Building extends Model
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
             $query
-                ->wherehas('rooms', fn($query)=> $query->where('name'),$search);
+                ->wherehas('a', fn($query)=> $query->where('name'),$search);
         });
+        $query->when($filters['building'] ?? false, function ($query, $building) {
+            $query
+                ->where('name', 'like', '%' . $building . '%');
+        });
+    }
+
+    public function scopeSearch($query, array $filters)
+    {
         $query->when($filters['building'] ?? false, function ($query, $building) {
             $query
                 ->where('name', 'like', '%' . $building . '%');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use App\Models\Building;
 
 class NewsController extends Controller
 {
@@ -54,6 +55,14 @@ class NewsController extends Controller
         //returns view to edit a single News-link, which is given as input and returns to dashboard
         return view('/News/edit',[
             'news' => $news,
+        ]);
+    }
+
+    public function editAdmin(News $news){
+        //returns view to edit a single News-link, which is given as input and returns to dashboard
+        return view('/News/editAdmin',[
+            'news' => $news,
+            'buildings' => Building::all(),
         ]);
     }
 

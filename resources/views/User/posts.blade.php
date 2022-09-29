@@ -12,7 +12,7 @@
         <th>Funktionen</th>
       </tr>
       <!-- //Einbindung der User -->
-      @foreach (auth()->user()->posts as $post)
+      @foreach (auth()->user()->posts->sortBy('title') as $post)
       <tr>
         <td> {{$post->title}} </td>
         <td> {{$post->body}}</td>
