@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: black;
+}
+
+/* CSS GRID */
+.container--1 {
+  background-color: antiquewhite;
+  display: grid;
+}
+
+.container--2 {
+  background-color: orchid;
+  grid-template-columns: 0.5fr 3fr 1.5fr;
+  grid-template-rows: 1fr;
+  display: grid;
+  height: 100px;
+}
+
+.container--3 {
+  display: grid;
+  background-color: black;
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 5px;
+  height: 887px;
+}
+
+.container--4 {
+  display: grid;
+  width: 500px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.container--5 {
+  display: grid;
+  width: auto;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.el--1 {
+  background-color: aqua;
+}
+
+.el--2 {
+  background-color: rgb(212, 35, 206);
+}
+
+.el--3 {
+  background-color: rgb(166, 255, 0);
+}
+
+.el--4 {
+  background-color: rgb(0, 0, 0);
+  height: 5px;
+}
+
+.el--5 {
+  background-color: rgb(255, 0, 102);
+}
+
+.el--6 {
+  background-color: rgb(226, 143, 154);
+}
+
+.el--7 {
+  background-color: rgb(184, 121, 129);
+}
+
+.el--8 {
+  background-color: rgb(116, 123, 221);
+}
+
+.el--9 {
+  background-color: rgb(115, 117, 144);
+}
+
+.el--10 {
+  background-color: rgb(125, 84, 96);
+}
