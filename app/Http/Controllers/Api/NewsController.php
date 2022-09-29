@@ -27,12 +27,29 @@ class NewsController extends Controller
             'post_id' => 'required',
             'module_id' => 'unique:news,module_id|nullable',
             'room_id' => 'unique:news,room_id|nullable',
+            'building_id' => 'unique:news,building_id|nullable',
         ]);
 
         News::create($attributes);
 
 
         return redirect('/dashboard');
+    }
+
+    
+    public function storeAdmin()
+    {    //creates and stores a News-link into the database
+        $attributes = request()->validate([
+            'post_id' => 'required',
+            'module_id' => 'unique:news,module_id|nullable',
+            'room_id' => 'unique:news,room_id|nullable',
+            'building_id' => 'unique:news,building_id|nullable',
+        ]);
+
+        News::create($attributes);
+
+
+        return redirect('/admin');
     }
 
     public function edit(News $news){
@@ -48,11 +65,26 @@ class NewsController extends Controller
             'post_id' => 'required',
             'module_id' => 'unique:news,module_id|nullable',
             'room_id' => 'unique:news,room_id|nullable',
+            'building_id' => 'unique:news,building_id|nullable',
         ]);
 
         $news->update($attributes);
 
         return redirect('dashboard/news');
+    }
+
+    public function updateAdmin(News $news){
+        //updates the News-link which is given and returns to the news-dashboard
+        $attributes = request()->validate([
+            'post_id' => 'required',
+            'module_id' => 'unique:news,module_id|nullable',
+            'room_id' => 'unique:news,room_id|nullable',
+            'building_id' => 'unique:news,building_id|nullable',
+        ]);
+
+        $news->update($attributes);
+
+        return redirect('admin/news');
     }
 
     public function delete(News $news){

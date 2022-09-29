@@ -3,8 +3,8 @@
   <div class="head-container">
     <!--<img class="hochschuleLogo" src="/images/Logo_der_Hochschule_Flensburg.png" width="150px">-->
     <h1 class="infoscreen-caption">Infoscreen<br>Hochschule Flensburg</h1>
-    <h1 class="welcome">Willkommen im <strong class="different-color-caption">Raum{{$room->name}}</strong> des
-      <strong class="different-color-caption">{{$room->building->name}}-Gebäudes</strong>
+    <h1 class="welcome">Willkommen im <strong>Raum{{$room->name}}</strong> des
+      <strong>{{$room->building->name}}-Gebäudes</strong>
     </h1>
     <div class="clock">
       <h1 class="time">
@@ -15,23 +15,27 @@
 
   <div class="main-container">
     <div class="module-card">
+      <!--Erstellt eine Collection für Lessons, welche an dem jeweiligen Tag in dem Raum stattfinden. 
+          Uhrzeit in der Zukunft! Sortiert nach der Zeit!
+          Von dieser Collection werden die nächsten vier Lessons genommen und and die Componente Lesson-card weitergegeben.
+          Wenn keine Lessons vorhanden sind, soll ausgegeben werden, dass noch keine Lessons für heute eingetragen sind.-->
       @if ($room->lessons()->count())
       @foreach ($room->lessons()
+      ->where('date', '=', date('Y-m-d'))
+      ->where('time', '>=', $now)
       ->orderby('time','asc')
-      ->take(3)
+      ->take(4)
       ->get() as $lesson)
       <x-lesson-card :lesson="$lesson" />
       @endforeach
       @else
-      <p class="text-center">No modules yet. Please check again later.</p>
+      <p class="text-center">Für heute sind noch keine Veranstaltungen eingetragen.</p>
       @endif
     </div>
     <div class="posts-container">
-      @if ($room->posts()->count())
-      @foreach ($room->posts()
-      ->take(3)
-      ->get() as $post)
-      <x-post-card :post="$post" />
+      @if ($room->building->news()->count())
+      @foreach ($room->building->news as $news)
+      <x-post-card :post="$news->post"/>
       @endforeach
       @else
       <p class="text-center">No Posts yet. Please check again later.</p>
@@ -115,10 +119,5 @@
   padding: 10px 15px;
   letter-spacing: 3px;
   font-weight: bold;
-  color: goldenrod;
-}
-
-.different-color-caption {
-  color: goldenrod;
 }
 </style>

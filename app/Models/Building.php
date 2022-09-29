@@ -16,6 +16,11 @@ class Building extends Model
         return $this->hasMany(Room::class);
     }
 
+    public function news()
+    {
+        return $this->hasMany(News::class);
+    }
+
         public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {

@@ -9,7 +9,7 @@ class News extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['room_id', 'post_id', 'module_id'];
+    protected $fillable = ['room_id', 'post_id', 'module_id', 'building_id'];
     protected $guarded = [];
     protected $with = ['room','post', 'module'];
 
@@ -26,6 +26,11 @@ class News extends Model
     public function module()
     {
         return $this->belongsTo(Module::class, 'module_id');
+    }
+
+    public function building()
+    {
+        return $this->belongsTo(Building::class, 'building_id');
     }
 
 }

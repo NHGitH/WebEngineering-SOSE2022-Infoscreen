@@ -79,7 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/dashboard/lessons/{lesson}', [LessonController::class, 'delete']);
 });
 
-Route::group(['middleware' => ['admin' , 'auth']], function () {
+Route::group(['middleware' => ['admin', 'auth']], function () {
     //PostRoutes:
     Route::get('/admin', [AdminController::class, 'login']);
 
@@ -120,5 +120,8 @@ Route::group(['middleware' => ['admin' , 'auth']], function () {
     Route::delete('/admin/users/{user}', [UserController::class, 'delete']);
 
     Route::get('admin/news', [AdminController::class, 'news']);
-    Route::delete('/admin/news/{user}', [NewsController::class, 'delete']);
+    Route::post('/admin/news/create', [NewsController::class, 'storeAdmin']);
+    Route::get('/admin/news/{news}/edit', [NewsController::class, 'edit']);
+    Route::patch('/admin/news/{news}', [NewsController::class, 'updateAdmin']);
+    Route::delete('/admin/news/{news}', [NewsController::class, 'delete']);
 });
