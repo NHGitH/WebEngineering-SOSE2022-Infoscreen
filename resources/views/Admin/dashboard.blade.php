@@ -48,7 +48,6 @@
         </details>
       </div>
 
-      @if(auth()->user()->role == "admin")
       <div class="container-new-entry">
         <details>
           <summary>Raum anlegen:</summary>

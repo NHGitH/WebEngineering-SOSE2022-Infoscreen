@@ -16,4 +16,12 @@ class Course extends Model
     {
         return $this->hasMany(Module::class);
     }
+
+    public function scopeSearch($query, array $filters)
+    {
+        $query->when($filters['course'] ?? false, function ($query, $building) {
+            $query
+                ->where('name', 'like', '%' . $building . '%');
+        });
+    }
 }

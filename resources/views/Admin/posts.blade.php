@@ -12,8 +12,9 @@
         <th>Gepostet am:</th>
         <th>Funktion(en)</th>
       </tr>
+      
       <!-- //Einbindung der User -->
-      @foreach ($posts as $post)
+      @foreach ($posts->sortBy('author.name') as $post)
       <tr>
         <td> {{$post->author->name}} </td>
         <td> {{$post->title}} </td>
@@ -33,7 +34,7 @@
       @endforeach
     </table>
     @else
-    <p>Sie haben noch keine Posts verfasst.</p>
+    <p>Es wurden noch keine Posts verfasst.</p>
     @endif
   </div>
 </x-layout>

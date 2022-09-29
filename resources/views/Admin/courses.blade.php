@@ -10,8 +10,15 @@
         <th>Erstellt am:</th>
         <th>Funktion(en)</th>
       </tr>
+
+      <div class="filter">
+        <form method="GET" action"#">
+          <label for="course">Studiengangfilter:</label><br>
+          <input type="text" name="course" id="course" placeholder="Studiengangfilter" value="{{request('course')}}">
+        </form>
+      </div>
       <!-- //Einbindung der User -->
-      @foreach ($courses as $course)
+      @foreach ($courses->sortBy('name') as $course)
       <tr>
         <td> {{$course->name}} </td>
         <td> {{$course->building_id}}
@@ -30,7 +37,7 @@
       @endforeach
     </table>
     @else
-    <p>Sie haben noch keine Posts verfasst.</p>
+    <p>Es wurden noch keine Studiengänge angelegt.</p>
     @endif
   </div>
 </x-layout>

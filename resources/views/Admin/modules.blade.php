@@ -11,7 +11,7 @@
         <th>Funktion(en)</th>
       </tr>
       <!-- //Einbindung der User -->
-      @foreach ($modules as $module)
+      @foreach ($modules->sortBy('name') as $module)
       <tr>
         <td> {{$module->name}} </td>
         @if($module->user != null)
@@ -33,7 +33,7 @@
       @endforeach
     </table>
     @else
-    <p>Sie haben noch keine Posts verfasst.</p>
+    <p>Es wurden noch keine Module angelegt.</p>
     @endif
   </div>
 </x-layout>

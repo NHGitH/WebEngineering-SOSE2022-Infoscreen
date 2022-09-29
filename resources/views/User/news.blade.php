@@ -11,7 +11,7 @@
         <th> Funktionen </th>
       </tr>
       <!-- //Einbindung der User -->
-      @foreach ($newslist as $news)
+      @foreach ($newslist->sortBy('module.name') as $news)
       <tr>
         @if($news->post != null)
         <td> {{$news->post->title}} </td>

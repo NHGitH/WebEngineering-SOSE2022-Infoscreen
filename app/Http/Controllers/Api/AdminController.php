@@ -25,7 +25,7 @@ class AdminController extends Controller
     public function buildings()
     {
         return view('/Admin/buildings', [
-            'buildings' => Building::all(),
+            'buildings' => Building::latest()->search(request(['building']))->get(),
         ]);
     }
 
@@ -47,7 +47,7 @@ class AdminController extends Controller
     {
         return view('Admin/courses',
         [
-            'courses' => Course::all(),
+            'courses' => Course::latest()->search(request(['course']))->get(),
         ]);
     }
 
