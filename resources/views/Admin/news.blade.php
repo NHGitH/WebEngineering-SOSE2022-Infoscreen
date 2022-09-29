@@ -31,19 +31,17 @@
 
 
                 <td>
-                    <div>
-                        <form method="POST" action="/admin/news/{{$news->id}}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Entfernen</button>
-                        </form>
-                    </div>
+                    <form method="POST" action="/admin/news/{{$news->id}}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Entfernen</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
         </table>
         @else
-        <p>Sie haben noch keine News verlinkt.</p>
+        <p>Es sind noch keine News verlinkt.</p>
         @endif
     </div>
 </x-layout>

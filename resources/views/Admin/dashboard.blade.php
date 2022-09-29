@@ -183,6 +183,43 @@
         </details>
       </div>
 
+      <div class="container-new-entry">
+        <details>
+          <summary>News in Modul einbinden:</summary>
+          <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/news/create" enctype="multipart/form-data">
+            @csrf
+
+            <div class="grid-item-label-and-input">
+              <label for="post">Post:</label><br>
+              <select name="post_id">
+                @foreach($posts->sortBy('author.name') as $post)
+                <option value="{{$post->id}}">{{$post->author->name}}| {{$post->title}}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="grid-item-label-and-input">
+              <label for="room_id">Raum:</label><br>
+              <select name="room_id">
+                @foreach($rooms->sortBy('building.name') as $room)
+                <option value="{{$room->id}}">{{$room->building->name}} | {{$room->name}}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <button class="add-button" type="submit">News hinzufügen</button>
+
+            @if($errors->any())
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{$error}}</li>
+              @endforeach
+            </ul>
+            @endif
+          </form>
+        </details>
+      </div>
+
       <!-- EIN NEUES EVENT ANLEGEN -->
       <!-- <div class="container-new-entry">
                 <details>

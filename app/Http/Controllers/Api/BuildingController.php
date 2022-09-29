@@ -68,7 +68,12 @@ class BuildingController extends Controller
     // }
 
     public function delete(Building $building){
-       $building->delete(); 
+       
+        foreach($building->rooms as $room){
+            $room->delete();
+        }
+       
+        $building->delete(); 
        
        return back()->with('success','Gebäude entfernt');
     }

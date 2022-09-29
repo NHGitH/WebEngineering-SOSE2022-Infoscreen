@@ -19,7 +19,7 @@ class ModuleFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'slug' => $this->faker->unique()->slug(),
-            'courses_id' => $this->faker->numberBetween(1,7),
+            'course_id' => $this->faker->numberBetween(1,7),
             'user_id' => $this->faker->numberBetween(1,20),
         ];
     }

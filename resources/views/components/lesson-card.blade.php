@@ -10,6 +10,15 @@
         {{\Carbon\Carbon::createFromFormat('Y-m-d',$lesson->date)->format('d-m-Y')}}</p>
       <p class="text-sm"><strong>Uhrzeit:</strong>
         {{\Carbon\Carbon::createFromFormat('H:i:s',$lesson->time)->format('h:i')}}</p>
+        <div>
+            @if($lesson->module->news != null)
+            @foreach($lesson->module->news()->take(3)->get() as $new)
+            <x-news-card :post="$new->post"/>
+            @endforeach
+            @else
+            <p>Es wurden keine Posts zu diesem Modul verlinkt.</p>
+            @endif
+        </div>
     </div>
     <div>
       @if($lesson->module->news != null)
