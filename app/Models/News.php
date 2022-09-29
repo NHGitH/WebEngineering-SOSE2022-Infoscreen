@@ -9,14 +9,9 @@ class News extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['room_id', 'post_id', 'module_id', 'building_id'];
+    protected $fillable = ['post_id', 'module_id', 'building_id'];
     protected $guarded = [];
-    protected $with = ['room','post', 'module'];
-
-    public function room()
-    {
-        return $this->belongsTo(Room::class,'room_id');
-    }
+    protected $with = ['post', 'module'];
 
     public function post()
     {
