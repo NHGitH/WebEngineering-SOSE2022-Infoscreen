@@ -1,7 +1,9 @@
 @props(['lesson'])
 <div class="container">
   <div class="text-area">
-    <h2 class="text-2xl">{{$lesson->module->name}}</h2>
+    <div class="background-caption">
+      <h2>{{$lesson->module->name}}</h2>
+    </div>
     <p class="text-sm"><strong>Raum:</strong> {{$lesson->room->name}}</p>
     <p class="text-sm"><strong>Professor:</strong> {{$lesson->module->user->name}}</p>
     <p class="text-sm"><strong>Studiengang:</strong> {{$lesson->module->course->name}}</p>
@@ -28,33 +30,39 @@
   background-color: rgb(243 244 246);
   display: grid;
   grid-template-columns: 50% 50%;
-  border-radius: 2px;
+  border-radius: 5px;
   width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+  margin: 10px 0 20px 0;
 }
 
 .text-area {
   display: grid;
   grid-template-rows: 100px repeat(5 30px);
+  align-items: center;
 
+  width: 100%;
   padding: 10px;
-  width: 90%;
-  color: #1a2a36;
-
-  border-right: 1px solid #1a2a36;
 }
 
 .text-area h2 {
   text-align: center;
-  margin: 10px 0;
   font-weight: bold;
+  font-size: 20px;
+  color: #1a2a36;
+}
+
+.background-caption {
+  width: auto;
+  border: 2px solid rgba(26, 42, 54, 0.1);
+  border-radius: 5px;
+  background-color: rgba(26, 42, 54, 0.1);
 }
 
 .text-sm {
-  font-size: 16px;
+  font-size: 14px;
   margin: 5px 0;
   border: 75%;
-  border-bottom: 1px solid black;
 }
 
 .text-sm:last-of-type {
