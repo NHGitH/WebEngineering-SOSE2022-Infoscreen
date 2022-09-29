@@ -1,6 +1,6 @@
 @props(['room'])
 <section>
-<div class="head-container">
+  <div class="head-container">
     <!--<img class="hochschuleLogo" src="/images/Logo_der_Hochschule_Flensburg.png" width="150px">-->
     <h1 class="infoscreen-caption">Infoscreen<br>Hochschule Flensburg</h1>
     <h1 class="welcome">Willkommen im <strong>Raum{{$room->name}}</strong> des
@@ -41,8 +41,7 @@
 </section>
 
 <style>
-
-.head-container *{
+* {
   margin: 0;
   padding: 0;
 }
@@ -117,4 +116,8 @@
   letter-spacing: 3px;
   font-weight: bold;
 }
+
+.container {}
+
+.text-area {}
 </style>
