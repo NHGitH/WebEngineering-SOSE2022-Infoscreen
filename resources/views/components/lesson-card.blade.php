@@ -1,6 +1,5 @@
 @props(['lesson'])
-<section class="
-    mt-10 mb-10 ">
+<section>
   <div class="container">
     <div class="text-area">
       <h2 class="text-2xl">{{$lesson->module->name}}</h2>
@@ -26,23 +25,21 @@
 
 <style>
 .container {
-  background-color: rgb(243 244 246);
+  background-color: #eee;
   display: grid;
   grid-template-columns: 50% 50%;
-  border-radius: 2px;
+  border-radius: 5px;
   width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+  margin: 20px 0 0 0;
 }
 
 .text-area {
   display: grid;
   grid-template-rows: 100px repeat(5 30px);
 
-  padding: 10px;
-  width: 90%;
+  padding: 15px;
   color: #1a2a36;
-
-  border-right: 1px solid #1a2a36;
 }
 
 .text-area h2 {

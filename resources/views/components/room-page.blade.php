@@ -3,8 +3,8 @@
   <div class="head-container">
     <!--<img class="hochschuleLogo" src="/images/Logo_der_Hochschule_Flensburg.png" width="150px">-->
     <h1 class="infoscreen-caption">Infoscreen<br>Hochschule Flensburg</h1>
-    <h1 class="welcome">Willkommen im <strong>Raum{{$room->name}}</strong> des
-      <strong>{{$room->building->name}}-Gebäudes</strong>
+    <h1 class="welcome">Willkommen im <strong class="different-color-caption">Raum{{$room->name}}</strong> des
+      <strong class="different-color-caption">{{$room->building->name}}-Gebäudes</strong>
     </h1>
     <div class="clock">
       <h1 class="time">
@@ -115,9 +115,10 @@
   padding: 10px 15px;
   letter-spacing: 3px;
   font-weight: bold;
+  color: goldenrod;
 }
 
-.container {}
-
-.text-area {}
+.different-color-caption {
+  color: goldenrod;
+}
 </style>
