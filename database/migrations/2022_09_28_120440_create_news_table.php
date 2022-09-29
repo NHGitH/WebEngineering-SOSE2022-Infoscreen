@@ -16,7 +16,6 @@ class CreateNewsTable extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->foreignId('post_id');
-            $table->foreignId('room_id')->nullable();
             $table->foreignId('module_id')->unique()->nullable();
             $table->foreignId('building_id')->nullable();
             $table->timestamps();
