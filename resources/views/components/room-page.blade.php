@@ -3,7 +3,7 @@
   <div class="head-container">
     <!--<img class="hochschuleLogo" src="/images/Logo_der_Hochschule_Flensburg.png" width="150px">-->
     <h1 class="infoscreen-caption">Infoscreen<br>Hochschule Flensburg</h1>
-    <h1 class="welcome">Willkommen im <strong>Raum{{$room->name}}</strong> des
+    <h1 class="welcome">Willkommen im <strong>Raum {{$room->name}}</strong> des
       <strong>{{$room->building->name}}-Gebäudes</strong>
     </h1>
     <div class="clock">
@@ -35,7 +35,7 @@
     <div class="posts-container">
       @if ($room->building->news()->count())
       @foreach ($room->building->news as $news)
-      <x-post-card :post="$news->post"/>
+      <x-post-card :post="$news->post" />
       @endforeach
       @else
       <p class="text-center">No Posts yet. Please check again later.</p>
@@ -62,10 +62,13 @@
   color: #efefef;
 }
 
+.head-container h1 {
+  font-size: 30px;
+}
+
 .posts-container {
   width: 90%;
   display: block;
-  grid-column-start: 2;
   align-items: center;
   justify-items: center;
   padding: 10px;
@@ -78,6 +81,7 @@
   align-items: center;
   justify-items: center;
   border-bottom: 2px solid #D9D9D9;
+  color: #1a2a36;
 }
 
 .caption-lessons {
