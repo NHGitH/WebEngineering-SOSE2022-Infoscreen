@@ -182,44 +182,6 @@
           </form>
         </details>
       </div>
-
-      <div class="container-new-entry">
-        <details>
-          <summary>News in Raum einbinden:</summary>
-          <form class="container-form-grid form-grid-gap-event" method="POST" action="/admin/news/create" enctype="multipart/form-data">
-            @csrf
-
-            <div class="grid-item-label-and-input">
-              <label for="post">Post:</label><br>
-              <select name="post_id">
-                @foreach($posts->sortBy('author.name') as $post)
-                <option value="{{$post->id}}">{{$post->author->name}}| {{$post->title}}</option>
-                @endforeach
-              </select>
-            </div>
-
-            <div class="grid-item-label-and-input">
-              <label for="room_id">Raum:</label><br>
-              <select name="room_id">
-                @foreach($rooms->sortBy('building.name') as $room)
-                <option value="{{$room->id}}">{{$room->building->name}} | {{$room->name}}</option>
-                @endforeach
-              </select>
-            </div>
-
-            <button class="add-button" type="submit">News hinzufügen</button>
-
-            @if($errors->any())
-            <ul>
-              @foreach ($errors->all() as $error)
-              <li>{{$error}}</li>
-              @endforeach
-            </ul>
-            @endif
-          </form>
-        </details>
-      </div>
-
       
       <div class="container-new-entry">
         <details>
@@ -257,82 +219,6 @@
           </form>
         </details>
       </div>
-
-      <!-- EIN NEUES EVENT ANLEGEN -->
-      <!-- <div class="container-new-entry">
-                <details>
-                    <summary>Event anlegen:</summary>
-                    <form>
-                        @csrf
-                        <div class="new-entry-div">
-                            <label for="captionName">Überschrift:</label>
-                            <input type="text" id="captionName" placeholder="Überschrift">
-
-                            <label for="picPath">Bild hochladen (optional):</label>
-                            <input type="file" size="50" accept="text/*" id="picPath">
-
-                            <button>Neues Event hinzufügen</button>
-                        </div>
-
-                    </form>
-                </details>
-            </div> -->
-      @endif
-      <!-- EINEN NEUEN RAUM ANLEGEN -->
-
-
-      <!-- EINEN NEUEN POST ANLEGEN -->
-      <!-- <div class="container-new-entry">
-                <details>
-                    <summary>Post anlegen:</summary>
-                    <form method="POST" action="/admin/posts/create" enctype="multipart/form-data">
-                        @csrf
-                        <div class="new-entry-div">
-
-                            <label for="title">Überschrift:</label>
-                            <input type="text" name="title" id="title" placeholder="Überschrift">
-
-                            <label for="image">Bild hochladen (nur png Dateien):</label>
-                            <input type="file" size="5000" accept="image/png" name="image" id="image">
-                            <label for="body">Inhalt:</label>
-                            <textarea id="body" name="body" rows="4" cols="50"></textarea>
-
-                            <button type="submit">Neuen Post hinzufügen</button>
-                        </div>
-                    </form>
-                </details>
-            </div> -->
-
-      <!-- EIN NEUES GEBÄUDE ANLEGEN -->
-      <!-- <div class="container-new-entry">
-                <details>
-                    <summary>Test anlegen:</summary>
-                    <form method="#" action="/#">
-                        @csrf
-                        <div class="new-entry-div">
-
-                            <label for="name">Name:</label>
-                            <input list="rooms" name="name" id="name" placeholder="Raum">
-                            <datalist id="rooms">
-                                @foreach($rooms as $room)
-                                <option value="{{$room->id}}">{{$room->name}}</option>
-                                @endforeach
-                            </datalist>
-
-                            <button type="submit">Hinzufügen</button>
-                        </div>
-                        @if($errors->any())
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                        @endif
-                    </form>
-                </details>
-            </div> -->
-
-
     </main>
   </section>
 </x-layout>

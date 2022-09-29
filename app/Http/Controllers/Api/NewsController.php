@@ -26,7 +26,6 @@ class NewsController extends Controller
         $attributes = request()->validate([
             'post_id' => 'required',
             'module_id' => 'unique:news,module_id|nullable',
-            'room_id' => 'unique:news,room_id|nullable',
             'building_id' => 'unique:news,building_id|nullable',
         ]);
 
@@ -42,7 +41,6 @@ class NewsController extends Controller
         $attributes = request()->validate([
             'post_id' => 'required',
             'module_id' => 'unique:news,module_id|nullable',
-            'room_id' => 'unique:news,room_id|nullable',
             'building_id' => 'unique:news,building_id|nullable',
         ]);
 
@@ -64,7 +62,6 @@ class NewsController extends Controller
         $attributes = request()->validate([
             'post_id' => 'required',
             'module_id' => 'unique:news,module_id|nullable',
-            'room_id' => 'unique:news,room_id|nullable',
             'building_id' => 'unique:news,building_id|nullable',
         ]);
 
@@ -78,7 +75,6 @@ class NewsController extends Controller
         $attributes = request()->validate([
             'post_id' => 'required',
             'module_id' => 'unique:news,module_id|nullable',
-            'room_id' => 'unique:news,room_id|nullable',
             'building_id' => 'unique:news,building_id|nullable',
         ]);
 
