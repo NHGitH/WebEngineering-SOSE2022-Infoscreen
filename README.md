@@ -20,12 +20,26 @@ Empfohlene Schritte zum Testen von Daten:
 2. Drücken Sie oben im Reiter auf "Mein Adminbereich".
 3. Legen Sie einen neues Gebäude mit einem ihnen beliebigen Namen an
 4. Legen Sie einen neuen Studiengang an
-5. Legen Sie neue Räume in dem Gebäude an (Sie können auch Räume wie Lobby oder Eingang anlegen - grundlegend sollten hier allerdings keine Veranstaltungen angebunden werden!)
+5. Legen Sie neue Räume in dem Gebäude an (Sie können auch Räume wie Lobby oder Eingang anlegen - grundlegend sollten hier allerdings keine Veranstaltungen angebunden werden! - Wenn keine Veranstaltungen in einem Raum eingetragen sind, wird die Twitter-timeline des Twitter-Accounts der Hochschule Flensburg angezeigt.)
 6. Legen Sie neue User als Professoren an
 7. Legen Sie ein paar neue Module an und weisen Sie diese den Professoren zu (beim Anlegen!)
 8. Wechseln Sie auf das normale User-Dashboard, indem sie auf den Schriftzug: "Infoscreen Hochschule Flensburg" drücken.
 9. Legen Sie einen Post an. (optional mit Bild ihrerer Wahl.)
 10. Wechseln Sie zum Adminbereich
 11. Verknüpfen Sie einen Post mit einem Gebäude (News verlinken mit Gebäude)
+  
+Sie können im Adminbereich im oberen Reiter jeder Zeit Module, Posts, News, Räume, Gebäude, Studiengänge und User löschen (oder ggf. bearbeiten).
+  
+12. Loggen Sie sich bitte aus dem Admin-Account aus.
+13. Loggen Sie sich bitte in einem der Professoren-Accounts ein.
+14. Legen Sie eine Veranstaltung an.
+15. Erstellen Sie einen Post (optional mit Bild)
+16. Verlinken Sie News mit einem Modul.
 
-Nun können Sie sich entweder auf einem der erstellten Professoren Accounts einloggen, welchen Sie Module zugewiesen haben.
+Sie können im Userbereich im oberen Reiter jeder Zeit Veranstaltungen, Posts und News löschen (oder ggf. bearbeiten).
+
+17. Loggen Sie sich aus dem Account aus.
+18. Drücken Sie auf dem Login-Screen auf den Button "Raumübersicht"
+19. Wählen Sie einen Raum aus, für den Sie Veranstaltungen und News ausgewählt haben.
+
+Wir hoffen, dass Sie durch diese kleine Anleitung einen groben Überblick über den Aufbau unserer Website erhalten haben.
