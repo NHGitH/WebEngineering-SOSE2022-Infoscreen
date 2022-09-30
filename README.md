@@ -18,7 +18,7 @@ Empfohlene Schritte zum Testen von Daten:
 
 1. Loggen Sie sich als Admin auf dem Login-Screen ein: localhost/login (Login-daten für den Testadmin sind: BENUTZER: admin PASSWORD: admin123)
 2. Drücken Sie oben im Reiter auf "Mein Adminbereich".
-3. Legen Sie einen neues Gebäude mit einem ihnen beliebigen Namen an
+3. Legen Sie ein neues Gebäude mit einem beliebigen Namen an
 4. Legen Sie einen neuen Studiengang an
 5. Legen Sie neue Räume in dem Gebäude an (Sie können auch Räume wie Lobby oder Eingang anlegen - grundlegend sollten hier allerdings keine Veranstaltungen angebunden werden! - Wenn keine Veranstaltungen in einem Raum eingetragen sind, wird die Twitter-timeline des Twitter-Accounts der Hochschule Flensburg angezeigt.)
 6. Legen Sie neue User als Professoren an
@@ -29,6 +29,7 @@ Empfohlene Schritte zum Testen von Daten:
 11. Verknüpfen Sie einen Post mit einem Gebäude (News verlinken mit Gebäude)
   
 Sie können im Adminbereich im oberen Reiter jeder Zeit Module, Posts, News, Räume, Gebäude, Studiengänge und User löschen (oder ggf. bearbeiten).
+Beachten Sie beim Löschen von Elementen, dass ggf. Relationen gelöscht werden. (z.B. wenn Sie einen Studiengang löschen, werden auch alle zugehörigen Module gelöscht, usw.)
   
 12. Loggen Sie sich bitte aus dem Admin-Account aus.
 13. Loggen Sie sich bitte in einem der Professoren-Accounts ein.
