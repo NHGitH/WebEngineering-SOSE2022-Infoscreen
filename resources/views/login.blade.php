@@ -28,57 +28,52 @@
       </div>
     </div>
   </div> -->
+    <form method="POST" action="/login">
+      @csrf
+      <div class="grid-container">
+        <div class="grid-item-1">
+          <h1>Infoscreen<br />Hochschule Flensburg</h1>
+        </div>
 
+        <div>
+          <!-- DUMMY DIV --- NICHT ENTFERNEN -->
+          <!--<hr class="hr-margin-first">-->
+        </div>
 
-  <form method="POST" action="/login">
-    @csrf
-    <div class="grid-container">
-      <div class="grid-item-1">
-        <h1>Infoscreen<br />Hochschule Flensburg</h1>
-      </div>
+        <div class="grid-item-2">
+          <label for="username">BENUTZER</label><br />
+          <input type="text" name="username" id="username" required>
+        </div>
 
-      <div>
-        <!-- DUMMY DIV --- NICHT ENTFERNEN -->
-        <!--<hr class="hr-margin-first">-->
-      </div>
+        <div class="grid-item-3">
+          <label for="password">PASSWORT</label><br />
+          <input type="password" name="password" id="password" required>
+        </div>
 
-      <div class="grid-item-2">
-        <label for="username">BENUTZER</label><br />
-        <input type="text" name="username" id="username" required>
-      </div>
+        <div class="grid-item-4 login-button">
+          <button type="submit">EINLOGGEN</button>
+        </div>
 
-      <div class="grid-item-3">
-        <label for="password">PASSWORT</label><br />
-        <input type="password" name="password" id="password" required>
-      </div>
+        <div>
+          <hr class="hr-margin-second">
+        </div>
 
-      <div class="grid-item-4 login-button">
-        <button type="submit">EINLOGGEN</button>
-      </div>
+        <div>
+          @if($errors->any())
+          @foreach ($errors->all() as $error)
+          <p>{{$error}}</p>
+          @endforeach
+          @endif
+        </div>
 
-      <div>
-        <hr class="hr-margin-second">
-      </div>
-
-      <div>
-        @if($errors->any())
-        @foreach ($errors->all() as $error)
-        <p>{{$error}}</p>
-        @endforeach
-        @endif
-      </div>
-
-      <div class="grid-item-5">
-        <a href="/rooms"><button type="button">RAUMÜBERSICHT</button></a>
-      </div>
-  </form>
-
-  </div>
-
-
+        <div class="grid-item-5">
+          <a href="/rooms"><button type="button">RAUMÜBERSICHT</button></a>
+        </div>
+    </form>
 </x-layout>
 
 <style>
+
   body {
     background-size: auto 100vh;
     background-image: url("/images/layered-waves-haikei.svg");

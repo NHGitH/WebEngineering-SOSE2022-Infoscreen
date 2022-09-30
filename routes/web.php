@@ -33,12 +33,9 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 |
 */
 
-Route::get('/', function () {
-    return view("/login", []);
-});
+Route::get('/', function () {return redirect("/login");});
 
 Route::get('/rooms', [RoomController::class, 'index']);
-
 Route::get('/buildings/{building:name}/{room:name}', [BuildingController::class, 'showRoom']);
 
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest')->name('login');
@@ -83,31 +80,26 @@ Route::group(['middleware' => ['admin', 'auth']], function () {
     Route::get('admin/rooms', [AdminController::class, 'rooms']);
     Route::post('/admin/rooms/create', [RoomController::class, 'store']);
     Route::get('/admin/rooms/{room}/edit', [RoomController::class, 'edit']);
-    // Route::patch('/admin/rooms/{room}', [RoomController::class, 'update']);
     Route::delete('/admin/rooms/{room}', [RoomController::class, 'delete']);
 
     Route::get('admin/buildings', [AdminController::class, 'buildings']);
     Route::post('/admin/buildings/create', [BuildingController::class, 'store']);
     Route::get('/admin/buildings/{building}/edit', [BuildingController::class, 'edit']);
-    // Route::patch('/admin/buildings/{building}', [BuildingController::class, 'update']);
     Route::delete('/admin/buildings/{building}', [BuildingController::class, 'delete']);
 
     Route::get('admin/courses', [AdminController::class, 'courses']);
     Route::post('/admin/courses/create', [CourseController::class, 'store']);
     Route::get('/admin/courses/{course}/edit', [CourseController::class, 'edit']);
-    // Route::patch('/admin/courses/{course}', [CourseController::class, 'update']);
     Route::delete('/admin/courses/{course}', [CourseController::class, 'delete']);
 
     Route::get('/admin/modules', [AdminController::class, 'modules']);
     Route::post('/admin/modules/create', [ModuleController::class, 'store']);
     Route::get('/admin/modules/{module}/edit', [ModuleController::class, 'edit']);
-    // Route::patch('/admin/modules/{module}', [ModuleController::class, 'update']);
     Route::delete('/admin/modules/{module}', [ModuleController::class, 'delete']);
 
     Route::get('admin/users', [AdminController::class, 'users']);
     Route::post('/admin/users/create', [UserController::class, 'storeAdmin']);
     Route::get('/admin/users/{user}/edit', [UserController::class, 'edit']);
-    // Route::patch('/admin/users/{user}', [UserController::class, 'update']);
     Route::delete('/admin/users/{user}', [UserController::class, 'delete']);
 
     Route::get('admin/news', [AdminController::class, 'news']);
