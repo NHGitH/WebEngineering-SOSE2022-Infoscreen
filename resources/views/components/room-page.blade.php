@@ -35,7 +35,8 @@
       <x-lesson-card :lesson="$lesson" />
       @endforeach
       @else
-      <p class="text-center">Für heute sind noch keine Veranstaltungen eingetragen.</p>
+      <a class="twitter-timeline" data-width="500" data-height="800" data-tweet-limit="2" data-chrome="nofooter noheader noscrollbar" href="https://twitter.com/HochschuleFL?ref_src=twsrc%5Etfw">Tweets by HochschuleFL</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       @endif
     </div>
     <div class="posts-container">
@@ -44,7 +45,7 @@
       <x-post-card :post="$news->post" />
       @endforeach
       @else
-      <p class="text-center">No Posts yet. Please check again later.</p>
+      <p class="text-center">Zu diesem Gebäude wurden keine Neuigkeitenverlinkt.</p>
       @endif
     </div>
   </div>
