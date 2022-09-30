@@ -56,4 +56,14 @@ class User extends Authenticatable
     public function setPasswordAttribute($password){
         $this->attributes['password'] = bcrypt($password);
     }
+    public function scopeSearch($query, array $filters)
+    {
+        $query->when($filters['user'] ?? false, function ($query, $user) {
+            $query
+                ->where('name', 'like', '%' . $user . '%')
+                ->orWhere('username', 'like', '%' . $user . '%')
+                ->orWhere('role', 'like', '%' . $user . '%');
+                
+        });
+    }
 }

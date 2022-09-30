@@ -47,7 +47,6 @@ Route::get('/test', function () {
 Route::get('/rooms', [RoomController::class, 'index']);
 
 Route::get('/buildings', [BuildingController::class, 'index']);
-Route::get('/buildings/{building:name}', [BuildingController::class, 'show']);
 Route::get('/buildings/{building:name}/{room:name}', [BuildingController::class, 'showRoom']);
 
 Route::get('register', [UserController::class, 'create'])->middleware('guest');

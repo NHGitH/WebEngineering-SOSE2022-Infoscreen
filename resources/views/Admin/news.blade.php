@@ -2,6 +2,12 @@
     @include('_admin-header')
 
     <div class="px-6 py-8">
+    <div class="filter">
+      <form method="GET" action"#">
+        <label for="news">Post-Titel/Inhalt suchen:</label><br>
+        <input type="text" name="news" id="news" placeholder="Suchbegriff eintragen" value="{{request('news')}}">
+      </form>
+    </div>
         @if ($newslist->count())
         <table class="container-table">
             <tr class="styled-tr">

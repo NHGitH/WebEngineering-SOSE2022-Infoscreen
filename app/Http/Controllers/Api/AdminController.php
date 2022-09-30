@@ -17,13 +17,17 @@ class AdminController extends Controller
 {
     public function posts()
     {
+        // gibt die View-Datei posts.blade.php aus dem Ordner Admin in views aus und weist der Variable 'posts' eine gefilterte Liste aus,
+        // welche durch die Methode search generiert wird.
         return view('/Admin/posts', [
-            'posts' => Post::all(),
+            'posts' => Post::latest()->search(request(['post']))->get(),
         ]);
     }
 
     public function buildings()
     {
+        // gibt die View-Datei buildings.blade.php aus dem Ordner Admin in views aus und weist der Variable 'buildings' eine gefilterte Liste aus,
+        // welche durch die Methode search generiert wird.
         return view('/Admin/buildings', [
             'buildings' => Building::latest()->search(request(['building']))->get(),
         ]);
@@ -31,20 +35,26 @@ class AdminController extends Controller
 
     public function users()
     {
+        // gibt die View-Datei users.blade.php aus dem Ordner Admin in views aus und weist der Variable 'users' eine gefilterte Liste aus,
+        // welche durch die Methode search generiert wird.
         return view('/Admin/users', [
-            'users' => User::all(),
+            'users' => User::latest()->search(request(['user']))->get(),
         ]);
     }
 
     public function news()
     {
+        // gibt die View-Datei news.blade.php aus dem Ordner Admin in views aus und weist der Variable 'news' eine gefilterte Liste aus,
+        // welche durch die Methode search generiert wird.
         return view('/Admin/news', [
-            'newslist' => News::all(),
+            'newslist' => News::latest()->search(request(['news']))->get(),
         ]);
     }
 
     public function courses()
     {
+        // gibt die View-Datei courses.blade.php aus dem Ordner Admin in views aus und weist der Variable 'courses' eine gefilterte Liste aus,
+        // welche durch die Methode search generiert wird.
         return view('Admin/courses',
         [
             'courses' => Course::latest()->search(request(['course']))->get(),
@@ -53,43 +63,25 @@ class AdminController extends Controller
 
     public function rooms()
     {
+        // gibt die View-Datei rooms.blade.php aus dem Ordner Admin in views aus und weist der Variable 'rooms' eine gefilterte Liste aus,
+        // welche durch die Methode search generiert wird.
         return view('/Admin/rooms', [
-            'rooms' => Room::all(),
+            'rooms' => Room::latest()->search(request(['room']))->get(),
         ]);
     }
 
     public function modules()
     {
+        // gibt die View-Datei modules.blade.php aus dem Ordner Admin in views aus und weist der Variable 'modules' eine gefilterte Liste aus,
+        // welche durch die Methode search generiert wird.
         return view('/Admin/modules', [
-            'modules' => Module::all(),
+            'modules' => Module::latest()->search(request(['module']))->get(),
         ]);
     }
-
-    public function create(){
-        return view('./User/create');
-    }
-
-    public function store(){
-
-        $attributes = request()->validate([
-            'name' => 'required|max:255',
-            'username' => 'required|max:255|min:3|unique:users,username',
-            'role' => 'required',
-            'password' => 'required|min:7|max:255',
-        ]);
-
-        $user = User::create($attributes);
-
-        // session()->flash('success','Your account has been created.');
-
-        auth()->login($user);
-
-        return redirect('/dashboard');
-    }
-
 
     public function login()
     {
+        // gibt View-Datei dashboard.blade.php aus dem Ordner Admin aus und gibt dieser Listen von allen wichtigen Properties.
         return view('./Admin/dashboard', [
             'buildings' => Building::all(),
             'posts' => Post::all(),

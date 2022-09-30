@@ -10,6 +10,13 @@
         <th>Studiengang</th>
         <th>Funktion(en)</th>
       </tr>
+
+      <div class="filter">
+        <form method="GET" action"#">
+          <label for="module">Modulname suchen:</label><br>
+          <input type="text" name="module" id="module" placeholder="Suchbegriff eingeben" value="{{request('module')}}">
+        </form>
+      </div>
       <!-- //Einbindung der User -->
       @foreach ($modules->sortBy('name') as $module)
       <tr>

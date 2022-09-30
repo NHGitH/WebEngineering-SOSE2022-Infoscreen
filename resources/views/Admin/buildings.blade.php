@@ -12,8 +12,8 @@
 
       <div class="filter">
         <form method="GET" action"#">
-          <label for="building">Gebäudefilter:</label><br>
-          <input type="text" name="building" id="building" placeholder="Gebäudefilter" value="{{request('building')}}">
+          <label for="building">Gebäudename suchen:</label><br>
+          <input type="text" name="building" id="building" placeholder="Suchbegriff eingeben" value="{{request('building')}}">
         </form>
       </div>
 

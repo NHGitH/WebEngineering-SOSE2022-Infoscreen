@@ -12,7 +12,9 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('/User/posts', []);
+        return view('/User/posts', [
+            'posts' => auth()->user()->posts,
+        ]);
     }
 
     public function show(Post $post)

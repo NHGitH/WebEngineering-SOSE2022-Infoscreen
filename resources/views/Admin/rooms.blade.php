@@ -3,6 +3,12 @@
 
   <div class="px-6 py-8">
     @if ($rooms->count())
+    <div class="filter">
+      <form method="GET" action"#">
+        <label for="room">Raumnamen:</label><br>
+        <input type="text" name="room" id="room" placeholder="Suchbegriff eintragen" value="{{request('room')}}">
+      </form>
+    </div>
     <table class="container-table">
       <tr class="styled-tr">
         <th>Raumname</th>

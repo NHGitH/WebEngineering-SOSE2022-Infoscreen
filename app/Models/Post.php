@@ -17,4 +17,15 @@ class Post extends Model
     {
         return $this->belongsTo(User::class,'user_id');
     }
+
+    public function scopeSearch($query, array $filters)
+    {
+        $query->when($filters['post'] ?? false, function ($query, $post) {
+            $query
+                ->where('title', 'like', '%' . $post . '%')                
+                ->orWhere('body', 'like', '%' . $post . '%')
+                ->orWhereHas('author', fn($query) => $query->where('name', 'like', '%' . $post . '%'));
+                
+        });
+    }
 }

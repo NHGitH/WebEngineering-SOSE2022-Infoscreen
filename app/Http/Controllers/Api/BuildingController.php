@@ -11,15 +11,10 @@ class BuildingController extends Controller
 {
     public function index()
     {     
+        // gibt die View-Datei buildings aus dem Ordner Building zurück
+        // die property "building" werden alle Gebäude aus der Datenbank mitgegeben
         return view('./Building/buildings', [
             'buildings' => Building::all(),
-        ]);
-    }
-
-    public function show(Building $building)
-    {
-        return view('./Building/building', [
-            'building' => $building,
         ]);
     }
 
@@ -31,13 +26,9 @@ class BuildingController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        return view('./Building/create');
-    }
-
     public function store(){
-
+        // validiert die Daten des Requests und erstellt daraus ein neues Gebäude
+        // leitet user an url/admin weiter
         $attributes = request()->validate([
             'name' => 'required|max:255'   
         ]);
@@ -49,26 +40,13 @@ class BuildingController extends Controller
 
     public function edit()
     {
+        //gibt die View-Datei edit.blade.php aus dem Ordner Buildings zurück
         return view('/Building/edit');
     }
 
-   
-
-    // public function update(Post $post){
-
-    //     $attributes = request()->validate([
-    //         'title' => 'required',
-    //         'image' => 'nullable|image',
-    //         'body' => 'required',
-    //     ]);
-
-    //     $post->update($attributes);
-
-    //     return redirect('dashboard/posts');
-    // }
-
     public function delete(Building $building){
        
+        // löscht zuerst alle Räume, welche mit dem Gebäude verknüpft sind und dann auch das Gebäude selber.
         foreach($building->rooms as $room){
             $room->delete();
         }

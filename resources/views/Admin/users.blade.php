@@ -3,6 +3,12 @@
 
   <div class="px-6 py-8">
     @if ($users->count())
+    <div class="filter">
+      <form method="GET" action"#">
+        <label for="user">Name/Username/Rolle suchen:</label><br>
+        <input type="text" name="user" id="user" placeholder="Suchbegriff eintragen" value="{{request('user')}}">
+      </form>
+    </div>
     <table class="container-table">
       <tr class="styled-tr">
         <th>Username</th>
