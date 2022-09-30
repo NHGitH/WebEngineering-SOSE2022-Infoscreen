@@ -8,6 +8,7 @@
                 <th> Modul </th>
                 <th> Studiengang </th>
                 <th> Gebäude </th>
+                <th> Raum </th>
                 <th> Datum </th>
                 <th> Zeitpunkt: </th>
                 <th> Funktionen </th>
@@ -19,6 +20,7 @@
                 <td> {{$module->name}} </td>
                 <td> {{$module->course->name}} </td>
                 <td> {{$lesson->room->building->name}}</td>
+                <td> {{$lesson->room->name}}</td>
                 <td> {{$lesson->date}}</td>
                 <td> {{$lesson->time}}</td>
                 <td>
