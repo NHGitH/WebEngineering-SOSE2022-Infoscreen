@@ -4,7 +4,7 @@
   <div class="px-6 py-8">
     @if ($newslist->count())
     <table class="container-table">
-      <tr>
+      <tr class="styled-tr">
         <th> Postname </th>
         <th> Modul </th>
         <th> Gebäude </th>
@@ -29,8 +29,8 @@
         <td> kein Gebäude zugewiesen </td>
         @endif
         <td>
-          <div>
-            <a href="/dashboard/news/{{$news->id}}/edit">Bearbeiten</a>
+          <div class="functions">
+            <a class="edit-a" href="/dashboard/news/{{$news->id}}/edit">Bearbeiten</a>
             <form class="button-center" method="POST" action="/dashboard/news/{{$news->id}}">
               @csrf
               @method('DELETE')
@@ -48,6 +48,20 @@
 </x-layout>
 
 <style>
+  .edit-a {
+    background-color: #919191;
+    text-align: center;
+    border-radius: 2px;
+    padding: 5px;
+    font-size: 15px;
+    margin: 0 auto;
+  }
+
+  .edit-a:hover {
+    background-color: #313f4a;
+    transition: 0.2 ease 0s;
+  }
+
   .functions {
     display: flex;
   }
