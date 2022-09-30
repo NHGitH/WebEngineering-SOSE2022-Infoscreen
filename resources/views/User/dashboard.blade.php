@@ -3,8 +3,6 @@
 
     <section class="px-6 py-8">
         <main class="max-w-3xl mx-auto mt-10 lg:mt-10 space-y-6">
-            <!-- ERSTMAL MIT HTML GELÖST, SPÄTER MIT JAVASCRIPT BZW. VUEJS -->
-            <!-- EINE NEUE VERANSTALTUNG ANLEGEN -->
             @if(auth()->user()->modules->count())
             <div class="container-new-entry">
                 <details>
@@ -16,7 +14,6 @@
                             <select name="module_id">
                                 @foreach(auth()->user()->modules->sortBy('name') as $module)
                                 <option value="{{$module->id}}">{{$module->name}} | {{$module->course->name}}</option>
-                                <!--<option value="{{$module->id}}">{{$module->name}} | {{$module->course->name}}</option>-->
                                 @endforeach
                             </select>
                         </div>
@@ -57,10 +54,10 @@
             <div class="container-new-entry">
                 <details>
                     <summary>Meine nächsten Veranstaltungen:</summary>
-                    @foreach(auth()->user()->modules as $module)
-                    <p>{{$module->name}} | {{$module->course->name}}</p>
-                    @foreach($module->lessons()->take(1)->get() as $lesson)
-                    <p>{{$lesson->date}} | {{$lesson->time}}</p>
+                    @foreach(auth()->user()->modules->sortby('name') as $module)
+                    <p class="next-lessons-module">{{$module->name}} | {{$module->course->name}}</p>
+                    @foreach($module->lessons()->where('date', '>=', date('Y-m-d'))->take(1)->get() as $lesson)
+                    <p class="next-lessons">{{$lesson->date}} | {{$lesson->time}}</p>
                     @endforeach
                     @endforeach
                 </details>
@@ -170,6 +167,15 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+    }
+
+    .next-lessons{
+        margin-left: 30px;
+    }
+
+    .next-lessons-module{
+        margin-top: 10px;
+        margin-left: 20px;
     }
 
     .container-form-grid {
