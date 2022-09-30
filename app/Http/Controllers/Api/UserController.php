@@ -14,62 +14,47 @@ class UserController extends Controller
 {
     public function posts()
     {
-        return view('/User/posts', [
-
-        ]);
+        return view('/User/posts', []);
     }
 
     public function modules()
     {
-        return view('/User/modules', [
-
-        ]);
+        return view('/User/modules', []);
     }
 
-    // public function show(User $user)
-    // {
-    //     return view('login', [
-    //         'user' => $user,
-    //         'rooms' => Room::latest()->filter(request(['search', 'building']))->get(),
-    //         'buildings' => Building::all(),
-    //         'currentBuilding' => Building::firstWhere('name', request('building'))
-    //     ]);
-    // }
-
-    public function create(){
+    public function create()
+    {
         return view('./User/create');
     }
 
-    public function store(){
+    public function store()
+    {
 
         $attributes = request()->validate([
-            'name' => 'required|max:255',
-            'username' => 'required|max:255|min:3|unique:users,username',
+            'name' => 'required|max:60',
+            'username' => 'required|max:60|min:3|unique:users,username',
             'role' => 'required',
             'password' => 'required|min:7|max:255',
         ]);
 
         $user = User::create($attributes);
-
-        // session()->flash('success','Your account has been created.');
 
         auth()->login($user);
 
         return redirect('/dashboard');
     }
 
-    public function storeAdmin(){
+    public function storeAdmin()
+    {
 
         $attributes = request()->validate([
-            'name' => 'required|max:255',
-            'username' => 'required|max:255|min:3|unique:users,username',
+            'name' => 'required|max:60',
+            'username' => 'required|max:60|min:3|unique:users,username',
             'role' => 'required',
             'password' => 'required|min:7|max:255',
         ]);
 
         $user = User::create($attributes);
-
-        // session()->flash('success','Your account has been created.');
 
         return redirect('/admin');
     }
@@ -77,25 +62,23 @@ class UserController extends Controller
 
     public function login()
     {
-        return view('./User/dashboard', [
-            'buildings' => Building::all(),
-            'rooms' => Room::all(),
-            'courses' => Course::all(),
-            'username' => User::firstWhere('username', request('username')),
-            'professors' => Professor::all(),
-        ]
+        return view(
+            './User/dashboard',
+            [
+                'buildings' => Building::all(),
+                'rooms' => Room::all(),
+                'courses' => Course::all(),
+                'username' => User::firstWhere('username', request('username')),
+            ]
         );
     }
 
-    public function loginDeactivated()
+    public function delete(User $user)
     {
-        return redirect('/deactivated');
+        foreach ($user->posts as $post) {
+            $post->delete();
+        }
+        $user->delete();
+        return back()->with('success', 'User entfernt');
     }
-
-    public function delete(User $user){
-        foreach($user->posts as $post){$post->delete();}
-        $user->delete(); 
-        return back()->with('success','User entfernt');
-     }
-    
 }

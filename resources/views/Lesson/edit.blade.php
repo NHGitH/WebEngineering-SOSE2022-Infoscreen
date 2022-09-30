@@ -28,14 +28,15 @@
                     <label for="time">Veranstaltungszeit:</label>
                     <input type="time" name="time" id="time">
 
-                    <button type="submit">aktualisieren</button>
+                    <button class="add-button" type="submit">AKTUALISIEREN</button>
                 </div>
-
-                @if($errors->any())
+            </div>
+            
+            @if($errors->any())
                 <div>
                     <ul>
                         @foreach ($errors->all() as $error)
-                        <li>{{$error}}</li>
+                        <li style="color:red;">{{$error}}</li>
                         @endforeach
                     </ul>
                     @endif
@@ -45,6 +46,11 @@
 </x-layout>
 
 <style>
+
+    .add-button{
+        color: black;
+    }
+    
     form>a {
         border: 1px solid #DEDEDE;
         padding: 4px;

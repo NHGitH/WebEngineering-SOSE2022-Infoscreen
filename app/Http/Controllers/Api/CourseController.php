@@ -14,7 +14,7 @@ class CourseController extends Controller
 
     public function store(){
         $attributes = request()->validate([
-            'name' => 'required|max:255',
+            'name' => 'required|max:60',
             'building_id' => 'required',
         ]);
 

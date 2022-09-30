@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
         Room::factory(10)->create();
         Building::factory(5)->create();
         Course::factory(7)->create();
-        Professor::factory(20)->create();
         User::factory(1)->create([
             'name' => 'admin',
             'username' => 'admin',

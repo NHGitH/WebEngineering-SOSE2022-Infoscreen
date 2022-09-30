@@ -41,6 +41,7 @@
   grid-template-rows: 20% repeat(5 16%);
   align-items: center;
   width: 100%;
+  border-right: 1px solid #1a2a36;
 }
 
 .text-area h2 {

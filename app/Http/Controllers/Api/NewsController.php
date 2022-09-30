@@ -85,7 +85,7 @@ class NewsController extends Controller
 
         $news->update($attributes);
 
-        return redirect('admin/news');
+        return redirect('/admin/news');
     }
 
     public function delete(News $news){

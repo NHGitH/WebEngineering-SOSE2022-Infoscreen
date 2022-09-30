@@ -16,7 +16,7 @@
         <label for="body">INHALT:</label>
         <textarea id="body" name="body" rows="4" cols="50" placeholder="{{$post->body}}"></textarea>
 
-        <button type="submit">HINZUFÜGEN</button>
+        <button class="add-button" type="submit">HINZUFÜGEN</button>
       </div>
     </form>
   </div>
@@ -49,5 +49,9 @@ form>a {
 .container-new-entry form div label {
   grid-column: 1 / 2;
   grid-row-gap: 20px;
+}
+
+.add-button{
+  color: black;
 }
 </style>

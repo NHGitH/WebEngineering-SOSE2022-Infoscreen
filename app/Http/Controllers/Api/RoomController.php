@@ -32,7 +32,7 @@ class RoomController extends Controller
     public function store(){
 
         $attributes = request()->validate([
-            'name' => 'required|max:255',
+            'name' => 'required|max:50',
             'building_id' => 'required',
         ]);
 

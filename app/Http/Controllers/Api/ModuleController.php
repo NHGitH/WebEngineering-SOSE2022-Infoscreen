@@ -11,7 +11,7 @@ class ModuleController extends Controller
     public function store()
     {   //creates and stores a module given by an incoming request. redirects to admin.
         $attributes = request()->validate([
-            'name' => 'required|max:255',
+            'name' => 'required|max:60',
             'user_id' => 'required',
             'course_id' => 'required',
         ]);
