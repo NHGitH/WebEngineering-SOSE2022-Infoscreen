@@ -30,7 +30,7 @@ class BuildingController extends Controller
         // validiert die Daten des Requests und erstellt daraus ein neues Gebäude
         // leitet user an url/admin weiter
         $attributes = request()->validate([
-            'name' => 'required|max:255'   
+            'name' => 'required|max:60'   
         ]);
 
         Building::create($attributes);

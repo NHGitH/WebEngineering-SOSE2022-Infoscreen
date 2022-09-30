@@ -32,8 +32,8 @@ class PostController extends Controller
     {
         if ($request->hasFile('image')) {
             $request->validate([
-                'title' => 'required',
-                'body' => 'required',
+                'title' => 'required | max: 60',
+                'body' => 'required | max: 150',
                 'image' => 'nullable|mimes:png'
             ]);
 
@@ -50,8 +50,8 @@ class PostController extends Controller
             ]);
         } else {
             $request->validate([
-                'title' => 'required',
-                'body' => 'required',
+                'title' => 'required | max: 60',
+                'body' => 'required | max: 150' ,
             ]);
             $post = Post::create([
                 'title' => $request->input('title'),
@@ -77,8 +77,8 @@ class PostController extends Controller
 
         if (request()->hasFile('image')) {
             request()->validate([
-                'title' => 'required',
-                'body' => 'required',
+                'title' => 'required | max: 60',
+                'body' => 'required | max: 150',
                 'image' => 'nullable|mimes:png'
             ]);
 
@@ -94,8 +94,8 @@ class PostController extends Controller
             ]);
         } else {
             request()->validate([
-                'title' => 'required',
-                'body' => 'required',
+                'title' => 'required | max: 60',
+                'body' => 'required | max: 150',
             ]);
             $post->update([
                 'title' => request()->input('title'),

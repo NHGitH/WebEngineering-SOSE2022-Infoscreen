@@ -23,7 +23,7 @@
             </select>
           </div>
 
-          <button class="add-button" type="submit">News aktualisieren</button>
+          <button class="add-button" type="submit">AKTUALISIEREN</button>
 
           @if($errors->any())
           <ul>
@@ -65,5 +65,9 @@
   .container-new-entry form div label {
     grid-column: 1 / 2;
     grid-row-gap: 20px;
+  }
+
+  .add-button{
+    color: black;
   }
 </style>

@@ -62,42 +62,6 @@
                     @endforeach
                 </details>
             </div>
-
-            <div class="grid-item-label-and-input">
-              <label for="date">VERANSTALTUNGSDATUM:</label><br>
-              <input type="date" name="date" id="date">
-            </div>
-
-            <div class="grid-item-label-and-input">
-              <label for="time">VERANSTALTUNGSZEIT:</label><br>
-              <input type="time" name="time" id="time">
-            </div>
-
-            <button class="add-button" type="submit">HINZUFÜGEN</button>
-
-            @if($errors->any())
-            <ul>
-              @foreach ($errors->all() as $error)
-              <li>{{$error}}</li>
-              @endforeach
-            </ul>
-            @endif
-          </form>
-        </details>
-      </div>
-
-      <div class="container-new-entry">
-        <details>
-          <summary>Meine nächsten Veranstaltungen:</summary>
-          @foreach(auth()->user()->modules as $module)
-          <p>{{$module->name}} | {{$module->course->name}}</p>
-          @foreach($module->lessons()->take(1)->get() as $lesson)
-          <p>{{$lesson->date}} | {{$lesson->time}}</p>
-          @endforeach
-          @endforeach
-        </details>
-      </div>
-
       @endif
 
       <!-- EINEN NEUEN POST ANLEGEN -->
@@ -142,7 +106,7 @@
           <summary>Meine letzten Posts:</summary>
           <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/posts/create">
             @if(auth()->user()->posts->count())
-            @foreach(auth()->user()->posts as $post)
+            @foreach(auth()->user()->posts->take(4) as $post)
             <x-post-card :post=$post />
             @endforeach
             @else

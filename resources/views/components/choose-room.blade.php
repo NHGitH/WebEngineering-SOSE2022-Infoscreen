@@ -38,7 +38,7 @@
   text-align: center;
   font-size: 90%;
   border: 1px solid white;
-  width: 50px;
+  width: 80%;
   margin: 0 auto 5px auto;
   background-color: #efefef;
   color: #1a2a36;
