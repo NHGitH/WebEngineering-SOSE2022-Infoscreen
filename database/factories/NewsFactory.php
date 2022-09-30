@@ -2,10 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class BuildingFactory extends Factory
+class NewsFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,7 +17,10 @@ class BuildingFactory extends Factory
     public function definition()
     {
         return [
-            'name' => strtoupper($this->faker->unique()->randomLetter()),
+            'post_id' => $this->faker->numberBetween(1,10),
+            'module_id' => $this->faker->unique()->numberBetween(1,10),
+            'building_id' => $this->faker->numberBetween(1,5),
         ];
     }
 }
+

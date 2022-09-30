@@ -34,7 +34,7 @@
     </div>
     <div class="posts-container">
       @if ($room->building->news()->count())
-      @foreach ($room->building->news as $news)
+      @foreach ($room->building->news->take(5) as $news)
       <x-post-card :post="$news->post" />
       @endforeach
       @else
@@ -42,93 +42,95 @@
       @endif
     </div>
   </div>
+  <div>
+  </div>
 </section>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-}
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
-.head-container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 30% 40% 30%;
-  align-items: center;
-  justify-items: center;
-  border-bottom: 2px solid #D9D9D9;
-  background-color: #1a2a36;
-  padding: 10px 0;
-  color: #efefef;
-}
+  .head-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    align-items: center;
+    justify-items: center;
+    border-bottom: 2px solid #D9D9D9;
+    background-color: #1a2a36;
+    padding: 10px 0;
+    color: #efefef;
+  }
 
-.head-container h1 {
-  font-size: 30px;
-}
+  .head-container h1 {
+    font-size: 30px;
+  }
 
-.posts-container {
-  width: 95%;
-  display: block;
-  align-items: center;
-  justify-items: center;
-  border-radius: 5px;
-  background-color: #fefefe;
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
-}
+  .posts-container {
+    width: 95%;
+    display: block;
+    align-items: center;
+    justify-items: center;
+    border-radius: 5px;
+    background-color: #fefefe;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+  }
 
-.main-container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 30% 70%;
-  align-items: center;
-  justify-items: center;
-  border-bottom: 2px solid #D9D9D9;
-  color: #1a2a36;
-}
+  .main-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+    justify-items: center;
+    border-bottom: 2px solid #D9D9D9;
+    color: #1a2a36;
+  }
 
-.caption-lessons {
-  grid-column-start: 1;
-  grid-row-start: 1;
-}
+  .caption-lessons {
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
 
-.caption-events-and-posts {
-  grid-column-start: 2;
-  grid-row-start: 1;
-}
+  .caption-events-and-posts {
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
 
-.module-card {
-  width: 90%;
-  grid-column-start: 1;
-}
+  .module-card {
+    width: 90%;
+    grid-column-start: 1;
+  }
 
-.infoscreen-caption {
-  font-weight: bold;
-}
+  .infoscreen-caption {
+    font-weight: bold;
+  }
 
-.time {
-  font-size: x-large;
-  text-align: center;
-}
+  .time {
+    font-size: x-large;
+    text-align: center;
+  }
 
-.welcome {
-  font-size: x-large;
-  text-align: center;
-  border-top: 3px solid #D9D9D9;
-  border-bottom: 3px solid #D9D9D9;
-  padding: 10px 0;
-  letter-spacing: 1px;
-}
+  .welcome {
+    font-size: x-large;
+    text-align: center;
+    border-top: 3px solid #D9D9D9;
+    border-bottom: 3px solid #D9D9D9;
+    padding: 10px 0;
+    letter-spacing: 1px;
+  }
 
-.clock {
-  border-top: 3px solid #D9D9D9;
-  border-bottom: 3px solid #D9D9D9;
-  padding: 10px 15px;
-  letter-spacing: 3px;
-  font-weight: bold;
-  color: goldenrod;
-}
+  .clock {
+    border-top: 3px solid #D9D9D9;
+    border-bottom: 3px solid #D9D9D9;
+    padding: 10px 15px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: goldenrod;
+  }
 
-.caption-different-color {
-  color: goldenrod;
-}
+  .caption-different-color {
+    color: goldenrod;
+  }
 </style>

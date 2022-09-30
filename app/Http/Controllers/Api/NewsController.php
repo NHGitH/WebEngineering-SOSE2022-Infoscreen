@@ -22,7 +22,7 @@ class NewsController extends Controller
         $attributes = request()->validate([
             'post_id' => 'required',
             'module_id' => 'unique:news,module_id|nullable',
-            'building_id' => 'unique:news,building_id|nullable',
+            'building_id' => 'nullable',
         ]);
 
         News::create($attributes);
@@ -37,7 +37,7 @@ class NewsController extends Controller
         $attributes = request()->validate([
             'post_id' => 'required',
             'module_id' => 'unique:news,module_id|nullable',
-            'building_id' => 'unique:news,building_id|nullable',
+            'building_id' => 'required',
         ]);
 
         News::create($attributes);
@@ -67,7 +67,7 @@ class NewsController extends Controller
         $attributes = request()->validate([
             'post_id' => 'required',
             'module_id' => 'unique:news,module_id|nullable',
-            'building_id' => 'unique:news,building_id|nullable',
+            'building_id' => 'nullable',
         ]);
 
         $news->update($attributes);
