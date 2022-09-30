@@ -1,6 +1,7 @@
 <x-layout>
+  <!-- Fügt die View-Componente _admin-header and die Page an -->
   @include('_admin-header')
-
+  <!-- Padding für die Webseite -->
   <div class="px-6 py-8">
     @if ($buildings->count())
     <table class="container-table">
@@ -10,14 +11,15 @@
         <th>Funktion(en)</th>
       </tr>
 
+      <!-- Such-Leiste -->
       <div class="filter">
         <form method="GET" action"#">
-          <label for="building">Gebäudefilter:</label><br>
-          <input type="text" name="building" id="building" placeholder="Gebäudefilter" value="{{request('building')}}">
+          <label for="building">Suche:</label><br>
+          <input type="text" name="building" id="building" placeholder="Suchbegriff eingeben" value="{{request('building')}}">
         </form>
       </div>
 
-      <!-- //Einbindung der User -->
+      <!-- //Ausgabe der Gebäudedaten -->
       @foreach ($buildings->sortBy('name') as $building)
       <tr>
         <td> {{$building->name}} </td>
@@ -25,6 +27,7 @@
 
         <td>
           <div>
+            <!-- Form zum Entfernen von Datenbankeinträgen -->
             <form class="button-center" method="POST" action="/admin/buildings/{{$building->id}}">
               @csrf
               @method('DELETE')

@@ -22,7 +22,6 @@
                     <td> {{$lesson->room->building->name}}</td>
                     <td> {{$lesson->date}}</td>
                     <td> {{$lesson->time}}</td>
-                    <!-- <td> {{$module->course->name}} </td> -->
                     <td>
                         <div class="functions">
                             <a href="/dashboard/lessons/{{$lesson->id}}/edit"> Bearbeiten </a>

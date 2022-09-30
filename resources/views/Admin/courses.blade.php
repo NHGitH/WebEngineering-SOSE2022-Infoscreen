@@ -1,7 +1,9 @@
 <x-layout>
+  <!-- Einbinden der Komponente _admin-header -->
   @include('_admin-header')
-
+  <!-- Einbinden Padding -->
   <div class="px-6 py-8">
+    <!-- Einbinden Tabelle für Datenbankeinträge -->
     @if ($courses->count())
     <table class="container-table">
       <tr class="styled-tr">
@@ -11,13 +13,14 @@
         <th>Funktion(en)</th>
       </tr>
 
+      <!-- Such-Leiste -->
       <div class="filter">
         <form method="GET" action"#">
-          <label for="course">Studiengangfilter:</label><br>
+          <label for="course">Suche:</label><br>
           <input type="text" name="course" id="course" placeholder="Studiengangfilter" value="{{request('course')}}">
         </form>
       </div>
-      <!-- //Einbindung der User -->
+      <!-- //Ausgabe der Studiengangdaten -->
       @foreach ($courses->sortBy('name') as $course)
       <tr>
         <td> {{$course->name}} </td>
@@ -26,6 +29,7 @@
 
         <td>
           <div>
+            <!-- Form zum Löschen von einem Datenbankeintrag -->
             <form class="button-center" method="POST" action="/admin/courses/{{$course->id}}">
               @csrf
               @method('DELETE')

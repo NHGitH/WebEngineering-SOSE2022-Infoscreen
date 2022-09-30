@@ -33,4 +33,15 @@ class Module extends Model
     {
         return $this->hasMany(News::class);
     }
+
+    public function scopeSearch($query, array $filters)
+    {
+        $query->when($filters['module'] ?? false, function ($query, $module) {
+            $query
+                ->where('name', 'like', '%' . $module . '%')
+                ->orWhereHas('user', fn($query) => $query->where('name', 'like', '%' . $module . '%'))
+                ->orWhereHas('course', fn($query) => $query->where('name', 'like', '%' . $module . '%'));
+                
+        });
+    }
 }

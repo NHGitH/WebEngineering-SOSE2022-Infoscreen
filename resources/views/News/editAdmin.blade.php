@@ -8,8 +8,8 @@
           <div class="grid-item-label-and-input">
             <label for="post">Post:</label><br>
             <select name="post_id">
-              @foreach(auth()->user()->posts->sortBy('name') as $post)
-              <option value="{{$post->id}}">{{$post->title}}</option>
+              @foreach($posts->sortBy('author.name') as $post)
+              <option value="{{$post->id}}">{{$post->author->name}} | {{$post->title}}</option>
               @endforeach
             </select>
           </div>

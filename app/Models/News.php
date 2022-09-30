@@ -28,4 +28,15 @@ class News extends Model
         return $this->belongsTo(Building::class, 'building_id');
     }
 
+    public function scopeSearch($query, array $filters)
+    {
+        $query->when($filters['news'] ?? false, function ($query, $news) {
+            $query
+                ->whereHas('post', fn($query) => $query->where('title', 'like', '%' . $news . '%'))
+                ->orWhereHas('module', fn($query) => $query->where('name', 'like', '%' . $news . '%'))
+                ->orWhereHas('building', fn($query) => $query->where('name', 'like', '%' . $news . '%'));
+                
+        });
+    }
+
 }

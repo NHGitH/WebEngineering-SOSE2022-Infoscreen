@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Models\Building;
 use App\Models\Course;
 use App\Models\Professor;
+use App\Models\News;
+use App\Models\Lesson;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +22,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        News::factory(5)->create();
         Post::factory(10)->create();
         Module::factory(10)->create();
         Room::factory(10)->create();
@@ -32,6 +35,6 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
             'password' => 'admin123',
         ]);
-        User::factory(40)->create();
+        User::factory(5)->create();
     }
 }

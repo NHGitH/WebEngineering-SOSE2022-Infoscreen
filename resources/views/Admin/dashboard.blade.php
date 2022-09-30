@@ -4,8 +4,7 @@
   <section class="px-6 py-8">
     <main class="max-w-3xl mx-auto mt-10 lg:mt-10 space-y-6">
 
-      <!-- ERSTMAL MIT HTML GELÖST, SPÄTER MIT JAVASCRIPT BZW. VUEJS -->
-      <!-- EINE NEUE VERANSTALTUNG ANLEGEN -->
+      <!-- Moduleintrag Formular -->
       <div class="container-new-entry">
         <details>
           <summary>Modul anlegen:</summary>
@@ -37,6 +36,7 @@
 
             <button class="add-button" type="submit">HINZUFÜGEN</button>
 
+            <!-- Ausgabe Errors, welche beim Eintragen entstanden sind. -->
             @if($errors->any())
             <ul>
               @foreach ($errors->all() as $error)
@@ -48,6 +48,7 @@
         </details>
       </div>
 
+      <!-- Raumeintrag Formular -->
       <div class="container-new-entry">
         <details>
           <summary>Raum anlegen:</summary>
@@ -81,7 +82,7 @@
         </details>
       </div>
 
-      <!-- EIN NEUES GEBÄUDE ANLEGEN -->
+      <!-- Gebäudeeintrag Formular -->
       <div class="container-new-entry">
         <details>
           <summary>Gebäude anlegen:</summary>
@@ -105,7 +106,7 @@
         </details>
       </div>
 
-      <!-- EIN NEUEN STUDIENGANG ANLEGEN -->
+      <!-- Studiengangeintrag Formular -->
       <div class="container-new-entry">
         <details>
           <summary>Studiengang anlegen:</summary>
@@ -140,7 +141,7 @@
         </details>
       </div>
 
-      <!-- EIN NEUEN USER ANLEGEN -->
+      <!-- Usereintrag Formular -->
       <div class="container-new-entry">
         <details>
           <summary>User anlegen:</summary>
@@ -181,7 +182,8 @@
           </form>
         </details>
       </div>
-      
+
+      <!-- Internal News Formular -->
       <div class="container-new-entry">
         <details>
           <summary>News in Gebäude einbinden:</summary>

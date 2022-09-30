@@ -37,46 +37,37 @@ Route::get('/', function () {
     return view("/login", []);
 });
 
-Route::get('/test', function () {
-    return view("test", [
-        'users' => User::all(),
-    ]);
-});
-
-
 Route::get('/rooms', [RoomController::class, 'index']);
 
-Route::get('/buildings', [BuildingController::class, 'index']);
-Route::get('/buildings/{building:name}', [BuildingController::class, 'show']);
 Route::get('/buildings/{building:name}/{room:name}', [BuildingController::class, 'showRoom']);
-
-Route::get('register', [UserController::class, 'create'])->middleware('guest');
-Route::post('register', [UserController::class, 'store'])->middleware('guest');
 
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest')->name('login');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
-Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
 Route::group(['middleware' => ['auth']], function () {
+    //Diese Routes sind für jeden User ansteuerbar
     //PostRoutes:
+    //Die Routes werden mit der URL angesprochen und führen die Methoden der Klassen aus, welche angegeben sind.
     Route::get('/dashboard', [UserController::class, 'login']);
     Route::get('/dashboard/posts', [PostController::class, 'index']);
     Route::post('/dashboard/posts/create', [PostController::class, 'store']);
     Route::get('/dashboard/posts/{post}/edit', [PostController::class, 'edit']);
     Route::patch('/dashboard/posts/{post}', [PostController::class, 'update']);
     Route::delete('/dashboard/posts/{post}', [PostController::class, 'delete']);
-
+    //NewsRoutes:
     Route::get('/dashboard/news', [NewsController::class, 'index']);
     Route::post('/dashboard/news/create', [NewsController::class, 'store']);
     Route::get('/dashboard/news/{news}/edit', [NewsController::class, 'edit']);
     Route::delete('/dashboard/news/{news}', [NewsController::class, 'delete']);
     Route::patch('/dashboard/news/{news}', [NewsController::class, 'update']);
-
+    //LessonRoutes:
     Route::get('/dashboard/lessons', [LessonController::class, 'index']);
     Route::post('/dashboard/lessons/create', [LessonController::class, 'store']);
     Route::get('/dashboard/lessons/{lesson}/edit', [LessonController::class, 'edit']);
     Route::patch('/dashboard/lessons/{lesson}', [LessonController::class, 'update']);
     Route::delete('/dashboard/lessons/{lesson}', [LessonController::class, 'delete']);
+
+    Route::post('logout', [SessionsController::class, 'destroy']);
 });
 
 Route::group(['middleware' => ['admin', 'auth']], function () {

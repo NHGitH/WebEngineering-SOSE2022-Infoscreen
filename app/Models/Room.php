@@ -39,6 +39,15 @@ class Room extends Model
         });
     }
 
+    public function scopeSearch($query, array $filters)
+    {
+        $query->when($filters['room'] ?? false, function ($query, $room) {
+            $query
+                ->where('name', 'like', '%' . $room . '%')
+                ->orWhereHas('building', fn($query) => $query->where('name', 'like', '%' . $room . '%'));
+        });
+    }
+
     protected $fillable = [
         'name',
         'building_id',

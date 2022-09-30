@@ -12,7 +12,9 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('/User/posts', []);
+        return view('/User/posts', [
+            'posts' => auth()->user()->posts,
+        ]);
     }
 
     public function show(Post $post)
@@ -55,7 +57,7 @@ class PostController extends Controller
                 'title' => $request->input('title'),
                 'body' => $request->input('body'),
                 'user_id' => auth()->id(),
-                'picture_path' => '/illustration-1.png',
+                'picture_path' => '/Logo_der_Hochschule_Flensburg.png',
                 'published_at' => date('Y-m-d'),
             ]);
         }
@@ -99,7 +101,7 @@ class PostController extends Controller
                 'title' => request()->input('title'),
                 'body' => request()->input('body'),
                 'user_id' => auth()->id(),
-                'picture_path' => '/illustration-1.png',
+                'picture_path' => '/Logo_der_Hochschule_Flensburg.png',
             ]);
         }
 
