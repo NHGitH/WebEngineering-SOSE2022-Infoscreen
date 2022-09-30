@@ -4,14 +4,14 @@
   <div class="px-6 py-8">
     @if (auth()->user()->posts->count())
     <table class="container-table">
-      <tr>
+      <tr class="styled-tr">
         <th>Titel</th>
         <th>Body</th>
         <th>Image</th>
         <th>Gepostet am:</th>
         <th>Funktionen</th>
       </tr>
-      <!-- //Einbindung der User -->
+      <!-- //Einbindung der Postdaten -->
       @foreach (auth()->user()->posts->sortBy('title') as $post)
       <tr>
         <td> {{$post->title}} </td>
@@ -60,6 +60,11 @@ table {
   padding: 5px;
   font-size: 15px;
   margin: 0 auto;
+}
+
+.edit-a:hover{
+  background-color: #313f4a;
+  transition: 0.2 ease 0s;
 }
 
 .container-table {
