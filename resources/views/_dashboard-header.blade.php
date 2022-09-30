@@ -2,7 +2,6 @@
   <!-- NEUE NAVBAR -->
   <div class="nav-caption">
     <a href="/dashboard"><h1>Infoscreen<br />Hochschule Flensburg</h1></a>
-    <!--<img src="/public/images/Logo_der_Hochschule_Flensburg.png">-->
   </div>
 
   <nav>
@@ -25,42 +24,6 @@
       <form method="POST" action="/logout">@csrf<button class="logout-button" type="submit">Logout</button></form>
     </li>
   </div>
-
-
-  <!-- -->
-
-  <!-- NUR ZU TESTZWECKEN AUSKOMMENTIERT
-  <nav class="navbar">
-    <!-- Navigationsmenü -->
-  <!--
-    <ul class="nav-links">
-
-      <div class="menu">
-        <li><a href="/dashboard">Hochschule Flensburg</a></li>
-        <li><a href="#">Angemeldet als: <strong>{{auth()->user()->name}}</strong></a></li>
-        <li>
-          <form method="POST" action="/logout">@csrf<button type="submit">Logout</button></form>
-        </li>
-      </div>
-
-    </ul>
-  </nav>
-  <nav class="navbar">
-
-    <!-- Navigationsmenü -->
-  <!--
-    <ul class="nav-links">
-
-      <div class="menu">
-        <li><a href="/dashboard/posts">Meine Posts</a></li>
-        <li><a href="/dashboard/modules">Meine Veranstaltungen</a></li>
-        @if(auth()->user()->role == 'admin')
-        <li><a href="/admin">Meine Adminbereich</a></li>
-        @endif
-      </div>
-
-    </ul>
-  </nav> -->
 </header>
 
 
