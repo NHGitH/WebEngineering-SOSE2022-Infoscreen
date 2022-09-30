@@ -1,6 +1,6 @@
 @props(['post'])
 <div class="news-container">
-  <div class="news-heading background-caption">
+  <div class="news-heading">
     <h1>{{$post->title}}</h1>
   </div>
   <div class="news-image">
@@ -19,22 +19,10 @@
   min-width: 100px;
 }
 
-.news-heading {
-  text-align: center;
-  padding: 10px;
-}
-
 .news-heading h1 {
   text-align: center;
   font-weight: bold;
   font-size: 17px;
-}
-
-.background-caption {
-  width: auto;
-  border: 2px solid rgba(26, 42, 54, 0.1);
-  border-radius: 5px;
-  background-color: rgba(26, 42, 54, 0.1);
 }
 
 .news-image {

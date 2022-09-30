@@ -63,97 +63,134 @@
                 </details>
             </div>
 
+            <div class="grid-item-label-and-input">
+              <label for="date">VERANSTALTUNGSDATUM:</label><br>
+              <input type="date" name="date" id="date">
+            </div>
+
+            <div class="grid-item-label-and-input">
+              <label for="time">VERANSTALTUNGSZEIT:</label><br>
+              <input type="time" name="time" id="time">
+            </div>
+
+            <button class="add-button" type="submit">HINZUFÜGEN</button>
+
+            @if($errors->any())
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{$error}}</li>
+              @endforeach
+            </ul>
             @endif
+          </form>
+        </details>
+      </div>
 
-            <!-- EINEN NEUEN POST ANLEGEN -->
-            <div class="container-new-entry">
-                <details>
-                    <summary>Post anlegen:</summary>
-                    <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/posts/create" enctype="multipart/form-data">
-                        @csrf
+      <div class="container-new-entry">
+        <details>
+          <summary>Meine nächsten Veranstaltungen:</summary>
+          @foreach(auth()->user()->modules as $module)
+          <p>{{$module->name}} | {{$module->course->name}}</p>
+          @foreach($module->lessons()->take(1)->get() as $lesson)
+          <p>{{$lesson->date}} | {{$lesson->time}}</p>
+          @endforeach
+          @endforeach
+        </details>
+      </div>
 
-                        <div class="grid-item-label-and-input">
-                            <label for="title">ÜBERSCHRIFT:</label><br>
-                            <input type="text" name="title" id="title">
-                        </div>
+      @endif
 
-                        <div class="grid-item-label-and-input">
-                            <label for="image">BILD HOCHLADEN (nur png Dateien):</label><br>
-                            <input type="file" size="5000" accept="image/png" name="image" id="image">
-                        </div>
+      <!-- EINEN NEUEN POST ANLEGEN -->
+      <div class="container-new-entry">
+        <details>
+          <summary>Post anlegen:</summary>
+          <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/posts/create"
+            enctype="multipart/form-data">
+            @csrf
 
-                        <div class="grid-item-label-and-input grid-textarea">
-                            <label for="body">INHALT:</label><br>
-                            <textarea id="body" name="body" rows="4" cols="88"></textarea>
-                        </div>
-
-                        <button class="add-button" type="submit">HINZUFÜGEN</button>
-
-                        @if($errors->any())
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                        @endif
-                    </form>
-                </details>
+            <div class="grid-item-label-and-input">
+              <label for="title">ÜBERSCHRIFT:</label><br>
+              <input type="text" name="title" id="title">
             </div>
 
-            <!-- MEINE LETZTEN POSTS -->
-            <div class="container-last-posts">
-                <details>
-                    <summary>Meine letzten Posts:</summary>
-                    <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/posts/create">
-                        @if(auth()->user()->posts->count())
-                        @foreach(auth()->user()->posts as $post)
-                        <x-post-card :post=$post />
-                        @endforeach
-                        @else
-                        <p style="color:red">Du hast bisher noch keine Posts gemacht.</p>
-                        @endif
-                    </form>
-                </details>
+            <div class="grid-item-label-and-input">
+              <label for="image">BILD HOCHLADEN (nur png Dateien):</label><br>
+              <input type="file" size="5000" accept="image/png" name="image" id="image">
             </div>
 
-            <div class="container-new-entry">
-                <details>
-                    <summary>News in Modul einbinden:</summary>
-                    <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/news/create" enctype="multipart/form-data">
-                        @csrf
-
-                        <div class="grid-item-label-and-input">
-                            <label for="post">Post:</label><br>
-                            <select name="post_id">
-                                @foreach(auth()->user()->posts->sortBy('name') as $post)
-                                <option value="{{$post->id}}">{{$post->title}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="grid-item-label-and-input">
-                            <label for="module_id">Modul:</label><br>
-                            <select name="module_id">
-                                @foreach(auth()->user()->modules->sortBy('name') as $module)
-                                <option value="{{$module->id}}">{{$module->name}} | {{$module->course->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <button class="add-button" type="submit">News hinzufügen</button>
-
-                        @if($errors->any())
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                        @endif
-                    </form>
-                </details>
+            <div class="grid-item-label-and-input grid-textarea">
+              <label for="body">INHALT:</label><br>
+              <textarea id="body" name="body" rows="4" cols="88"></textarea>
             </div>
-        </main>
-    </section>
+
+            <button class="add-button" type="submit">HINZUFÜGEN</button>
+
+            @if($errors->any())
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{$error}}</li>
+              @endforeach
+            </ul>
+            @endif
+          </form>
+        </details>
+      </div>
+
+      <!-- MEINE LETZTEN POSTS -->
+      <div class="container-last-posts">
+        <details>
+          <summary>Meine letzten Posts:</summary>
+          <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/posts/create">
+            @if(auth()->user()->posts->count())
+            @foreach(auth()->user()->posts as $post)
+            <x-post-card :post=$post />
+            @endforeach
+            @else
+            <p style="color:red">Du hast bisher noch keine Posts gemacht.</p>
+            @endif
+          </form>
+        </details>
+      </div>
+
+      <div class="container-new-entry">
+        <details>
+          <summary>News in Modul einbinden:</summary>
+          <form class="container-form-grid form-grid-gap-event" method="POST" action="/dashboard/news/create"
+            enctype="multipart/form-data">
+            @csrf
+
+            <div class="grid-item-label-and-input">
+              <label for="post">POST:</label><br>
+              <select name="post_id">
+                @foreach(auth()->user()->posts->sortBy('name') as $post)
+                <option value="{{$post->id}}">{{$post->title}}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="grid-item-label-and-input">
+              <label for="module_id">MODUL:</label><br>
+              <select name="module_id">
+                @foreach(auth()->user()->modules->sortBy('name') as $module)
+                <option value="{{$module->id}}">{{$module->name}} | {{$module->course->name}}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <button class="add-button" type="submit">HINZUFÜGEN</button>
+
+            @if($errors->any())
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{$error}}</li>
+              @endforeach
+            </ul>
+            @endif
+          </form>
+        </details>
+      </div>
+    </main>
+  </section>
 </x-layout>
 
 <!--------->

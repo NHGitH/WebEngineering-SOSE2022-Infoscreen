@@ -26,44 +26,12 @@
   <form method="POST" action="/logout">
     @csrf<button class="logout-button" type="submit">Logout</button>
   </form>
-
-
-  <!-- -->
-
-  <!-- NUR ZU TESTZWECKEN AUSKOMMENTIERT
-  <nav class="navbar">
-    <!-- Navigationsmenü -->
-  <!--
-    <ul class="nav-links">
-
-      <div class="menu">
-        <li><a href="/dashboard">Hochschule Flensburg</a></li>
-        <li><a href="#">Angemeldet als: <strong>{{auth()->user()->name}}</strong></a></li>
-        <li>
-          <form method="POST" action="/logout">@csrf<button type="submit">Logout</button></form>
-        </li>
-      </div>
-
-    </ul>
-  </nav>
-  <nav class="navbar">
-
-    <!-- Navigationsmenü -->
-  <!--
-    <ul class="nav-links">
-
-      <div class="menu">
-        <li><a href="/dashboard/posts">Meine Posts</a></li>
-        <li><a href="/dashboard/modules">Meine Veranstaltungen</a></li>
-        @if(auth()->user()->role == 'admin')
-        <li><a href="/admin">Meine Adminbereich</a></li>
-        @endif
-      </div>
-
-    </ul>
-  </nav> -->
 </header>
-<p style="color:red">Bitte bedenken Sie: Beim Löschen werden ggf. Beziehungen gelöscht, wodurch Daten verloren gehen können.</p>
+<p style="color:red; margin: 10px auto; text-align: center;"><strong>Bitte bedenken Sie:</strong> Beim Löschen werden
+  ggf. Beziehungen
+  gelöscht, wodurch
+  Daten verloren gehen
+  können.</p>
 
 
 <style>
@@ -143,6 +111,21 @@ nav a li {
 .menu li {
   padding: 5px 14px;
   align-self: center;
+}
+
+button {
+  background-color: #313131;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  margin: 0 auto;
+  transition: 0.2s;
+  border-radius: 2px;
+}
+
+button:hover {
+  background-color: #616161;
+  transition: 0.2s;
 }
 
 .logout-button {

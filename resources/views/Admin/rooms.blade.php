@@ -93,4 +93,18 @@ tr:nth-of-type(even) {
 .button-center {
   text-align: center;
 }
+
+.filter {
+  width: 220px;
+  min-width: 220px;
+  padding: 5px;
+  border: 2px solid #eee;
+  border-radius: 2px;
+  background-color: #eee;
+  margin: 0 auto;
+}
+
+.filter input {
+  padding: 3px;
+}
 </style>

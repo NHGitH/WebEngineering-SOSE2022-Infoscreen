@@ -38,11 +38,9 @@
 
 .text-area {
   display: grid;
-  grid-template-rows: 100px repeat(5 30px);
+  grid-template-rows: 20% repeat(5 16%);
   align-items: center;
-
   width: 100%;
-  padding: 10px;
 }
 
 .text-area h2 {
@@ -52,17 +50,11 @@
   color: #1a2a36;
 }
 
-.background-caption {
-  width: auto;
-  border: 2px solid rgba(26, 42, 54, 0.1);
-  border-radius: 5px;
-  background-color: rgba(26, 42, 54, 0.1);
-}
-
 .text-sm {
   font-size: 14px;
   margin: 5px 0;
   border: 75%;
+  padding: 10px;
 }
 
 .text-sm:last-of-type {
