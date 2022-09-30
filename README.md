@@ -20,7 +20,7 @@ Empfohlene Schritte zum Testen von Daten:
 2. Drücken Sie oben im Reiter auf "Mein Adminbereich".
 3. Legen Sie einen neues Gebäude mit einem ihnen beliebigen Namen an
 4. Legen Sie einen neuen Studiengang an
-5. Legen Sie neue Räume in dem Gebäude an
+5. Legen Sie neue Räume in dem Gebäude an (Sie können auch Räume wie Lobby oder Eingang anlegen - grundlegend sollten hier allerdings keine Veranstaltungen angebunden werden!)
 6. Legen Sie neue User als Professoren an
 7. Legen Sie ein paar neue Module an und weisen Sie diese den Professoren zu (beim Anlegen!)
 8. Wechseln Sie auf das normale User-Dashboard, indem sie auf den Schriftzug: "Infoscreen Hochschule Flensburg" drücken.
