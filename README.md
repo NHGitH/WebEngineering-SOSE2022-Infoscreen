@@ -1,7 +1,5 @@
 # WebEngineering SOSE 2022 Infoscreen - Claas Hein, Jay Rehder, Niklas Horn
 
-Notizen:
-
 Wir haben nur Laravel für das Backend benutzt. Javascript mit Vuejs haben wir gewusst nicht weiter verwendet, auch wenn Rest-Codeschnippsel von Vuejs durchaus in dem Projekt vorhanden sein können. 
 
 Beim Migraten am besten direkt den Befehl: "php artisan migarte:fresh --seed" ausführen
