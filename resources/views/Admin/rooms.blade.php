@@ -1,14 +1,17 @@
 <x-layout>
+  <!-- Einbindung der Komponente _admin-header -->
   @include('_admin-header')
 
   <div class="px-6 py-8">
-    @if ($rooms->count())
+    <!-- Suchleiste -->
     <div class="filter">
       <form method="GET" action"#">
-        <label for="room">Raumnamen:</label><br>
+        <label for="room">Suche:</label><br>
         <input type="text" name="room" id="room" placeholder="Suchbegriff eintragen" value="{{request('room')}}">
       </form>
     </div>
+    <!-- Einbindung der Tabelle für die Räume -->
+    @if ($rooms->count())
     <table class="container-table">
       <tr class="styled-tr">
         <th>Raumname</th>
@@ -16,7 +19,7 @@
         <th>Erstellt am:</th>
         <th>Funktion(en)</th>
       </tr>
-      <!-- //Einbindung der User -->
+      <!-- //Einbindung der Datenbankeinträge -->
       @foreach ($rooms as $room)
       <tr>
         <td> {{$room->name}} </td>
@@ -26,6 +29,7 @@
 
         <td>
           <div>
+            <!-- Form zum Löschen von Datenbankeinträgen -->
             <form class="button-center" method="POST" action="/admin/rooms/{{$room->id}}">
               @csrf
               @method('DELETE')

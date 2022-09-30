@@ -1,14 +1,18 @@
 <x-layout>
+  <!-- Einbinden der Komponenten _admin-header -->
   @include('_admin-header')
 
   <div class="px-6 py-8">
-    @if ($users->count())
+
+  <!-- Suchleiste -->
     <div class="filter">
       <form method="GET" action"#">
-        <label for="user">Name/Username/Rolle suchen:</label><br>
+        <label for="user">Suche:</label><br>
         <input type="text" name="user" id="user" placeholder="Suchbegriff eintragen" value="{{request('user')}}">
       </form>
     </div>
+    <!-- Erstellen Tablle für Usereinträge -->
+    @if ($users->count())
     <table class="container-table">
       <tr class="styled-tr">
         <th>Username</th>
@@ -17,7 +21,7 @@
         <th>Erstellt am:</th>
         <th>Funktion(en)</th>
       </tr>
-      <!-- //Einbindung der User -->
+      <!-- //Einbindung der Userdaten -->
       @foreach ($users as $user)
       <tr>
         <td> {{$user->username}} </td>
@@ -28,9 +32,11 @@
 
         <td>
           <div>
+            <!-- User mit dem usernamen Admin nicht bearbeitbar! -->
             @if($user->username == "admin")
             <p>nicht bearbeitbar</p>
             @else
+            <!-- Form zum Löschen von Datenbankeinträgen -->
             <form class="button-center" method="POST" action="/admin/users/{{$user->id}}">
               @csrf
               @method('DELETE')

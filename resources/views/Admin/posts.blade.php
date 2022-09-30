@@ -1,13 +1,16 @@
 <x-layout>
+  <!-- Einbinden der Komponente _admin-header -->
   @include('_admin-header')
 
   <div class="px-6 py-8">
+    <!-- Suchleiste -->
   <div class="filter">
       <form method="GET" action"#">
-        <label for="post">Post-Titel/Inhalt suchen:</label><br>
+        <label for="post">Suche:</label><br>
         <input type="text" name="post" id="post" placeholder="Suchbegriff eintragen" value="{{request('post')}}">
       </form>
     </div>
+    <!-- Einbinden Posteinträge -->
     @if ($posts->count())
     <table class="container-table">
       <tr class="styled-tr">
@@ -19,7 +22,7 @@
         <th>Funktion(en)</th>
       </tr>
       
-      <!-- //Einbindung der User -->
+      <!-- //Ausgabe der Posteinträge -->
       @foreach ($posts->sortBy('author.name') as $post)
       <tr>
         <td> {{$post->author->name}} </td>
@@ -29,6 +32,7 @@
         <td> {{$post->published_at}}</td>
         <td>
           <div>
+            <!-- Form zum Löschen von Datenbankeinträgen -->
             <form class="button-center" method="POST" action="/admin/posts/{{$post->id}}">
               @csrf
               @method('DELETE')

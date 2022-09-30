@@ -1,10 +1,11 @@
 <x-layout>
+    <!-- Einbinden der Komponente _admin-header -->
     @include('_admin-header')
-
     <div class="px-6 py-8">
+    <!-- Suchleiste -->
     <div class="filter">
       <form method="GET" action"#">
-        <label for="news">Post-Titel/Inhalt suchen:</label><br>
+        <label for="news">Suche:</label><br>
         <input type="text" name="news" id="news" placeholder="Suchbegriff eintragen" value="{{request('news')}}">
       </form>
     </div>
@@ -36,7 +37,9 @@
                 @endif
                 <td>
                     <div class="functions">
+                        <!-- Link zur Bearbeitungspage von Newseinträgen -->
                         <a href="/admin/news/{{$news->id}}/edit">Bearbeiten</a>
+                        <!-- Form zum Löschen von Datenbankeinträgen -->
                         <form class="button-center" method="POST" action="/admin/news/{{$news->id}}">
                             @csrf
                             @method('DELETE')

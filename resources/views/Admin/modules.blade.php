@@ -1,7 +1,15 @@
 <x-layout>
+  <!-- Einbinden der Komponente _admin-header -->
   @include('_admin-header')
-
   <div class="px-6 py-8">
+    <!-- Suchleiste -->
+    <div class="filter">
+      <form method="GET" action"#">
+        <label for="module">Suche:</label><br>
+        <input type="text" name="module" id="module" placeholder="Suchbegriff eintragen" value="{{request('module')}}">
+      </form>
+    </div>
+    <!-- Erstellen der Tabelle für die Datenbankeinträge -->
     @if ($modules->count())
     <table class="container-table">
       <tr class="styled-tr">
@@ -11,24 +19,19 @@
         <th>Funktion(en)</th>
       </tr>
 
-      <div class="filter">
-        <form method="GET" action"#">
-          <label for="module">Modulname suchen:</label><br>
-          <input type="text" name="module" id="module" placeholder="Suchbegriff eingeben" value="{{request('module')}}">
-        </form>
-      </div>
-      <!-- //Einbindung der User -->
+      <!-- //Einbindung der Moduldaten -->
       @foreach ($modules->sortBy('name') as $module)
       <tr>
         <td> {{$module->name}} </td>
         @if($module->user != null)
         <td> {{$module->user->name}} </td>
         @else
-          <td>kein User zugewiesen</td>
+        <td>kein User zugewiesen</td>
         @endif
         <td> {{$module->course->name}}</td>
         <td>
           <div class="button-center">
+            <!-- Form zum Löschen von Datenbankeinträgen -->
             <form method="POST" action="/admin/modules/{{$module->id}}">
               @csrf
               @method('DELETE')

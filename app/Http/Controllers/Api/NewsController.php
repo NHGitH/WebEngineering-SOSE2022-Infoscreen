@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\Building;
+use App\Models\Post;
 
 class NewsController extends Controller
 {
@@ -15,12 +16,6 @@ class NewsController extends Controller
             'newslist' => News::all(),
         ]);
     }
-
-    // //returns view t
-    // public function create()
-    // {
-    //     return view('/Lessons/create');
-    // }
 
     public function store()
     {    //creates and stores a News-link into the database
@@ -38,7 +33,7 @@ class NewsController extends Controller
 
     
     public function storeAdmin()
-    {    //creates and stores a News-link into the database
+    {    //creates and stores a News-link into the database returns user to /admin
         $attributes = request()->validate([
             'post_id' => 'required',
             'module_id' => 'unique:news,module_id|nullable',
@@ -63,6 +58,7 @@ class NewsController extends Controller
         return view('/News/editAdmin',[
             'news' => $news,
             'buildings' => Building::all(),
+            'posts' => Post::all(),
         ]);
     }
 
@@ -84,7 +80,7 @@ class NewsController extends Controller
         $attributes = request()->validate([
             'post_id' => 'required',
             'module_id' => 'unique:news,module_id|nullable',
-            'building_id' => 'unique:news,building_id|nullable',
+            'building_id' => 'required',
         ]);
 
         $news->update($attributes);
